@@ -1,0 +1,42 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    bg-white
+    pb-20
+    lg:pb-10
+  "
+>
+  <app-header></app-header>
+
+  <main
+    class="
+      mx-auto
+      w-full
+      max-w-7xl
+      px-3
+      sm:px-6
+      lg:px-8
+      pt-3
+      sm:pt-6
+      space-y-6
+    "
+  >
+    <app-reviews-header></app-reviews-header>
+
+    <app-rating-summary></app-rating-summary>
+
+    <app-review-filters
+      [activeFilter]="activeFilter()"
+      (filterChange)="onFilterChange($event)"
+    ></app-review-filters>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 pb-6">
+      @for (review of filteredReviews(); track review.id) {
+        <app-review-card [review]="review"></app-review-card>
+      }
+    </section>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

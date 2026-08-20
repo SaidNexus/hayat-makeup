@@ -1,0 +1,115 @@
+@if (uiService.menuOpen()) {
+  <div dir="rtl" class="fixed inset-0 z-50 flex justify-end">
+    <!-- Overlay -->
+    <button
+      type="button"
+      aria-label="إغلاق القائمة"
+      (click)="close()"
+      class="fixed inset-0 bg-black/40 backdrop-blur-[2px] transition-opacity"
+    ></button>
+
+    <!-- Drawer -->
+    <aside
+      class="
+        relative
+        z-10
+        flex
+        h-full
+        w-[80%]
+        max-w-[340px]
+        md:max-w-[380px]
+        flex-col
+        overflow-y-auto
+        bg-white
+        px-4
+        py-6
+        shadow-2xl
+        transition-transform
+      "
+    >
+      <!-- Logo & Close -->
+      <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+        <img
+          src="https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248206/hayat-makeup/hero.png"
+          alt="Hayat Makeup"
+          class="h-10 md:h-12 w-auto object-contain"
+        />
+
+        <button
+          type="button"
+          aria-label="إغلاق"
+          (click)="close()"
+          class="p-1.5 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Menu Items -->
+      <div class="mt-4 flex-1 space-y-1">
+        @for (item of menuItems; track item.id) {
+          <button
+            type="button"
+            (click)="handleNavigate(item.id)"
+            class="
+              flex
+              h-12
+              w-full
+              items-center
+              gap-4
+              rounded-xl
+              px-3
+              text-right
+              transition-colors
+            "
+            [class.bg-[#FBE3EF]]="item.active"
+            [class.text-[#D4146A]]="item.active"
+            [class.font-semibold]="item.active"
+            [class.text-[#222222]]="!item.active"
+            [class.hover:bg-gray-50]="!item.active"
+          >
+            <svg
+              [lucideIcon]="item.icon"
+              class="h-5 w-5 shrink-0"
+              [strokeWidth]="1.6"
+            ></svg>
+            <span class="text-sm md:text-base">
+              {{ item.label }}
+            </span>
+          </button>
+        }
+      </div>
+
+      <!-- Logout -->
+      <div class="pt-4 border-t border-gray-100">
+        <button
+          type="button"
+          (click)="handleNavigate('logout')"
+          class="
+            flex
+            h-12
+            w-full
+            items-center
+            gap-4
+            rounded-xl
+            px-3
+            text-[#D4146A]
+            hover:bg-pink-50
+            transition-colors
+          "
+        >
+          <svg
+            [lucideIcon]="logoutIcon"
+            class="h-5 w-5 shrink-0"
+            [strokeWidth]="1.6"
+          ></svg>
+          <span class="text-sm md:text-base font-medium">
+            تسجيل الخروج
+          </span>
+        </button>
+      </div>
+    </aside>
+  </div>
+}

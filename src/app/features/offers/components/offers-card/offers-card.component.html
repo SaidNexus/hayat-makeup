@@ -1,0 +1,63 @@
+<article
+  class="
+    relative
+    flex
+    items-center
+    justify-between
+    min-w-0
+    overflow-hidden
+    rounded-2xl
+    border
+    border-pink-100
+    bg-pink-50/30
+    p-3
+    sm:p-4
+    shadow-sm
+    hover:shadow-md
+    transition-all
+    h-full
+  "
+>
+  <!-- Text Content (Right) -->
+  <div class="flex flex-col items-start justify-center text-right space-y-1 z-10 flex-1 min-w-0 pr-1">
+    <h3 class="text-xs sm:text-sm md:text-base font-bold text-gray-900 line-clamp-1">
+      {{ offer.title }}
+    </h3>
+
+    <p class="text-[11px] sm:text-xs text-gray-600">
+      خصم <span class="text-[#D4146A] font-bold">%{{ offer.discount }}</span>
+    </p>
+
+    <button
+      type="button"
+      (click)="navigateToProducts()"
+      class="
+        mt-1
+        rounded-full
+        bg-[#D4146A]
+        px-3
+        py-1
+        text-[10px]
+        sm:text-xs
+        font-bold
+        text-white
+        shadow-sm
+        hover:bg-[#b01057]
+        active:scale-95
+        transition-all
+        whitespace-nowrap
+      "
+    >
+      تسوقي الآن
+    </button>
+  </div>
+
+  <!-- Image (Left) -->
+  <div class="h-20 w-20 sm:h-24 sm:w-24 shrink-0 flex items-center justify-center">
+    <img
+      [src]="offer.image"
+      [alt]="offer.title"
+      class="h-full w-full object-contain"
+    />
+  </div>
+</article>

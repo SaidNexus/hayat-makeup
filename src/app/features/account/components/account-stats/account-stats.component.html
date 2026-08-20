@@ -1,0 +1,91 @@
+<section
+  class="
+    grid
+    grid-cols-3
+    gap-2
+
+    sm:gap-4
+  "
+>
+  @for (stat of stats; track stat.id) {
+    <button
+      type="button"
+      (click)="onClick(stat.id)"
+      class="
+        flex
+        min-w-0
+        flex-col
+        items-center
+        justify-center
+        gap-1
+        rounded-[12px]
+        border
+        border-[#EEEEEE]
+        bg-white
+        px-1
+        py-2.5
+
+        sm:gap-1.5
+        sm:rounded-[16px]
+        sm:py-4
+
+        md:rounded-[20px]
+        md:py-5
+      "
+    >
+      <div
+        class="
+          flex
+          h-[28px]
+          w-[28px]
+          items-center
+          justify-center
+          rounded-full
+          bg-[#FBE3EF]
+          text-[#D4146A]
+
+          sm:h-[38px]
+          sm:w-[38px]
+
+          md:h-[48px]
+          md:w-[48px]
+        "
+      >
+        <svg
+          [lucideIcon]="getIcon(stat.id)"
+          class="h-[15px] w-[15px] sm:h-5 sm:w-5 md:h-[25px] md:w-[25px]"
+          [strokeWidth]="1.6"
+        ></svg>
+      </div>
+
+      <span
+        class="
+          text-[15px]
+          font-bold
+          leading-none
+          text-[#111111]
+
+          sm:text-[22px]
+
+          md:text-[28px]
+        "
+      >
+        {{ stat.value }}
+      </span>
+
+      <span
+        class="
+          text-[9px]
+          leading-none
+          text-[#888888]
+
+          sm:text-[12px]
+
+          md:text-[15px]
+        "
+      >
+        {{ stat.label }}
+      </span>
+    </button>
+  }
+</section>

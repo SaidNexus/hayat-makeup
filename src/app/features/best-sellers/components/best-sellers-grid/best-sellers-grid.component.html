@@ -1,0 +1,20 @@
+<section
+  class="
+    grid
+    grid-cols-2
+    gap-2
+    sm:gap-4
+    md:grid-cols-3
+    lg:grid-cols-4
+    lg:gap-6
+  "
+>
+  @for (product of displayProducts(); track product.id) {
+    <div class="min-w-0">
+      <app-best-seller-card
+        [product]="product"
+        (selectProduct)="onProductSelect(product.id)"
+      ></app-best-seller-card>
+    </div>
+  }
+</section>

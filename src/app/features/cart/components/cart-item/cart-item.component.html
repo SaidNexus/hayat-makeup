@@ -1,0 +1,120 @@
+<article
+  dir="rtl"
+  class="
+    relative
+    flex
+    items-center
+    justify-between
+    gap-3
+    sm:gap-4
+    w-full
+    rounded-2xl
+    border
+    border-gray-100
+    bg-white
+    p-3
+    sm:p-4
+    shadow-sm
+    hover:shadow-md
+    transition-all
+  "
+>
+  <!-- Right Side: Image + Details -->
+  <div class="flex items-center gap-3 min-w-0 flex-1">
+    <!-- Image -->
+    <div
+      class="
+        h-20
+        w-20
+        sm:h-24
+        sm:w-24
+        shrink-0
+        rounded-xl
+        border
+        border-gray-100
+        bg-gray-50/50
+        p-1.5
+        flex
+        items-center
+        justify-center
+        overflow-hidden
+      "
+    >
+      <img
+        [src]="item.image"
+        [alt]="item.name"
+        class="h-full w-full object-contain"
+      />
+    </div>
+
+    <!-- Info -->
+    <div class="min-w-0 flex-1 space-y-1 text-right">
+      <h3 class="text-xs sm:text-sm md:text-base font-bold text-gray-900 line-clamp-1">
+        {{ item.name }}
+      </h3>
+
+      @if (item.description) {
+        <p class="text-[10px] sm:text-xs text-gray-400 line-clamp-1">
+          {{ item.description }}
+        </p>
+      }
+
+      @if (item.color) {
+        <div class="flex items-center gap-1.5 text-[10px] sm:text-xs text-gray-600">
+          <span>اللون: {{ item.color }}</span>
+          @if (item.colorCode) {
+            <span
+              class="h-3 w-3 rounded-full border border-gray-200"
+              [style.backgroundColor]="item.colorCode"
+            ></span>
+          }
+        </div>
+      }
+
+      <div class="text-xs sm:text-sm font-extrabold text-[#D4146A]">
+        {{ item.price }} <span class="text-[10px] sm:text-xs font-normal">ر.س</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left Side: Quantity Selector + Delete Button -->
+  <div class="flex flex-col items-end justify-between h-full space-y-3 shrink-0">
+    <!-- Delete Button -->
+    <button
+      type="button"
+      (click)="onRemove()"
+      aria-label="حذف المنتج"
+      class="text-gray-400 hover:text-red-500 transition-colors p-1"
+    >
+      <svg
+        [lucideIcon]="trashIcon"
+        class="h-4 w-4 sm:h-5 sm:w-5"
+        [strokeWidth]="1.6"
+      ></svg>
+    </button>
+
+    <!-- Quantity Selector -->
+    <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm h-7 sm:h-8">
+      <button
+        type="button"
+        (click)="onIncrease()"
+        class="h-full px-2 text-[#D4146A] hover:bg-pink-50 transition-colors flex items-center justify-center"
+      >
+        <svg [lucideIcon]="plusIcon" class="h-3 w-3 sm:h-3.5 sm:w-3.5" [strokeWidth]="2"></svg>
+      </button>
+
+      <span class="px-2.5 text-xs sm:text-sm font-bold text-gray-800 border-x border-gray-200 flex items-center justify-center min-w-[28px]">
+        {{ item.quantity }}
+      </span>
+
+      <button
+        type="button"
+        (click)="onDecrease()"
+        [disabled]="item.quantity <= 1"
+        class="h-full px-2 text-[#D4146A] disabled:opacity-30 hover:bg-pink-50 transition-colors flex items-center justify-center"
+      >
+        <svg [lucideIcon]="minusIcon" class="h-3 w-3 sm:h-3.5 sm:w-3.5" [strokeWidth]="2"></svg>
+      </button>
+    </div>
+  </div>
+</article>

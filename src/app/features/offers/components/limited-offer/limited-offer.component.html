@@ -1,0 +1,100 @@
+<section class="w-full">
+  <div
+    class="
+      relative
+      flex
+      min-h-[115px]
+      sm:min-h-[145px]
+      md:min-h-[180px]
+      w-full
+      overflow-hidden
+      rounded-2xl
+      bg-gradient-to-l
+      from-[#FFF0F5]
+      to-pink-50/60
+      p-3
+      sm:p-5
+      border
+      border-pink-100
+    "
+  >
+    <!-- Clock / Image (Left) -->
+    <img
+      [src]="limitedOfferImage"
+      alt="عرض لفترة محدودة"
+      class="
+        absolute
+        bottom-0
+        left-1
+        h-[90%]
+        w-[36%]
+        sm:w-[32%]
+        object-contain
+        object-left-bottom
+      "
+      loading="lazy"
+    />
+
+    <!-- Content (Right) -->
+    <div
+      dir="ltr"
+      class="
+        relative
+        z-10
+        ml-auto
+        flex
+        w-[62%]
+        sm:w-[66%]
+        flex-col
+        items-end
+        text-right
+        space-y-1.5
+      "
+    >
+      <!-- Title -->
+      <div class="flex items-center gap-1.5 text-[#D4146A]">
+        <h2 class="text-xs sm:text-base md:text-xl font-bold leading-tight">
+          عرض لفترة محدودة
+        </h2>
+        <svg
+          [lucideIcon]="clockIcon"
+          class="h-4 w-4 sm:h-5 sm:w-5 shrink-0"
+          [strokeWidth]="1.6"
+        ></svg>
+      </div>
+
+      <!-- Description -->
+      <p class="text-[10px] sm:text-xs text-gray-600">
+        لا يفوتك! العرض ينتهي خلال
+      </p>
+
+      <!-- Time Boxes -->
+      <div dir="rtl" class="grid grid-cols-4 gap-1.5 w-full pt-1">
+        @for (box of timeBoxes(); track box.label) {
+          <div
+            class="
+              flex
+              flex-col
+              items-center
+              justify-center
+              rounded-xl
+              border
+              border-pink-200/60
+              bg-white
+              py-1.5
+              sm:py-2
+              shadow-xs
+            "
+          >
+            <strong class="text-xs sm:text-base md:text-lg font-extrabold text-[#D4146A] leading-none">
+              {{ box.value }}
+            </strong>
+            <span class="text-[8px] sm:text-[10px] font-semibold text-gray-600 mt-0.5">
+              {{ box.label }}
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

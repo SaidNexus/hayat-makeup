@@ -1,0 +1,33 @@
+<section
+  class="
+    mx-auto
+    mt-4
+    w-full
+    max-w-[1050px]
+
+    sm:mt-7
+
+    md:mt-10
+  "
+>
+  <div
+    class="
+      grid
+      grid-cols-3
+      items-stretch
+      gap-2
+
+      sm:gap-4
+
+      md:gap-6
+    "
+  >
+    @for (value of values; track value.id) {
+      <app-about-value-card
+        [icon]="value.icon"
+        [title]="value.title"
+        [description]="value.description"
+      ></app-about-value-card>
+    }
+  </div>
+</section>

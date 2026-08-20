@@ -1,0 +1,208 @@
+<section
+  class="
+    mt-3
+    grid
+    grid-cols-[38%_62%]
+    items-center
+    gap-3
+
+    sm:mt-7
+    sm:gap-6
+
+    md:mt-9
+    md:grid-cols-[35%_65%]
+    md:gap-10
+  "
+>
+  <!-- Overall -->
+  <div
+    class="
+      flex
+      flex-col
+      items-center
+      justify-center
+      text-center
+    "
+  >
+    <div
+      class="
+        text-[45px]
+        font-medium
+        leading-none
+        text-[#111]
+
+        sm:text-[78px]
+
+        md:text-[100px]
+      "
+    >
+      {{ overall }}
+    </div>
+
+    <div
+      dir="ltr"
+      class="
+        mt-1
+        flex
+        items-center
+        gap-1
+
+        sm:gap-1.5
+
+        md:gap-2
+      "
+    >
+      @for (item of [0, 1, 2, 3]; track item) {
+        <svg
+          [lucideIcon]="starIcon"
+          class="h-[18px] w-[18px] sm:h-[25px] sm:w-[25px] md:h-[31px] md:w-[31px] fill-[#C91F72] text-[#C91F72]"
+          [strokeWidth]="0"
+        ></svg>
+      }
+
+      <div class="relative">
+        <svg
+          [lucideIcon]="starIcon"
+          class="h-[18px] w-[18px] sm:h-[25px] sm:w-[25px] md:h-[31px] md:w-[31px] text-[#C91F72]"
+          [strokeWidth]="1.2"
+        ></svg>
+
+        <div class="absolute inset-y-0 left-0 w-1/2 overflow-hidden">
+          <svg
+            [lucideIcon]="starIcon"
+            class="h-[18px] w-[18px] max-w-none sm:h-[25px] sm:w-[25px] md:h-[31px] md:w-[31px] fill-[#C91F72] text-[#C91F72]"
+            [strokeWidth]="0"
+          ></svg>
+        </div>
+      </div>
+    </div>
+
+    <span
+      class="
+        mt-1
+        text-[10px]
+        text-[#555]
+
+        sm:text-[13px]
+
+        md:text-[16px]
+      "
+    >
+      5 من
+    </span>
+
+    <span
+      dir="rtl"
+      class="
+        mt-1
+        text-[9px]
+        text-[#999]
+
+        sm:text-[12px]
+
+        md:text-[15px]
+      "
+    >
+      {{ total }}
+    </span>
+  </div>
+
+  <!-- Distribution -->
+  <div
+    class="
+      flex
+      flex-col
+      gap-2
+
+      sm:gap-3
+
+      md:gap-4
+    "
+  >
+    @for (item of ratings; track item.rating) {
+      <div
+        dir="ltr"
+        class="
+          flex
+          items-center
+          gap-2
+
+          sm:gap-3
+
+          md:gap-4
+        "
+      >
+        <span
+          class="
+            w-[8px]
+            text-[9px]
+            text-[#555]
+
+            sm:text-[12px]
+
+            md:text-[15px]
+          "
+        >
+          {{ item.rating }}
+        </span>
+
+        <svg
+          [lucideIcon]="starIcon"
+          class="
+            shrink-0
+            h-[9px]
+            w-[9px]
+            sm:h-[16px]
+            sm:w-[16px]
+            md:h-[19px]
+            md:w-[19px]
+            fill-[#C91F72]
+            text-[#C91F72]
+          "
+          [strokeWidth]="0"
+        ></svg>
+
+        <div
+          class="
+            h-[6px]
+            min-w-0
+            flex-1
+            overflow-hidden
+            rounded-full
+            bg-[#F0F0F0]
+
+            sm:h-[8px]
+
+            md:h-[10px]
+          "
+        >
+          <div
+            class="
+              h-full
+              rounded-full
+              bg-[#C91F72]
+            "
+            [style.width.%]="item.percent"
+          ></div>
+        </div>
+
+        <span
+          class="
+            w-[30px]
+            text-left
+            text-[9px]
+            text-[#555]
+
+            sm:w-[36px]
+            sm:text-[12px]
+
+            md:w-[44px]
+            md:text-[15px]
+          "
+        >
+          {{ item.percent }}%
+        </span>
+      </div>
+    }
+  </div>
+</section>

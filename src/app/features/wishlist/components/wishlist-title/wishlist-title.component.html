@@ -1,0 +1,29 @@
+<section class="mb-4 sm:mb-6">
+  <div class="flex items-center justify-between">
+    <!-- Title -->
+    <div class="flex items-center gap-2.5">
+      <svg
+        [lucideIcon]="heartIcon"
+        class="h-6 w-6 sm:h-7 sm:w-7 text-[#D4146A]"
+        [strokeWidth]="1.5"
+      ></svg>
+
+      <div>
+        <h1 class="text-xl sm:text-2xl font-bold text-[#111111]">
+          المفضلة
+        </h1>
+
+        <p class="text-xs sm:text-sm text-gray-500">
+          منتجاتك المفضلة في مكان واحد
+        </p>
+      </div>
+    </div>
+
+    <!-- Count -->
+    <div class="rounded-full border border-gray-200 bg-gray-50/50 px-3 py-1">
+      <span class="text-xs sm:text-sm font-semibold text-gray-700">
+        <span class="text-[#D4146A]">{{ count }}</span> منتجات
+      </span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+<section class="pb-1">
+  <h2
+    class="
+      mb-1
+      text-right
+      text-[15px]
+      font-semibold
+
+      sm:mb-4
+      sm:text-[25px]
+
+      md:text-[32px]
+    "
+  >
+    الأكثر قراءة
+  </h2>
+
+  <div
+    class="
+      grid
+      grid-cols-2
+      gap-2
+
+      sm:gap-3
+
+      md:gap-5
+    "
+  >
+    @for (article of articles; track article.id) {
+      <app-most-read-card [article]="article"></app-most-read-card>
+    }
+  </div>
+</section>

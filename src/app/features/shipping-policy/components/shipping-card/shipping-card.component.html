@@ -1,0 +1,110 @@
+<div
+  class="
+    flex
+    min-h-[74px]
+    w-full
+    items-center
+    gap-[10px]
+    rounded-[14px]
+    border
+    border-[#EAEAEA]
+    bg-white
+    px-[12px]
+    py-[10px]
+    shadow-[0_2px_8px_rgba(0,0,0,0.03)]
+
+    sm:min-h-[88px]
+    sm:gap-[12px]
+    sm:rounded-[16px]
+    sm:px-[16px]
+    sm:py-[12px]
+
+    md:min-h-[110px]
+    md:gap-[14px]
+    md:rounded-[18px]
+    md:px-[20px]
+    md:py-[16px]
+
+    lg:min-h-[130px]
+    lg:px-[26px]
+    lg:py-[20px]
+  "
+>
+  <!-- Icon -->
+  <div
+    class="
+      flex
+      h-[40px]
+      w-[40px]
+      shrink-0
+      items-center
+      justify-center
+      rounded-[12px]
+      bg-[#FFF5F9]
+      text-[#C91F72]
+
+      sm:h-[48px]
+      sm:w-[48px]
+      sm:rounded-[13px]
+
+      md:h-[58px]
+      md:w-[58px]
+      md:rounded-[15px]
+
+      lg:h-[66px]
+      lg:w-[66px]
+    "
+  >
+    <svg
+      [lucideIcon]="icon"
+      class="h-[25px] w-[25px] sm:h-[22px] sm:w-[22px] md:h-[27px] md:w-[27px] lg:h-[32px] lg:w-[32px]"
+      [strokeWidth]="1.5"
+    ></svg>
+  </div>
+
+  <!-- Content -->
+  <div class="min-w-0 flex-1 text-right">
+    <h3
+      class="
+        text-[12px]
+        font-semibold
+        leading-[1.4]
+        text-[#111]
+
+        sm:text-[14px]
+
+        md:text-[16px]
+
+        lg:text-[18px]
+      "
+    >
+      {{ title }}
+    </h3>
+
+    <div
+      class="
+        mt-[3px]
+        text-[8px]
+        leading-[1.6]
+        text-[#666]
+
+        sm:text-[11px]
+
+        md:text-[13px]
+
+        lg:text-[14px]
+      "
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <!-- Arrow -->
+  <div class="flex w-[18px] shrink-0 items-center justify-start text-[#C91F72] sm:w-[22px] md:w-[26px]">
+    <svg
+      [lucideIcon]="chevronDownIcon"
+      class="h-4 w-4 sm:h-[19px] sm:w-[19px] md:h-[22px] md:w-[22px] lg:h-[25px] lg:w-[25px]"
+      [strokeWidth]="1.7"
+    ></svg>
+  </div>
+</div>

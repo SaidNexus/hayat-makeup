@@ -1,0 +1,67 @@
+<section class="w-full space-y-2">
+  <h2 class="text-base sm:text-xl md:text-2xl font-bold text-[#111111] text-right">
+    اشتري قطعتين واحصلي على خصم
+  </h2>
+
+  <div
+    class="
+      flex
+      items-center
+      justify-between
+      gap-2
+      sm:gap-4
+      rounded-2xl
+      bg-[#FFF0F5]
+      p-3
+      sm:p-4
+      border
+      border-pink-100
+    "
+  >
+    <!-- Steps: Icons & Labels -->
+    <div class="flex items-center justify-around flex-1 gap-1 text-center">
+      @for (step of steps; track step.title; let i = $index) {
+        <div class="flex flex-col items-center space-y-1">
+          <svg
+            [lucideIcon]="step.icon"
+            class="h-4 w-4 sm:h-6 sm:w-6 text-[#D4146A]"
+            [strokeWidth]="1.6"
+          ></svg>
+          <span class="text-[9px] sm:text-xs text-gray-700 font-medium whitespace-nowrap">
+            {{ step.title }}
+          </span>
+        </div>
+
+        @if (i !== steps.length - 1) {
+          <span class="text-pink-300 font-bold text-xs sm:text-sm px-1">
+            {{ separators[i] }}
+          </span>
+        }
+      }
+    </div>
+
+    <!-- CTA Button -->
+    <button
+      type="button"
+      (click)="navigateToProducts()"
+      class="
+        rounded-xl
+        bg-[#D4146A]
+        px-3.5
+        py-2
+        text-xs
+        sm:text-sm
+        font-bold
+        text-white
+        shadow-sm
+        hover:bg-[#b01057]
+        active:scale-95
+        transition-all
+        whitespace-nowrap
+        shrink-0
+      "
+    >
+      تسوقي الآن
+    </button>
+  </div>
+</section>

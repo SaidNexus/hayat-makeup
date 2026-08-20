@@ -1,0 +1,56 @@
+<button
+  type="button"
+  (click)="handleCopy()"
+  class="
+    mx-auto
+    mt-[10px]
+    flex
+    h-[40px]
+    w-full
+    max-w-[300px]
+    items-center
+    justify-center
+    gap-[20px]
+    rounded-[10px]
+    border
+    border-[#F1C3D8]
+    text-[#D4146A]
+
+    sm:mt-[22px]
+    sm:h-[56px]
+
+    md:mt-[26px]
+    md:h-[62px]
+  "
+>
+  <span
+    dir="ltr"
+    class="
+      text-[17px]
+      font-medium
+
+      sm:text-[20px]
+
+      md:text-[23px]
+    "
+  >
+    {{ orderNumber }}
+  </span>
+
+  <span class="h-[28px] w-px bg-[#F1C3D8]"></span>
+
+  <svg
+    [lucideIcon]="copyIcon"
+    class="
+      h-[19px]
+      w-[19px]
+      
+      sm:h-[22px]
+      sm:w-[22px]
+
+      md:h-[25px]
+      md:w-[25px]
+    "
+    [strokeWidth]="1.6"
+  ></svg>
+</button>

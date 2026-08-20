@@ -1,0 +1,67 @@
+<section class="mt-2 sm:mt-7 md:mt-9">
+  <h2
+    class="
+      text-right
+      text-[15px]
+      font-semibold
+      text-[#111]
+
+      sm:text-[20px]
+
+      md:text-[26px]
+    "
+  >
+    تصفية التقييمات
+  </h2>
+
+  <div
+    dir="rtl"
+    class="
+      mt-2
+      flex
+      w-full
+      gap-2
+      overflow-x-auto
+      no-scrollbar
+      pb-1
+
+      sm:mt-3
+      sm:gap-3
+    "
+  >
+    @for (filter of filters; track filter) {
+      <button
+        type="button"
+        (click)="onSelect(filter)"
+        class="
+          flex
+          h-[25px]
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          border
+          px-[11px]
+          !text-[9px]
+          font-medium
+
+          sm:h-[42px]
+          sm:px-4
+          sm:text-[12px]
+
+          md:h-[48px]
+          md:px-5
+          md:text-[15px]
+        "
+        [class.border-[#C91F72]]="activeFilter === filter"
+        [class.bg-[#fff0f59f]]="activeFilter === filter"
+        [class.text-[#C91F72]]="activeFilter === filter"
+        [class.border-[#E3E3E3]]="activeFilter !== filter"
+        [class.bg-white]="activeFilter !== filter"
+        [class.text-[#333]]="activeFilter !== filter"
+      >
+        {{ filter }}
+      </button>
+    }
+  </div>
+</section>

@@ -1,0 +1,42 @@
+<div
+  class="
+    flex
+    w-full
+    items-center
+    gap-2
+    sm:gap-3
+    overflow-x-auto
+    pb-1
+    no-scrollbar
+  "
+>
+  @for (tab of tabs; track tab.id) {
+    <button
+      type="button"
+      (click)="onSelect(tab.id)"
+      class="
+        h-9
+        sm:h-10
+        shrink-0
+        rounded-full
+        border
+        px-4
+        sm:px-6
+        text-xs
+        sm:text-sm
+        font-medium
+        transition-all
+      "
+      [class.border-[#D4146A]]="tab.id === activeTab"
+      [class.bg-[#D4146A]]="tab.id === activeTab"
+      [class.text-white]="tab.id === activeTab"
+      [class.shadow-sm]="tab.id === activeTab"
+      [class.border-gray-200]="tab.id !== activeTab"
+      [class.bg-white]="tab.id !== activeTab"
+      [class.text-gray-700]="tab.id !== activeTab"
+      [class.hover:border-gray-300]="tab.id !== activeTab"
+    >
+      {{ tab.label }}
+    </button>
+  }
+</div>

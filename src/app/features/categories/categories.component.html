@@ -1,0 +1,48 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    w-full
+    bg-white
+    pb-20
+    lg:pb-10
+  "
+>
+  <!-- Header -->
+  <app-header></app-header>
+
+  <!-- Main -->
+  <main class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 pt-3 sm:pt-6">
+    <!-- Page Heading -->
+    <section class="mb-4 text-center sm:text-right">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
+        التصنيفات
+      </h1>
+
+      <p class="mt-1 text-xs sm:text-sm text-gray-500">
+        تسوقي حسب القسم
+      </p>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+      @for (category of categories(); track category.id) {
+        <app-category-card
+          [image]="category.image"
+          [title]="category.title"
+          [description]="category.description || 'كل ما تحتاجينه\nلبشرة مثالية'"
+          [bgColor]="category.bgColor || '#FBF1EF'"
+          (cardClick)="handleCategoryClick(category.id)"
+        ></app-category-card>
+      }
+    </section>
+
+    <!-- Services -->
+    <div class="mt-8">
+      <app-category-service-features></app-category-service-features>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <app-mobile-bottom-nav [activeItem]="'categories'"></app-mobile-bottom-nav>
+</div>

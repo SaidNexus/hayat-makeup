@@ -1,0 +1,163 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    w-full
+    bg-white
+    pb-24
+    lg:pb-12
+    flex
+    flex-col
+    justify-between
+  "
+>
+  <!-- Unified Application Header -->
+  <app-header></app-header>
+
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+    <!-- Page Header -->
+    <div class="mb-5 flex items-center justify-between">
+      <div>
+        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
+          السلة
+        </h1>
+        <p class="mt-1 text-xs sm:text-sm text-gray-500">
+          {{ itemsCount() }} منتجات
+        </p>
+      </div>
+
+      <!-- Continue Shopping -->
+      <button
+        type="button"
+        (click)="navigateTo('/products')"
+        class="flex items-center gap-1 text-xs sm:text-sm md:text-base font-semibold text-[#D4146A] hover:opacity-80 transition"
+      >
+        <span>متابعة التسوق</span>
+        <svg
+          [lucideIcon]="chevronLeftIcon"
+          class="h-4 w-4 sm:h-5 sm:w-5"
+          [strokeWidth]="1.8"
+        ></svg>
+      </button>
+    </div>
+
+    @if (cartService.items().length === 0) {
+      <!-- Empty Cart State -->
+      <div
+        class="
+          flex
+          flex-col
+          items-center
+          justify-center
+          rounded-2xl
+          border
+          border-dashed
+          border-pink-200
+          bg-pink-50/20
+          py-16
+          px-4
+          text-center
+          sm:py-24
+          my-6
+        "
+      >
+        <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-pink-100/70 flex items-center justify-center text-[#D4146A] mb-4 shadow-xs">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            class="h-8 w-8 sm:h-10 sm:w-10"
+          >
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+
+        <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">
+          سلتك فارغة حالياً
+        </h2>
+
+        <p class="text-xs sm:text-sm text-gray-500 max-w-sm mb-6 leading-relaxed">
+          لم تقومي بإضافة أي منتجات إلى سلة التسوق بعد. استكشفي أحدث منتجاتنا وأضيفي ما تحبين!
+        </p>
+
+        <button
+          type="button"
+          (click)="navigateTo('/products')"
+          class="
+            rounded-xl
+            bg-[#D4146A]
+            px-8
+            py-3
+            text-xs
+            sm:text-sm
+            font-bold
+            text-white
+            shadow-md
+            hover:bg-[#b01057]
+            active:scale-95
+            transition-all
+          "
+        >
+          استكشفي المنتجات
+        </button>
+      </div>
+    } @else {
+      <!-- 2-Column Responsive Layout (lg:col-span-8 vs lg:col-span-4) -->
+      <div class="lg:grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        <!-- Items Column -->
+        <div class="lg:col-span-8 flex flex-col gap-3 sm:gap-4">
+          @for (item of cartService.items(); track item.id) {
+            <app-cart-item [item]="item"></app-cart-item>
+          }
+        </div>
+
+        <!-- Summary Column -->
+        <div class="lg:col-span-4 mt-6 lg:mt-0">
+          <div class="sticky top-24 flex flex-col gap-3 sm:gap-4">
+            <app-coupon-box
+              [applied]="couponApplied()"
+              (applyCoupon)="onApplyCoupon()"
+            ></app-coupon-box>
+
+            <app-cart-summary
+              [subtotal]="subtotal()"
+              [shipping]="shipping()"
+              [discount]="discount()"
+              [total]="total()"
+            ></app-cart-summary>
+
+            <button
+              type="button"
+              (click)="navigateTo('/checkout')"
+              class="
+                w-full
+                flex
+                items-center
+                justify-center
+                rounded-xl
+                bg-[#D4146A]
+                py-3.5
+                text-sm
+                sm:text-base
+                font-semibold
+                text-white
+                shadow-md
+                transition
+                hover:bg-[#b01057]
+                active:scale-[0.99]
+              "
+            >
+              إتمام الطلب
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </main>
+
+  <!-- Mobile Bottom Navigation -->
+  <app-mobile-bottom-nav [activeItem]="'cart'"></app-mobile-bottom-nav>
+</div>

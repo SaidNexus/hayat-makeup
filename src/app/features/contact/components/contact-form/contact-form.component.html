@@ -1,0 +1,366 @@
+<section class="mt-2 pb-1 sm:mt-9 md:mt-11">
+  <!-- Heading -->
+  <div class="mb-2 text-center sm:mb-5 md:mb-6">
+    <h2
+      class="
+        text-[18px]
+        font-semibold
+        text-[#111]
+
+        sm:text-[27px]
+
+        md:text-[34px]
+      "
+    >
+      أرسل لنا رسالة
+    </h2>
+
+    <span
+      class="
+        mx-auto
+        mt-1
+        block
+        h-[2px]
+        w-[30px]
+        rounded-full
+        bg-[#C91F72]
+
+        sm:w-[65px]
+
+        md:w-[82px]
+      "
+    ></span>
+  </div>
+
+  <form
+    (submit)="onSubmit($event)"
+    noValidate
+    class="space-y-1 sm:space-y-3 md:space-y-4"
+  >
+    <!-- Name -->
+    <div class="relative">
+      <svg
+        [lucideIcon]="userRoundIcon"
+        class="
+          absolute
+          right-3
+          top-1/2
+          -translate-y-1/2
+          text-[#111]
+          h-[13px]
+          w-[13px]
+
+          sm:right-4
+          sm:h-[21px]
+          sm:w-[21px]
+
+          md:h-[24px]
+          md:w-[24px]
+        "
+        [strokeWidth]="1.5"
+      ></svg>
+
+      <input
+        type="text"
+        name="name"
+        [ngModel]="name()"
+        (ngModelChange)="name.set($event); onFieldChange()"
+        required
+        placeholder="الاسم الكامل"
+        class="
+          h-[30px]
+          w-full
+          rounded-[8px]
+          border
+          border-[#E1E1E1]
+          bg-white
+          pr-10
+          pl-4
+          text-right
+          !text-[11px]
+          text-[#222]
+          outline-none
+          placeholder:text-[#999]
+          focus:border-[#C91F72]
+
+          sm:h-[58px]
+          sm:rounded-[15px]
+          sm:pr-12
+          sm:text-[14px]
+
+          md:h-[68px]
+          md:rounded-[18px]
+          md:pr-14
+          md:text-[17px]
+        "
+      />
+    </div>
+
+    <!-- Email -->
+    <div class="relative">
+      <svg
+        [lucideIcon]="mailIcon"
+        class="
+          absolute
+          right-3
+          top-1/2
+          -translate-y-1/2
+          text-[#111]
+          h-[13px]
+          w-[13px]
+
+          sm:right-4
+          sm:h-[21px]
+          sm:w-[21px]
+
+          md:h-[24px]
+          md:w-[24px]
+        "
+        [strokeWidth]="1.5"
+      ></svg>
+
+      <input
+        type="email"
+        name="email"
+        [ngModel]="email()"
+        (ngModelChange)="email.set($event); onFieldChange()"
+        placeholder="البريد الإلكتروني"
+        class="
+          h-[30px]
+          w-full
+          rounded-[8px]
+          border
+          border-[#E1E1E1]
+          bg-white
+          pr-10
+          pl-4
+          text-right
+          !text-[11px]
+          text-[#222]
+          outline-none
+          placeholder:text-[#999]
+          focus:border-[#C91F72]
+
+          sm:h-[58px]
+          sm:rounded-[15px]
+          sm:pr-12
+          sm:text-[14px]
+
+          md:h-[68px]
+          md:rounded-[18px]
+          md:pr-14
+          md:text-[17px]
+        "
+      />
+    </div>
+
+    <!-- Subject -->
+    <div class="relative">
+      <svg
+        [lucideIcon]="fileTextIcon"
+        class="
+          absolute
+          right-3
+          top-1/2
+          -translate-y-1/2
+          text-[#111]
+          h-[13px]
+          w-[13px]
+
+          sm:right-4
+          sm:h-[21px]
+          sm:w-[21px]
+
+          md:h-[24px]
+          md:w-[24px]
+        "
+        [strokeWidth]="1.5"
+      ></svg>
+
+      <input
+        type="text"
+        name="subject"
+        [ngModel]="subject()"
+        (ngModelChange)="subject.set($event); onFieldChange()"
+        placeholder="الموضوع"
+        class="
+          h-[30px]
+          w-full
+          rounded-[8px]
+          border
+          border-[#E1E1E1]
+          bg-white
+          pr-10
+          pl-4
+          text-right
+          !text-[11px]
+          text-[#222]
+          outline-none
+          placeholder:text-[#999]
+          focus:border-[#C91F72]
+
+          sm:h-[58px]
+          sm:rounded-[15px]
+          sm:pr-12
+          sm:text-[14px]
+
+          md:h-[68px]
+          md:rounded-[18px]
+          md:pr-14
+          md:text-[17px]
+        "
+      />
+    </div>
+
+    <!-- Message -->
+    <div class="relative">
+      <svg
+        [lucideIcon]="penLineIcon"
+        class="
+          absolute
+          right-3
+          top-3
+          text-[#111]
+          h-[13px]
+          w-[13px]
+
+          sm:right-4
+          sm:h-[21px]
+          sm:w-[21px]
+
+          md:h-[24px]
+          md:w-[24px]
+        "
+        [strokeWidth]="1.5"
+      ></svg>
+
+      <textarea
+        rows="5"
+        name="message"
+        [ngModel]="message()"
+        (ngModelChange)="message.set($event); onFieldChange()"
+        required
+        placeholder="رسالتك"
+        class="
+          min-h-[80px]
+          w-full
+          resize-none
+          rounded-[8px]
+          border
+          border-[#E1E1E1]
+          bg-white
+          pr-10
+          pl-4
+          pt-2
+          text-right
+          !text-[11px]
+          text-[#222]
+          outline-none
+          placeholder:text-[#999]
+          focus:border-[#C91F72]
+
+          sm:min-h-[150px]
+          sm:rounded-[15px]
+          sm:pr-12
+          sm:text-[14px]
+
+          md:min-h-[180px]
+          md:rounded-[18px]
+          md:pr-14
+          md:text-[17px]
+        "
+      ></textarea>
+    </div>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      class="
+        relative
+        flex
+        h-[30px]
+        w-full
+        items-center
+        justify-center
+        rounded-[8px]
+        bg-[#D20A71]
+        !text-[13px]
+        font-medium
+        text-white
+
+        sm:h-[58px]
+        sm:rounded-[15px]
+        sm:text-[18px]
+
+        md:h-[68px]
+        md:rounded-[18px]
+        md:text-[22px]
+      "
+    >
+      <span>إرسال الرسالة</span>
+
+      <svg
+        [lucideIcon]="sendIcon"
+        class="
+          absolute
+          right-3
+          h-[15px]
+          w-[15px]
+
+          sm:right-5
+          sm:h-[23px]
+          sm:w-[23px]
+
+          md:right-7
+          md:h-[27px]
+          md:w-[27px]
+        "
+        [strokeWidth]="1.5"
+      ></svg>
+    </button>
+
+    @if (submitted()) {
+      <p class="text-center !text-[11px] text-[#0a8f3c] sm:text-[14px]">
+        تم إرسال رسالتك بنجاح، سنرد عليك في أقرب وقت.
+      </p>
+    }
+  </form>
+
+  <!-- Privacy -->
+  <div
+    class="
+      mt-2
+      flex
+      items-center
+      justify-center
+      gap-1.5
+      text-[9px]
+      text-[#595959]
+
+      sm:mt-4
+      sm:gap-2
+      sm:text-[11px]
+
+      md:mt-5
+      md:text-[14px]
+    "
+  >
+    <span>نحترم خصوصيتك ونضمن سرية بياناتك</span>
+
+    <svg
+      [lucideIcon]="shieldCheckIcon"
+      class="
+        text-[#C91F72]
+        h-4
+        w-4
+
+        sm:h-5
+        sm:w-5
+
+        md:h-6
+        md:w-6
+      "
+      [strokeWidth]="1.5"
+    ></svg>
+  </div>
+</section>

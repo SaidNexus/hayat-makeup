@@ -1,0 +1,44 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    w-full
+    bg-white
+    pb-20
+    lg:pb-10
+  "
+>
+  <app-header></app-header>
+
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 space-y-6">
+    <!-- Page Title -->
+    <section class="flex flex-col items-center text-center space-y-2">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
+        الشروط والأحكام
+      </h1>
+
+      <div class="h-1 w-12 rounded-full bg-[#D4146A]"></div>
+
+      <p class="max-w-2xl text-xs sm:text-sm leading-relaxed text-gray-500">
+        مرحباً بك في متجر حياة ميك أب. يرجى قراءة الشروط والأحكام التالية
+        بعناية قبل استخدامك للموقع أو التطبيق أو إجراء أي عملية شراء.
+      </p>
+    </section>
+
+    <!-- Terms List with explicit gaps -->
+    <section class="w-full max-w-4xl mx-auto flex flex-col gap-3 sm:gap-4">
+      @for (term of terms; track term.id) {
+        <app-terms-item
+          [number]="term.id"
+          [title]="term.title"
+          [description]="term.description"
+          [icon]="term.icon"
+          [isOpen]="openId() === term.id"
+          (toggle)="handleToggle(term.id)"
+        ></app-terms-item>
+      }
+    </section>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

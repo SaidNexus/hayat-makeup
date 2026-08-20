@@ -1,0 +1,14 @@
+<section class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5 lg:gap-6">
+  @for (product of products; track product.id) {
+    <app-all-products-card
+      [id]="product.id"
+      [image]="product.image"
+      [name]="product.name"
+      [description]="product.description"
+      [price]="product.price"
+      [rating]="product.rating"
+      [reviews]="product.reviews"
+      (selectProduct)="onSelect(product)"
+    ></app-all-products-card>
+  }
+</section>

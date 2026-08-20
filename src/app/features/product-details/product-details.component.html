@@ -1,0 +1,109 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    bg-white
+    pb-24
+    lg:pb-12
+    flex
+    flex-col
+    justify-between
+  "
+>
+  <app-header></app-header>
+
+  <main
+    class="
+      flex-1
+      mx-auto
+      w-full
+      max-w-7xl
+      px-3
+      sm:px-6
+      lg:px-8
+      pt-3
+      sm:pt-6
+    "
+  >
+    <!-- Product Top Section -->
+    <section
+      class="
+        grid
+        grid-cols-1
+        md:grid-cols-2
+        items-start
+        gap-6
+        lg:gap-12
+      "
+    >
+      <!-- Gallery -->
+      <div class="w-full">
+        <app-product-gallery [product]="product()"></app-product-gallery>
+      </div>
+
+      <!-- Product Info & Options -->
+      <div class="w-full space-y-4">
+        <app-product-info [product]="product()"></app-product-info>
+        <app-product-options
+          [product]="product()"
+          [quantity]="quantity()"
+          (quantityChange)="onQuantityChange($event)"
+        ></app-product-options>
+        <app-product-actions
+          [product]="product()"
+          [quantity]="quantity()"
+        ></app-product-actions>
+      </div>
+    </section>
+
+    <!-- Product Details Accordion -->
+    <div class="mt-8">
+      <app-product-accordion [product]="product()"></app-product-accordion>
+    </div>
+
+    <!-- Related Products -->
+    <section class="mt-10 pb-6 border-t border-gray-100 pt-6 space-y-4">
+      <h2
+        class="
+          text-right
+          text-base
+          sm:text-xl
+          md:text-2xl
+          font-bold
+          text-[#222222]
+        "
+      >
+        قد يعجبك أيضاً
+      </h2>
+
+      <div
+        class="
+          flex
+          w-full
+          gap-2
+          sm:gap-4
+          md:gap-6
+          overflow-x-auto
+          no-scrollbar
+          py-1
+          snap-x
+          snap-mandatory
+          sm:grid
+          sm:grid-cols-3
+          lg:grid-cols-4
+        "
+      >
+        @for (rel of relatedProducts(); track rel.id) {
+          <div class="w-[calc((100%-16px)/3)] min-w-[102px] max-w-[140px] shrink-0 sm:w-auto sm:min-w-0 sm:max-w-none sm:shrink snap-start">
+            <app-related-product-card
+              [product]="rel"
+              (selectProduct)="onSelectRelated(rel.id)"
+            ></app-related-product-card>
+          </div>
+        }
+      </div>
+    </section>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

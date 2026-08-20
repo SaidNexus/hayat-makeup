@@ -1,0 +1,30 @@
+<section class="mt-2 w-full overflow-x-auto no-scrollbar">
+  <div class="flex min-w-max items-center gap-[6px] sm:gap-3 md:gap-4 lg:gap-5 md:justify-start">
+    @for (filter of filters; track filter) {
+      <button
+        type="button"
+        (click)="onSelect(filter)"
+        class="h-[30px] whitespace-nowrap rounded-[10px] border px-[14px] !text-[11px] transition sm:h-[48px] sm:px-7 sm:text-[15px] md:h-[52px] md:px-9 md:!text-[16px] lg:h-[56px] lg:px-10 lg:!text-[17px]"
+        [class.border-[#D41472]]="true"
+        [class.bg-[#D41472]]="active === filter"
+        [class.text-white]="active === filter"
+        [class.bg-white]="active !== filter"
+        [class.text-[#C91F72]]="active !== filter"
+      >
+        {{ filter }}
+      </button>
+    }
+
+    <button
+      type="button"
+      class="flex h-[30px] items-center gap-[5px] whitespace-nowrap rounded-[10px] border border-[#F1D5E2] bg-white px-[15px] !text-[11px] text-[#C91F72] sm:h-[48px] sm:gap-2 sm:px-7 sm:text-[15px] md:h-[52px] md:px-9 md:!text-[16px] lg:h-[56px] lg:px-10 lg:!text-[17px]"
+    >
+      فلتر
+      <svg
+        [lucideIcon]="slidersIcon"
+        class="h-[13px] w-[13px] sm:h-[18px] sm:w-[18px] md:h-[20px] md:w-[20px] lg:h-[22px] lg:w-[22px]"
+        [strokeWidth]="2"
+      ></svg>
+    </button>
+  </div>
+</section>

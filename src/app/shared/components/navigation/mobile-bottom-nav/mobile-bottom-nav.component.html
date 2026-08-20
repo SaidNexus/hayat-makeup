@@ -1,0 +1,32 @@
+<nav class="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-gray-100 lg:hidden pb-safe shadow-[0_-2px_10px_rgba(0,0,0,0.04)]">
+  <div class="max-w-7xl mx-auto grid grid-cols-5">
+    @for (item of navItems; track item.to) {
+      <a
+        [routerLink]="item.to"
+        routerLinkActive="text-[#D4146A]"
+        [routerLinkActiveOptions]="{ exact: item.to === '/' }"
+        #rla="routerLinkActive"
+        [class.text-[#D4146A]]="rla.isActive"
+        [class.text-gray-400]="!rla.isActive"
+        class="flex flex-col items-center gap-1 py-2.5 text-[11px] font-medium transition-colors"
+      >
+        <span class="relative">
+          <svg
+            [lucideIcon]="item.icon"
+            class="h-[22px] w-[22px] shrink-0"
+            [strokeWidth]="rla.isActive ? 2 : 1.5"
+          ></svg>
+
+          @if (item.badge && cartService.totalItems() > 0) {
+            <span
+              class="absolute -top-1.5 -right-2.5 bg-[#D4146A] text-white text-[9px] font-bold rounded-full h-4 min-w-[16px] px-1 flex items-center justify-center shadow-sm"
+            >
+              {{ cartService.totalItems() }}
+            </span>
+          }
+        </span>
+        <span>{{ item.label }}</span>
+      </a>
+    }
+  </div>
+</nav>

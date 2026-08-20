@@ -1,0 +1,212 @@
+<section
+  dir="rtl"
+  class="
+    w-full
+    overflow-hidden
+    rounded-[14px]
+    border
+    border-[#EEEEEE]
+    bg-white
+
+    sm:rounded-[16px]
+
+    md:rounded-[18px]
+  "
+>
+  <!-- Header -->
+  <div
+    class="
+      flex
+      items-center
+      justify-between
+      border-b
+      border-[#EEEEEE]
+      px-4
+      py-3
+
+      sm:px-5
+      sm:py-4
+
+      md:px-6
+      md:py-5
+    "
+  >
+    <div class="flex items-center gap-2">
+      <svg
+        [lucideIcon]="packageOpenIcon"
+        class="h-[18px] w-[18px] sm:h-6 sm:w-6 text-[#D4146A]"
+        [strokeWidth]="1.6"
+      ></svg>
+
+      <h3
+        class="
+          text-[14px]
+          font-medium
+          text-[#111111]
+
+          sm:text-[19px]
+
+          md:text-[22px]
+        "
+      >
+        تفاصيل الطلب
+      </h3>
+    </div>
+
+    <div class="text-left">
+      <p
+        class="
+          text-[9px]
+          text-[#888888]
+
+          sm:text-[12px]
+        "
+      >
+        رقم الطلب
+      </p>
+
+      <p
+        dir="ltr"
+        class="
+          text-[13px]
+          font-semibold
+          text-[#111111]
+
+          sm:text-[17px]
+        "
+      >
+        {{ tracking.orderNumber }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Customer + Delivery Info -->
+  <div
+    class="
+      grid
+      grid-cols-2
+      gap-2
+      border-b
+      border-[#EEEEEE]
+      px-4
+      py-3
+
+      sm:gap-4
+      sm:px-5
+      sm:py-4
+
+      md:px-6
+      md:py-5
+    "
+  >
+    <div class="text-right">
+      <p
+        class="
+          text-[9px]
+          text-[#888888]
+
+          sm:text-[12px]
+        "
+      >
+        اسم العميل
+      </p>
+
+      <p
+        class="
+          mt-0.5
+          text-[12px]
+          font-medium
+          text-[#111111]
+
+          sm:text-[16px]
+        "
+      >
+        {{ tracking.customerName }}
+      </p>
+    </div>
+
+    <div class="text-right">
+      <p
+        class="
+          text-[9px]
+          text-[#888888]
+
+          sm:text-[12px]
+        "
+      >
+        التوصيل المتوقع
+      </p>
+
+      <p
+        class="
+          mt-0.5
+          text-[12px]
+          font-medium
+          text-[#111111]
+
+          sm:text-[16px]
+        "
+      >
+        {{ tracking.estimatedDelivery }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Items -->
+  <div>
+    @for (item of tracking.items; track item.id; let i = $index) {
+      <app-order-product-row
+        [image]="item.image"
+        [name]="item.name"
+        [variant]="item.variant"
+        [price]="item.price"
+        [quantity]="item.quantity || 1"
+        [isLast]="i === tracking.items.length - 1"
+      ></app-order-product-row>
+    }
+  </div>
+
+  <!-- Total -->
+  <div
+    class="
+      flex
+      items-center
+      justify-between
+      border-t
+      border-[#EEEEEE]
+      px-4
+      py-3
+
+      sm:px-5
+      sm:py-4
+
+      md:px-6
+      md:py-5
+    "
+  >
+    <span
+      class="
+        text-[14px]
+        font-medium
+        text-[#111111]
+
+        sm:text-[19px]
+      "
+    >
+      الإجمالي
+    </span>
+
+    <span
+      dir="ltr"
+      class="
+        text-[15px]
+        font-semibold
+        text-[#D4146A]
+
+        sm:text-[20px]
+      "
+    >
+      {{ formattedTotal }} ر.س
+    </span>
+  </div>
+</section>

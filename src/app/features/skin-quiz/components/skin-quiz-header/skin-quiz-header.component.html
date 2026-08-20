@@ -1,0 +1,156 @@
+<header class="w-full bg-white">
+  <div
+    dir="ltr"
+    class="
+      mx-auto
+      flex
+      h-[84px]
+      w-full
+      items-center
+      justify-between
+      px-4
+
+      sm:h-[100px]
+      sm:px-6
+
+      md:h-[120px]
+      md:px-10
+
+      lg:h-[135px]
+    "
+  >
+    <!-- Left actions -->
+    <div
+      class="
+        flex
+        items-center
+        gap-4
+
+        sm:gap-5
+
+        md:gap-7
+      "
+    >
+      <!-- Cart -->
+      <button
+        type="button"
+        (click)="navigateTo('/cart')"
+        aria-label="السلة"
+        class="relative text-[#111]"
+      >
+        <svg
+          [lucideIcon]="shoppingCartIcon"
+          class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+          [strokeWidth]="1.5"
+        ></svg>
+
+        <span
+          class="
+            absolute
+            -right-2
+            -top-2
+            flex
+            h-5
+            w-5
+            items-center
+            justify-center
+            rounded-full
+            bg-[#C91F72]
+            text-[9px]
+            text-white
+
+            sm:h-[22px]
+            sm:w-[22px]
+            sm:text-[10px]
+
+            md:h-6
+            md:w-6
+          "
+        >
+          {{ cartService.totalItems() }}
+        </span>
+      </button>
+
+      <!-- Heart -->
+      <button
+        type="button"
+        aria-label="المفضلة"
+        (click)="navigateTo('/wishlist')"
+        class="text-[#111]"
+      >
+        <svg
+          [lucideIcon]="heartIcon"
+          class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+          [strokeWidth]="1.5"
+        ></svg>
+      </button>
+    </div>
+
+    <!-- Logo -->
+    <button
+      type="button"
+      (click)="navigateTo('/')"
+      aria-label="الرئيسية"
+      class="shrink-0"
+    >
+      <img
+        [src]="logoImage"
+        alt="HAYAT Makeup"
+        class="
+          h-[58px]
+          w-auto
+          object-contain
+
+          sm:h-[72px]
+
+          md:h-[88px]
+        "
+      />
+    </button>
+
+    <!-- Menu + Helper -->
+    <div class="flex items-center gap-3">
+      <div
+        class="
+          hidden
+          items-center
+          gap-1
+          text-[#C91F72]
+
+          sm:flex
+        "
+      >
+        <svg
+          [lucideIcon]="sparksIcon"
+          class="h-[18px] w-[18px]"
+          [strokeWidth]="1.5"
+        ></svg>
+
+        <div class="text-right leading-tight">
+          <div class="text-[9px] font-medium">
+            مساعد الجمال
+          </div>
+
+          <div class="text-[11px] font-semibold">
+            HAYAT
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        (click)="openMenu()"
+        aria-label="القائمة"
+        class="text-[#111]"
+      >
+        <svg
+          [lucideIcon]="menuIcon"
+          class="h-[29px] w-[29px] sm:h-[33px] sm:w-[33px] md:h-[38px] md:w-[38px]"
+          [strokeWidth]="1.5"
+        ></svg>
+      </button>
+    </div>
+  </div>
+
+  <app-mobile-menu-drawer></app-mobile-menu-drawer>
+</header>

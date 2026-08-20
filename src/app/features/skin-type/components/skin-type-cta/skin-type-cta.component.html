@@ -1,0 +1,45 @@
+<button
+  type="button"
+  (click)="navigateToQuiz()"
+  class="
+    relative
+    mt-2
+    flex
+    h-[30px]
+    w-full
+    items-center
+    justify-center
+    rounded-[6px]
+    bg-[#D20A71]
+    !text-[12px]
+    font-medium
+    text-white
+
+    sm:mt-3
+    sm:h-[50px]
+    sm:rounded-[12px]
+    sm:text-[15px]
+
+    md:mt-4
+    md:h-[62px]
+    md:rounded-[15px]
+    md:text-[19px]
+  "
+>
+  <svg
+    [lucideIcon]="chevronLeftIcon"
+    class="
+      h-4
+      w-4
+      sm:left-6
+      sm:h-[22px]
+      sm:w-[22px]
+
+      md:left-8
+      md:h-[27px]
+      md:w-[27px]
+    "
+    [strokeWidth]="1.8"
+  ></svg>
+  <span>اعرفي نوع بشرتك الآن</span>
+</button>

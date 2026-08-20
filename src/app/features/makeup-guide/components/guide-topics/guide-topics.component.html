@@ -1,0 +1,38 @@
+<section class="mb-3">
+  <h2
+    class="
+      mb-2
+      text-right
+      text-[13px]
+      font-semibold
+
+      sm:mb-4
+      sm:text-[25px]
+
+      md:mb-5
+      md:text-[32px]
+
+      lg:text-[38px]
+    "
+  >
+    مواضيع الدليل
+  </h2>
+
+  <div
+    class="
+      flex
+      flex-col
+      gap-1
+
+      sm:gap-3
+
+      md:gap-4
+
+      lg:gap-5
+    "
+  >
+    @for (topic of topics; track topic.id) {
+      <app-guide-topic-card [topic]="topic"></app-guide-topic-card>
+    }
+  </div>
+</section>

@@ -1,0 +1,56 @@
+<section dir="rtl" class="w-full space-y-3 sm:space-y-4">
+  <!-- Section Header -->
+  <div class="flex items-center justify-between">
+    <!-- Title -->
+    <h2 class="text-base sm:text-xl md:text-2xl font-bold text-[#111111]">
+      الأكثر مبيعًا
+    </h2>
+
+    <!-- View All -->
+    <button
+      type="button"
+      (click)="navigateToProducts()"
+      class="flex items-center gap-1 text-xs sm:text-sm md:text-base font-semibold text-[#D4146A] hover:opacity-80 transition"
+    >
+      <span>عرض الكل</span>
+      <svg
+        [lucideIcon]="arrowLeftIcon"
+        class="h-3.5 w-3.5 sm:h-4 sm:w-4"
+        [strokeWidth]="1.8"
+      ></svg>
+    </button>
+  </div>
+
+  <!-- 3 Visible Cards Carousel on Mobile, Grid on Tablet/Desktop -->
+  <div
+    class="
+      flex
+      w-full
+      gap-2
+      sm:gap-4
+      md:gap-6
+      overflow-x-auto
+      no-scrollbar
+      py-1
+      snap-x
+      snap-mandatory
+      sm:grid
+      sm:grid-cols-3
+      lg:grid-cols-4
+    "
+  >
+    @for (product of products(); track product.id) {
+      <div class="w-[calc((100%-16px)/3)] min-w-[102px] max-w-[140px] shrink-0 sm:w-auto sm:min-w-0 sm:max-w-none sm:shrink snap-start">
+        <app-product-card
+          [image]="product.image"
+          [name]="product.name"
+          [price]="product.price"
+          [rating]="product.rating"
+          [reviews]="product.reviews"
+          (selectProduct)="onProductSelect(product.id)"
+          (addToCart)="onAddToCart(product)"
+        ></app-product-card>
+      </div>
+    }
+  </div>
+</section>

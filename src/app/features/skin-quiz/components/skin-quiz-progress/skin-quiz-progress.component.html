@@ -1,0 +1,213 @@
+<section
+  dir="ltr"
+  class="
+    mx-auto
+    flex
+    w-full
+    max-w-[850px]
+    items-center
+    justify-center
+    px-3
+    pt-2
+
+    sm:px-5
+    sm:pt-4
+
+    md:px-0
+    md:pt-5
+  "
+>
+  <!-- Center Group -->
+  <div
+    class="
+      flex
+      w-full
+      items-center
+      justify-center
+      gap-3
+
+      sm:gap-5
+
+      md:gap-7
+    "
+  >
+    <!-- Progress -->
+    <div
+      class="
+        relative
+        w-[68%]
+
+        sm:w-[70%]
+
+        md:w-[72%]
+      "
+    >
+      <!-- Connecting line -->
+      <div
+        class="
+          absolute
+          left-[9%]
+          right-[9%]
+          top-[10px]
+          h-[1px]
+          bg-[#E7E7E7]
+
+          sm:top-[19px]
+
+          md:top-[22px]
+        "
+      ></div>
+
+      <!-- Steps -->
+      <div
+        class="
+          relative
+          z-10
+          flex
+          items-start
+          justify-between
+        "
+      >
+        @for (step of steps; track step.number) {
+          <div
+            class="
+              flex
+              min-w-0
+              flex-col
+              items-center
+              text-center
+            "
+          >
+            <div
+              class="
+                flex
+                h-[20px]
+                w-[20px]
+                items-center
+                justify-center
+                rounded-full
+                text-[10px]
+
+                sm:h-[38px]
+                sm:w-[38px]
+                sm:text-[14px]
+
+                md:h-[44px]
+                md:w-[44px]
+                md:text-[16px]
+              "
+              [class.bg-[#C91F72]]="step.number <= currentStep"
+              [class.text-white]="step.number <= currentStep"
+              [class.bg-[#EDEDED]]="step.number > currentStep"
+              [class.text-[#333]]="step.number > currentStep"
+            >
+              {{ step.number }}
+            </div>
+
+            <span
+              class="
+                mt-1.5
+                whitespace-nowrap
+                text-[8px]
+                leading-4
+
+                sm:mt-2
+                sm:text-[10px]
+
+                md:text-[13px]
+              "
+              [class.font-semibold]="step.number === currentStep"
+              [class.text-[#111]]="step.number === currentStep"
+              [class.font-normal]="step.number !== currentStep"
+              [class.text-[#777]]="step.number !== currentStep"
+            >
+              {{ step.label }}
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Beauty Assistant -->
+    <div
+      dir="rtl"
+      class="
+        flex
+        w-[28%]
+        shrink-0
+        items-center
+        justify-start
+        gap-2
+
+        sm:w-[25%]
+        sm:gap-2.5
+
+        md:w-[23%]
+        md:gap-3
+      "
+    >
+      <!-- Pink Circle -->
+      <div
+        class="
+          flex
+          h-[30px]
+          w-[30px]
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          bg-[#C91F72]
+
+          sm:h-[56px]
+          sm:w-[56px]
+
+          md:h-[68px]
+          md:w-[68px]
+        "
+      >
+        <svg
+          [lucideIcon]="sparklesIcon"
+          class="h-[17px] w-[17px] text-white sm:h-[29px] sm:w-[29px] md:h-[36px] md:w-[36px]"
+          [strokeWidth]="1.5"
+        ></svg>
+      </div>
+
+      <!-- Text -->
+      <div
+        class="
+          text-right
+          leading-tight
+        "
+      >
+        <p
+          class="
+            whitespace-nowrap
+            text-[8px]
+            text-[#111]
+
+            sm:text-[10px]
+
+            md:text-[13px]
+          "
+        >
+          مساعد الجمال
+        </p>
+
+        <p
+          class="
+            mt-0.5
+            text-[9px]
+            font-semibold
+            text-[#C91F72]
+
+            sm:text-[12px]
+
+            md:text-[15px]
+          "
+        >
+          HAYAT
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

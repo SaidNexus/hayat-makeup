@@ -1,0 +1,77 @@
+<div dir="rtl" class="w-full my-2 sm:my-3">
+  <!-- Horizontal Scrollable Filter Chips -->
+  <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 w-full">
+    <!-- Filter Modal/Drawer Button -->
+    <button
+      type="button"
+      (click)="onFilterButtonClick()"
+      class="
+        flex
+        h-8
+        sm:h-9
+        shrink-0
+        items-center
+        justify-center
+        gap-1.5
+        rounded-full
+        border
+        px-3.5
+        text-xs
+        sm:text-sm
+        font-medium
+        transition-all
+      "
+      [class.border-[#D4146A]]="filterActive()"
+      [class.bg-pink-50]="filterActive()"
+      [class.text-[#D4146A]]="filterActive()"
+      [class.border-gray-200]="!filterActive()"
+      [class.bg-white]="!filterActive()"
+      [class.text-gray-700]="!filterActive()"
+    >
+      <svg
+        [lucideIcon]="slidersHorizontalIcon"
+        class="h-3.5 w-3.5 shrink-0"
+        [strokeWidth]="1.6"
+      ></svg>
+      <span>تصفية</span>
+    </button>
+
+    <!-- Individual Filters -->
+    @for (filter of filters; track filter) {
+      <button
+        type="button"
+        (click)="onFilterClick(filter)"
+        class="
+          flex
+          h-8
+          sm:h-9
+          shrink-0
+          items-center
+          justify-center
+          gap-1
+          rounded-full
+          border
+          px-3.5
+          text-xs
+          sm:text-sm
+          font-medium
+          transition-all
+        "
+        [class.border-[#D4146A]]="active === filter"
+        [class.bg-pink-50]="active === filter"
+        [class.text-[#D4146A]]="active === filter"
+        [class.border-gray-200]="active !== filter"
+        [class.bg-white]="active !== filter"
+        [class.text-gray-700]="active !== filter"
+        [class.hover:border-gray-300]="active !== filter"
+      >
+        <span>{{ filter }}</span>
+        <svg
+          [lucideIcon]="chevronDownIcon"
+          class="h-3 w-3 shrink-0 text-gray-400"
+          [strokeWidth]="1.8"
+        ></svg>
+      </button>
+    }
+  </div>
+</div>

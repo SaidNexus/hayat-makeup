@@ -1,0 +1,121 @@
+<section dir="rtl" class="w-full space-y-3 sm:space-y-4">
+  <!-- Header -->
+  <div class="flex items-center justify-between">
+    <h2 class="text-base sm:text-xl md:text-2xl font-bold text-[#111111]">
+      اختاري إطلالتك
+    </h2>
+
+    <button
+      type="button"
+      (click)="navigateToLooks()"
+      class="flex items-center gap-1 text-xs sm:text-sm md:text-base font-semibold text-[#D4146A] hover:opacity-80 transition"
+    >
+      <span>عرض الكل</span>
+      <svg
+        [lucideIcon]="arrowLeftIcon"
+        class="h-3.5 w-3.5 sm:h-4 sm:w-4"
+        [strokeWidth]="1.8"
+      ></svg>
+    </button>
+  </div>
+
+  <!-- Carousel Cards Grid / Scroll -->
+  <div
+    class="
+      flex
+      w-full
+      gap-3
+      sm:gap-4
+      md:gap-5
+      overflow-x-auto
+      no-scrollbar
+      snap-x
+      snap-mandatory
+      pb-2
+    "
+  >
+    @for (look of looks(); track look.id) {
+      <article
+        (click)="navigateToLooks()"
+        class="
+          relative
+          flex
+          h-28
+          sm:h-36
+          md:h-44
+          lg:h-48
+          min-w-[70%]
+          sm:min-w-[45%]
+          md:min-w-[32%]
+          shrink-0
+          cursor-pointer
+          overflow-hidden
+          rounded-2xl
+          shadow-sm
+          snap-start
+          transition-transform
+          duration-300
+          hover:scale-[1.02]
+        "
+        [class.bg-[#292727]]="look.type === 'night'"
+        [class.bg-[#8B5A4B]]="look.type !== 'night'"
+      >
+        <!-- Background Image -->
+        <div class="absolute inset-y-0 left-0 w-[55%] overflow-hidden">
+          <img
+            [src]="look.image"
+            [alt]="look.title"
+            class="h-full w-full object-cover object-center"
+          />
+        </div>
+
+        <!-- Content Overlay -->
+        <div
+          class="
+            relative
+            z-10
+            flex
+            h-full
+            w-[48%]
+            mr-auto
+            flex-col
+            items-start
+            justify-center
+            p-3
+            sm:p-4
+            text-right
+            left-35
+            sm:left-42
+            space-y-1
+          "
+        >
+          <!-- Title & Icon -->
+          <div class="flex items-center gap-1.5 text-white">
+            <h3 class="text-xs sm:text-sm md:text-base font-bold leading-tight">
+              {{ look.title }}
+            </h3>
+
+            @if (look.type === 'night') {
+              <svg
+                [lucideIcon]="moonIcon"
+                class="h-4 w-4 shrink-0 text-amber-300"
+                [strokeWidth]="1.8"
+              ></svg>
+            } @else {
+              <svg
+                [lucideIcon]="sunIcon"
+                class="h-4 w-4 shrink-0 text-amber-400"
+                [strokeWidth]="1.8"
+              ></svg>
+            }
+          </div>
+
+          <!-- Description -->
+          <p class="text-[10px] sm:text-xs text-white/80 line-clamp-2 leading-relaxed">
+            {{ look.description }}
+          </p>
+        </div>
+      </article>
+    }
+  </div>
+</section>

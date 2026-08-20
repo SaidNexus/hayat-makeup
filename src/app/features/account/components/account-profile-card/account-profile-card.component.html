@@ -1,0 +1,96 @@
+<section
+  class="
+    flex
+    items-center
+    gap-3
+    rounded-[14px]
+    border
+    border-[#EEEEEE]
+    bg-white
+    p-3
+
+    sm:gap-4
+    sm:rounded-[18px]
+    sm:p-5
+
+    md:gap-5
+    md:rounded-[22px]
+    md:p-6
+  "
+>
+  <!-- Avatar -->
+  <div
+    class="
+      flex
+      h-[54px]
+      w-[54px]
+      shrink-0
+      items-center
+      justify-center
+      rounded-full
+      bg-[#FBE3EF]
+      text-[#D4146A]
+
+      sm:h-[72px]
+      sm:w-[72px]
+
+      md:h-[92px]
+      md:w-[92px]
+    "
+  >
+    <svg
+      [lucideIcon]="userRoundIcon"
+      class="h-7 w-7 sm:h-[38px] sm:w-[38px] md:h-[48px] md:w-[48px]"
+      [strokeWidth]="1.5"
+    ></svg>
+  </div>
+
+  <!-- Info -->
+  <div class="min-w-0 text-right">
+    <h1
+      class="
+        text-[16px]
+        font-semibold
+        leading-tight
+        text-[#111111]
+
+        sm:text-[22px]
+
+        md:text-[28px]
+      "
+    >
+      {{ user.name }}
+    </h1>
+
+    <p
+      class="
+        mt-0.5
+        text-[10px]
+        leading-4
+        text-[#888888]
+
+        sm:mt-1
+        sm:text-[13px]
+
+        md:mt-1.5
+        md:text-[16px]
+      "
+    >
+      {{ user.email }}
+    </p>
+
+    <p
+      class="
+        text-[9px]
+        leading-4
+        text-[#999999]
+
+        sm:text-[11px]
+
+        md:text-[13px]
+      "
+    >
+      عميلة منذ {{ user.joinedAt }}
+    </p>
+  </div>
+</section>

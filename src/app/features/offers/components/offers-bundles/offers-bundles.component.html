@@ -1,0 +1,29 @@
+<section class="w-full space-y-2 sm:space-y-3">
+  <h2 class="text-base sm:text-xl md:text-2xl font-bold text-[#111111] text-right">
+    عروض الباقات
+  </h2>
+
+  <!-- Horizontal Scroll on Mobile, 3-Col Grid on Desktop -->
+  <div
+    class="
+      flex
+      w-full
+      gap-3
+      overflow-x-auto
+      no-scrollbar
+      py-1
+      snap-x
+      snap-mandatory
+      sm:grid
+      sm:grid-cols-3
+      sm:gap-4
+      md:gap-6
+    "
+  >
+    @for (bundle of bundles(); track bundle.id) {
+      <div class="w-[170px] sm:w-auto shrink-0 sm:shrink snap-start">
+        <app-offers-bundle-card [bundle]="bundle"></app-offers-bundle-card>
+      </div>
+    }
+  </div>
+</section>

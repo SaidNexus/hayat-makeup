@@ -1,0 +1,39 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    bg-white
+    pb-20
+    lg:pb-10
+    text-[#111]
+  "
+>
+  <app-header></app-header>
+
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 space-y-6 sm:space-y-8">
+    <!-- Page Heading -->
+    <section class="text-center space-y-1">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
+        مجلة الجمال
+      </h1>
+
+      <p class="text-xs sm:text-sm text-gray-500">
+        نصائح، إطلالات، وأحدث صيحات الجمال من حياة ميك أب
+      </p>
+    </section>
+
+    <app-magazine-tabs
+      [activeTab]="activeTab()"
+      (tabChange)="onTabChange($event)"
+    ></app-magazine-tabs>
+
+    <app-featured-article [article]="featuredArticle()"></app-featured-article>
+
+    <app-latest-articles
+      [activeTab]="activeTab()"
+      (showAll)="showAll()"
+    ></app-latest-articles>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

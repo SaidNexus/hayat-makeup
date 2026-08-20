@@ -1,0 +1,19 @@
+<div dir="rtl" class="min-h-screen bg-white pb-20 lg:pb-10">
+  <app-header></app-header>
+
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 space-y-6">
+    <app-returns-hero></app-returns-hero>
+
+    <section class="w-full max-w-4xl mx-auto flex flex-col gap-3 sm:gap-4 pb-6">
+      @for (policy of policies; track policy.id) {
+        <app-return-policy-card
+          [title]="policy.title"
+          [description]="policy.description"
+          [icon]="policy.icon"
+        ></app-return-policy-card>
+      }
+    </section>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

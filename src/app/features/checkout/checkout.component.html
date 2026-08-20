@@ -1,0 +1,342 @@
+<div dir="rtl" class="min-h-screen w-full bg-white pb-20 lg:pb-12">
+  <!-- Top Header -->
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 md:h-20">
+      <!-- Back to Cart -->
+      <button
+        type="button"
+        (click)="navigateTo('/cart')"
+        aria-label="العودة للسلة"
+        class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-gray-700 hover:text-[#D4146A] transition-colors"
+      >
+        <svg
+          [lucideIcon]="arrowRightIcon"
+          class="h-4 w-4 sm:h-5 sm:w-5"
+          [strokeWidth]="1.8"
+        ></svg>
+        <span>العودة للسلة</span>
+      </button>
+
+      <!-- Logo -->
+      <a routerLink="/" class="flex justify-center items-center">
+        <img
+          [src]="logo"
+          alt="Hayat Makeup"
+          class="h-10 sm:h-12 md:h-14 w-auto object-contain"
+        />
+      </a>
+
+      <!-- Secure Shopping Badge -->
+      <div class="flex items-center gap-1 text-xs text-green-700 bg-green-50 px-2.5 py-1 rounded-full border border-green-200">
+        <svg
+          [lucideIcon]="lockKeyholeIcon"
+          class="h-3.5 w-3.5"
+          [strokeWidth]="1.8"
+        ></svg>
+        <span class="hidden sm:inline">دفع آمن 100%</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-6">
+    <div class="mb-6">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
+        الدفع وإتمام الطلب
+      </h1>
+      <p class="mt-1 text-xs sm:text-sm text-gray-500">
+        يرجى تعبئة بيانات الشحن واختيار طريقة الدفع المناسبة
+      </p>
+    </div>
+
+    <form (ngSubmit)="handleSubmit()">
+      <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-start">
+        
+        <!-- Left: Customer Form & Payment (8 Columns) -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <!-- 1. Customer Info -->
+          <section class="rounded-2xl border border-gray-200 bg-white p-4 sm:p-6 shadow-sm space-y-4">
+            <div class="flex items-center gap-2 pb-3 border-b border-gray-100">
+              <svg
+                [lucideIcon]="userRoundIcon"
+                class="h-5 w-5 text-[#D4146A]"
+                [strokeWidth]="1.8"
+              ></svg>
+              <h2 class="text-base sm:text-lg font-bold text-[#222222]">
+                معلومات العميل والشحن
+              </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Name -->
+              <div class="relative">
+                <label class="block text-xs font-semibold text-gray-700 mb-1">الاسم الكامل *</label>
+                <input
+                  type="text"
+                  name="name"
+                  [(ngModel)]="form.name"
+                  required
+                  placeholder="أدخل اسمك الكامل"
+                  class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
+                />
+              </div>
+
+              <!-- Phone -->
+              <div class="relative">
+                <label class="block text-xs font-semibold text-gray-700 mb-1">رقم الجوال *</label>
+                <div class="relative flex items-center">
+                  <input
+                    type="tel"
+                    name="phone"
+                    [(ngModel)]="form.phone"
+                    required
+                    placeholder="5XXXXXXXX"
+                    class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
+                  />
+                  <span class="absolute left-3 text-xs text-gray-400 font-bold" dir="ltr">+966</span>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="relative">
+                <label class="block text-xs font-semibold text-gray-700 mb-1">البريد الإلكتروني (اختياري)</label>
+                <input
+                  type="email"
+                  name="email"
+                  [(ngModel)]="form.email"
+                  placeholder="example@domain.com"
+                  class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
+                />
+              </div>
+
+              <!-- City -->
+              <div class="relative">
+                <label class="block text-xs font-semibold text-gray-700 mb-1">المدينة *</label>
+                <select
+                  name="city"
+                  [(ngModel)]="form.city"
+                  required
+                  class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
+                >
+                  <option value="">اختاري المدينة</option>
+                  @for (city of cities; track city) {
+                    <option [value]="city">{{ city }}</option>
+                  }
+                </select>
+              </div>
+
+              <!-- Area -->
+              <div class="relative">
+                <label class="block text-xs font-semibold text-gray-700 mb-1">المنطقة / الحي *</label>
+                <select
+                  name="area"
+                  [(ngModel)]="form.area"
+                  required
+                  class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
+                >
+                  <option value="">اختاري المنطقة</option>
+                  @for (area of areas; track area) {
+                    <option [value]="area">{{ area }}</option>
+                  }
+                </select>
+              </div>
+
+              <!-- Address Detail -->
+              <div class="relative">
+                <label class="block text-xs font-semibold text-gray-700 mb-1">العنوان بالتفصيل *</label>
+                <input
+                  type="text"
+                  name="address"
+                  [(ngModel)]="form.address"
+                  required
+                  placeholder="اسم الشارع، رقم المبنى"
+                  class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
+                />
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="pt-2">
+              <label class="block text-xs font-semibold text-gray-700 mb-1">ملاحظات إضافية للتوصيل (اختياري)</label>
+              <textarea
+                name="notes"
+                [(ngModel)]="form.notes"
+                rows="2"
+                placeholder="أي توجيهات خاصة للمندوب..."
+                class="w-full rounded-xl border border-gray-200 bg-gray-50/50 p-3 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
+              ></textarea>
+            </div>
+          </section>
+
+          <!-- 2. Payment Method -->
+          <section class="rounded-2xl border border-gray-200 bg-white p-4 sm:p-6 shadow-sm space-y-4">
+            <div class="flex items-center gap-2 pb-3 border-b border-gray-100">
+              <svg
+                [lucideIcon]="creditCardIcon"
+                class="h-5 w-5 text-[#D4146A]"
+                [strokeWidth]="1.8"
+              ></svg>
+              <h2 class="text-base sm:text-lg font-bold text-[#222222]">
+                طريقة الدفع
+              </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Cash on Delivery -->
+              <button
+                type="button"
+                (click)="setPayment('cash')"
+                class="flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all text-center"
+                [ngClass]="
+                  paymentMethod === 'cash'
+                    ? 'border-[#D4146A] bg-pink-50/40 text-[#D4146A] shadow-sm'
+                    : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
+                "
+              >
+                <svg
+                  [lucideIcon]="handCoinsIcon"
+                  class="h-6 w-6 mb-2"
+                  [strokeWidth]="1.5"
+                ></svg>
+                <span class="text-xs sm:text-sm font-bold">الدفع عند الاستلام</span>
+                <span class="text-[10px] text-gray-400 mt-0.5">نقداً أو شبكة</span>
+              </button>
+
+              <!-- Bank Card -->
+              <button
+                type="button"
+                (click)="setPayment('bank')"
+                class="flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all text-center"
+                [ngClass]="
+                  paymentMethod === 'bank'
+                    ? 'border-[#D4146A] bg-pink-50/40 text-[#D4146A] shadow-sm'
+                    : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
+                "
+              >
+                <svg
+                  [lucideIcon]="creditCardIcon"
+                  class="h-6 w-6 mb-2"
+                  [strokeWidth]="1.5"
+                ></svg>
+                <span class="text-xs sm:text-sm font-bold">بطاقة بنكية / مدى</span>
+                <span class="text-[10px] text-gray-400 mt-0.5">مدى، فيزا، ماستركارد</span>
+              </button>
+
+              <!-- Wallet -->
+              <button
+                type="button"
+                (click)="setPayment('wallet')"
+                class="flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all text-center"
+                [ngClass]="
+                  paymentMethod === 'wallet'
+                    ? 'border-[#D4146A] bg-pink-50/40 text-[#D4146A] shadow-sm'
+                    : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
+                "
+              >
+                <svg
+                  [lucideIcon]="walletCardsIcon"
+                  class="h-6 w-6 mb-2"
+                  [strokeWidth]="1.5"
+                ></svg>
+                <span class="text-xs sm:text-sm font-bold">Apple Pay / STC Pay</span>
+                <span class="text-[10px] text-gray-400 mt-0.5">دفع إلكتروني سريع</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Confirm Order Button (Desktop & Mobile) -->
+          <button
+            type="submit"
+            class="w-full rounded-xl bg-[#D4146A] py-4 text-base font-bold text-white shadow-lg shadow-pink-500/20 transition hover:bg-[#b01057] active:scale-[0.99]"
+          >
+            تأكيد الطلب ({{ total() }} ر.س)
+          </button>
+        </div>
+
+        <!-- Right: Order Summary Sidebar (4 Columns) -->
+        <div class="lg:col-span-4 mt-6 lg:mt-0">
+          <div class="sticky top-24 space-y-4">
+            
+            <!-- Summary Box -->
+            <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm space-y-4">
+              <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+                <h3 class="text-base font-bold text-[#222222]">ملخص الطلب</h3>
+                <span class="text-xs text-gray-500">{{ cartService.totalItems() }} منتجات</span>
+              </div>
+
+              <!-- Mini Item List -->
+              <div class="max-h-48 overflow-y-auto space-y-2.5 pr-1">
+                @for (item of cartService.items(); track item.id) {
+                  <div class="flex items-center gap-3">
+                    <img
+                      [src]="item.image"
+                      [alt]="item.name"
+                      class="h-11 w-11 rounded-lg bg-gray-50 object-contain p-1 border border-gray-100"
+                    />
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-semibold text-gray-800 truncate">{{ item.name }}</p>
+                      <p class="text-[10px] text-gray-400">الكمية: {{ item.quantity || 1 }}</p>
+                    </div>
+                    <span class="text-xs font-bold text-[#D4146A]">
+                      {{ item.price }} ر.س
+                    </span>
+                  </div>
+                }
+              </div>
+
+              <div class="border-t border-gray-100 pt-3 space-y-2 text-xs text-gray-600">
+                <div class="flex justify-between">
+                  <span>المجموع الفرعي</span>
+                  <span class="font-semibold text-gray-800">{{ subtotal() }} ر.س</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>رسوم الشحن</span>
+                  <span class="font-semibold text-green-600">{{ shipping() > 0 ? shipping() + ' ر.س' : 'مجاني' }}</span>
+                </div>
+                <div class="flex justify-between text-pink-600 font-semibold">
+                  <span>الخصم المطبق ({{ couponCode }})</span>
+                  <span>-{{ discount }} ر.س</span>
+                </div>
+              </div>
+
+              <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                <span class="text-sm font-bold text-gray-900">المجموع الكلي</span>
+                <span class="text-lg font-bold text-[#D4146A]">{{ total() }} ر.س</span>
+              </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="rounded-2xl border border-gray-100 bg-gray-50/70 p-4 space-y-3">
+              <div class="flex items-center gap-3">
+                <svg [lucideIcon]="badgeCheckIcon" class="h-5 w-5 text-[#D4146A] shrink-0" [strokeWidth]="1.5"></svg>
+                <div class="text-xs">
+                  <p class="font-bold text-gray-800">منتجات أصلية 100%</p>
+                  <p class="text-gray-400 text-[10px]">مضمونة المصدر والجودة</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <svg [lucideIcon]="shieldCheckIcon" class="h-5 w-5 text-[#D4146A] shrink-0" [strokeWidth]="1.5"></svg>
+                <div class="text-xs">
+                  <p class="font-bold text-gray-800">تسوق آمن ومحمي</p>
+                  <p class="text-gray-400 text-[10px]">تشفير كامل لبيانات الدفع</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <svg [lucideIcon]="headphonesIcon" class="h-5 w-5 text-[#D4146A] shrink-0" [strokeWidth]="1.5"></svg>
+                <div class="text-xs">
+                  <p class="font-bold text-gray-800">دعم العملاء متواصل</p>
+                  <p class="text-gray-400 text-[10px]">جاهزون لمساعدتك دائماً</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </main>
+</div>

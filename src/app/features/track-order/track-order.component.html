@@ -1,0 +1,193 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    bg-white
+    pb-20
+    lg:pb-10
+  "
+>
+  <app-header></app-header>
+
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 space-y-6">
+    <!-- Page Title -->
+    <section class="text-center space-y-1">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
+        تتبع الطلب
+      </h1>
+
+      <p class="text-xs sm:text-sm text-gray-500">
+        أدخلي رقم طلبك لمتابعة حالته
+      </p>
+    </section>
+
+    <!-- Search Form -->
+    <section class="w-full max-w-xl mx-auto">
+      <app-track-order-form
+        [value]="inputValue()"
+        [loading]="loading()"
+        (valueChange)="inputValue.set($event)"
+        (submitForm)="handleSubmit()"
+      ></app-track-order-form>
+    </section>
+
+    <!-- States -->
+    <section class="w-full max-w-3xl mx-auto">
+      @if (!tracking() && !error() && !loading()) {
+        <div
+          class="
+            flex
+            flex-col
+            items-center
+            justify-center
+            rounded-2xl
+            border
+            border-dashed
+            border-gray-200
+            bg-gray-50/50
+            px-4
+            py-12
+            text-center
+          "
+        >
+          <div
+            class="
+              flex
+              h-14
+              w-14
+              items-center
+              justify-center
+              rounded-full
+              bg-pink-50
+              text-[#D4146A]
+              mb-3
+            "
+          >
+            <svg
+              [lucideIcon]="packageSearchIcon"
+              class="h-7 w-7"
+              [strokeWidth]="1.5"
+            ></svg>
+          </div>
+
+          <p class="text-base font-bold text-gray-900">
+            أدخلي رقم طلبك للبدء
+          </p>
+
+          <p class="mt-1 text-xs text-gray-500 max-w-sm">
+            يمكنك إدخال رقم الطلب كما هو، أو مع علامة # في البداية.
+          </p>
+        </div>
+      }
+
+      @if (error()) {
+        <div
+          class="
+            flex
+            flex-col
+            items-center
+            justify-center
+            rounded-2xl
+            border
+            border-pink-200
+            bg-pink-50/50
+            px-4
+            py-12
+            text-center
+          "
+        >
+          <div
+            class="
+              flex
+              h-14
+              w-14
+              items-center
+              justify-center
+              rounded-full
+              bg-pink-100
+              text-[#D4146A]
+              mb-3
+            "
+          >
+            <svg
+              [lucideIcon]="packageSearchIcon"
+              class="h-7 w-7"
+              [strokeWidth]="1.5"
+            ></svg>
+          </div>
+
+          <h2 class="text-base font-bold text-gray-900">
+            لم يتم العثور على الطلب
+          </h2>
+
+          <p class="mt-1 text-xs text-gray-500 max-w-sm">
+            تأكدي من رقم الطلب وحاولي مرة أخرى.
+          </p>
+
+          <button
+            type="button"
+            (click)="handleRetry()"
+            class="
+              mt-4
+              rounded-xl
+              bg-[#D4146A]
+              px-6
+              py-2.5
+              text-xs
+              font-bold
+              text-white
+              shadow-sm
+              hover:bg-[#b01057]
+              transition
+            "
+          >
+            محاولة جديدة
+          </button>
+        </div>
+      }
+
+      @if (tracking()) {
+        <div class="flex w-full flex-col gap-4 sm:gap-6">
+          <app-order-tracking-status
+            [status]="tracking()!.status"
+          ></app-order-tracking-status>
+
+          <app-order-tracking-timeline
+            [tracking]="tracking()!"
+          ></app-order-tracking-timeline>
+
+          <app-order-tracking-summary
+            [tracking]="tracking()!"
+          ></app-order-tracking-summary>
+
+          <button
+            type="button"
+            (click)="navigateHome()"
+            class="
+              mx-auto
+              flex
+              items-center
+              justify-center
+              rounded-xl
+              border
+              border-[#D4146A]
+              bg-white
+              px-8
+              py-3
+              text-xs
+              sm:text-sm
+              font-bold
+              text-[#D4146A]
+              hover:bg-pink-50
+              transition
+            "
+          >
+            العودة للرئيسية
+          </button>
+        </div>
+      }
+    </section>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

@@ -1,0 +1,44 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    bg-white
+    pb-20
+    lg:pb-10
+  "
+>
+  <app-header></app-header>
+
+  <main class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 pt-3 sm:pt-6">
+    <!-- Title -->
+    <section class="mb-4 text-center sm:text-right">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
+        حسابي
+      </h1>
+    </section>
+
+    <!-- Desktop Grid Layout -->
+    <div class="lg:grid lg:grid-cols-3 lg:gap-8 items-start">
+      <!-- Profile & Stats Column -->
+      <div class="lg:col-span-1 space-y-4">
+        <app-account-profile-card [user]="user"></app-account-profile-card>
+        <app-account-stats
+          [stats]="stats()"
+          (selectStat)="handleStatClick($event)"
+        ></app-account-stats>
+      </div>
+
+      <!-- Menu Column -->
+      <div class="lg:col-span-2 mt-4 lg:mt-0">
+        <app-account-sections
+          [cartCount]="cartService.totalItems()"
+          [favoritesCount]="favoritesService.favorites().length"
+          (navigate)="handleNavigate($event)"
+          (logout)="handleLogout()"
+        ></app-account-sections>
+      </div>
+    </div>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

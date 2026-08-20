@@ -1,0 +1,40 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    bg-white
+    pb-20
+    lg:pb-10
+  "
+>
+  <app-header></app-header>
+
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 space-y-6">
+    <!-- Title -->
+    <section class="text-center sm:text-right space-y-1">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
+        الإشعارات
+      </h1>
+      <p class="text-xs sm:text-sm text-gray-500">
+        تابعي أحدث التنبيهات وحالة طلباتك وعروضك الخاصة
+      </p>
+    </section>
+
+    <!-- Tabs -->
+    <app-notification-tabs
+      [activeTab]="activeTab()"
+      (tabChange)="onTabChange($event)"
+    ></app-notification-tabs>
+
+    <!-- Notifications List with explicit gaps -->
+    <section class="flex flex-col gap-3 sm:gap-4 pb-6">
+      @for (notification of filteredNotifications(); track notification.id) {
+        <app-notification-card
+          [notification]="notification"
+        ></app-notification-card>
+      }
+    </section>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

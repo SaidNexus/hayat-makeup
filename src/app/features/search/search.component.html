@@ -1,0 +1,49 @@
+<div dir="rtl" class="min-h-screen bg-white pb-20 lg:pb-10">
+  <app-header></app-header>
+
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 space-y-6">
+    <!-- Title -->
+    <section class="text-center sm:text-right space-y-1">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
+        البحث
+      </h1>
+      <p class="text-xs sm:text-sm text-gray-500">
+        ابحثي عن منتجاتك المفضلة بالاسم أو التصنيف
+      </p>
+    </section>
+
+    <!-- Search Input -->
+    <section class="w-full max-w-2xl mx-auto">
+      <app-search-input
+        [value]="query()"
+        (valueChange)="handleChange($event)"
+      ></app-search-input>
+    </section>
+
+    <!-- Results Count -->
+    @if (trimmed() && visibleResults().length > 0) {
+      <div class="flex items-center justify-between text-xs sm:text-sm text-gray-500 font-medium">
+        <span>نتائج البحث</span>
+        <span class="text-[#D4146A] font-bold">{{ visibleResults().length }} منتج</span>
+      </div>
+    }
+
+    <!-- Results / Empty -->
+    <section class="w-full">
+      @if (trimmed() && visibleResults().length > 0) {
+        <app-search-results
+          [products]="visibleResults()"
+          (selectProduct)="handleSelect($event)"
+        ></app-search-results>
+      } @else {
+        <app-search-empty-state
+          [query]="trimmed()"
+          (clearQuery)="handleClear()"
+          (browseProducts)="handleBrowse()"
+        ></app-search-empty-state>
+      }
+    </section>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

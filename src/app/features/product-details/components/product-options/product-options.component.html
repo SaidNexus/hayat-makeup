@@ -1,0 +1,114 @@
+<div dir="rtl" class="mt-5 text-right">
+  <!-- Shade -->
+  <h3
+    class="
+      text-[11px]
+      font-medium
+      text-[#111]
+
+      sm:text-[15px]
+
+      md:text-[19px]
+    "
+  >
+    اللون: {{ shadeLabel }}
+  </h3>
+
+  <div class="mt-2 flex items-center justify-start gap-2">
+    @for (shade of shades; track shade; let i = $index) {
+      <button
+        type="button"
+        (click)="setActiveShade(i)"
+        class="
+          flex
+          h-[22px]
+          w-[22px]
+          items-center
+          justify-center
+          rounded-full
+
+          sm:h-[38px]
+          sm:w-[38px]
+
+          md:h-[48px]
+          md:w-[48px]
+        "
+        [class.border-[1px]]="activeShade === i"
+        [class.border-[#C91F72]]="activeShade === i"
+        [class.p-[1px]]="activeShade === i"
+      >
+        <span
+          class="h-full w-full rounded-full"
+          [style.backgroundColor]="shade"
+        ></span>
+      </button>
+    }
+  </div>
+
+  <!-- Quantity -->
+  <div class="mt-2">
+    <h3
+      class="
+        text-[9px]
+        font-medium
+
+        sm:text-[15px]
+
+        md:text-[19px]
+      "
+    >
+      الكمية
+    </h3>
+
+    <div
+      class="
+        mt-1.5
+        flex
+        h-[30px]
+        w-[100px]
+        items-center
+        justify-between
+        rounded-[7px]
+        bg-[#f1f1f170]
+        border
+        border-[#E4E4E4]
+        px-3
+
+        sm:h-[48px]
+        sm:w-[175px]
+
+        md:h-[58px]
+        md:w-[210px]
+      "
+    >
+      <button
+        type="button"
+        (click)="increaseQuantity()"
+        class="text-[19px] text-[#222]"
+      >
+        +
+      </button>
+
+      <span
+        class="
+          text-[12px]
+          text-[#111]
+
+          sm:text-[15px]
+
+          md:text-[18px]
+        "
+      >
+        {{ quantity }}
+      </span>
+
+      <button
+        type="button"
+        (click)="decreaseQuantity()"
+        class="text-[19px] text-[#222]"
+      >
+        −
+      </button>
+    </div>
+  </div>
+</div>

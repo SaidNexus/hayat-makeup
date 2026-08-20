@@ -1,0 +1,96 @@
+<section dir="rtl" class="w-full">
+  <div
+    class="
+      relative
+      flex
+      items-center
+      justify-between
+      w-full
+      min-h-[110px]
+      sm:min-h-[140px]
+      md:min-h-[170px]
+      lg:min-h-[200px]
+      overflow-hidden
+      rounded-2xl
+      bg-gradient-to-l
+      from-[#FFF0F4]
+      via-[#FFE4ED]
+      to-[#FFF0F4]
+      border
+      border-pink-200/60
+      px-4
+      sm:px-8
+      md:px-12
+      shadow-sm
+    "
+  >
+    <!-- Right: Text & CTA -->
+    <div class="flex flex-col items-start space-y-1.5 sm:space-y-2.5 z-10 max-w-[60%] sm:max-w-[50%]">
+      <span class="text-xs sm:text-sm md:text-base font-bold text-[#D4146A]">
+        العروض الحصرية
+      </span>
+
+      <h3 class="text-sm sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-900 leading-tight">
+        خصومات تصل إلى <span class="text-[#D4146A]">30%</span>
+      </h3>
+
+      <p class="text-[10px] sm:text-xs md:text-sm text-gray-600 hidden sm:block">
+        على تشكيلة مختارة من أرقى مستحضرات التجميل
+      </p>
+
+      <button
+        type="button"
+        (click)="navigateToOffers()"
+        class="
+          mt-1
+          flex
+          items-center
+          gap-1.5
+          rounded-xl
+          bg-[#D4146A]
+          px-3.5
+          sm:px-5
+          py-1.5
+          sm:py-2
+          text-[11px]
+          sm:text-xs
+          md:text-sm
+          font-bold
+          text-white
+          shadow-md
+          shadow-pink-500/20
+          transition
+          hover:bg-[#b01057]
+          active:scale-95
+        "
+      >
+        <span>تسوقي الآن</span>
+        <svg
+          [lucideIcon]="tagIcon"
+          class="h-3 w-3 sm:h-4 sm:w-4"
+          [strokeWidth]="1.8"
+        ></svg>
+      </button>
+    </div>
+
+    <!-- Left: Promo Image -->
+    <div class="relative h-full flex items-center justify-end w-[40%] sm:w-[45%]">
+      <img
+        [src]="promoBannerImage"
+        alt="العروض"
+        class="
+          h-auto
+          max-h-[95px]
+          sm:max-h-[130px]
+          md:max-h-[160px]
+          lg:max-h-[190px]
+          w-auto
+          object-contain
+          transition-transform
+          duration-300
+          hover:scale-105
+        "
+      />
+    </div>
+  </div>
+</section>

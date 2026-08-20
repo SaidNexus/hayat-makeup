@@ -1,0 +1,28 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    w-full
+    bg-white
+    pb-20
+    lg:pb-10
+  "
+>
+  <app-header></app-header>
+
+  <main class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 space-y-4 sm:space-y-7 md:space-y-9 pt-2 sm:pt-4">
+    <app-hero-banner></app-hero-banner>
+
+    <app-service-features></app-service-features>
+
+    <app-categories-section></app-categories-section>
+
+    <app-best-sellers></app-best-sellers>
+
+    <app-promo-banner></app-promo-banner>
+
+    <app-look-carousel></app-look-carousel>
+  </main>
+
+  <app-mobile-bottom-nav [activeItem]="'home'"></app-mobile-bottom-nav>
+</div>

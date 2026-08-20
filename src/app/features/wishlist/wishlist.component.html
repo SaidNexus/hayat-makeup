@@ -1,0 +1,78 @@
+<div
+  dir="rtl"
+  class="min-h-screen bg-white pb-24 lg:pb-12 flex flex-col justify-between"
+>
+  <!-- Unified Application Header -->
+  <app-header></app-header>
+
+  <main class="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 pt-3 sm:pt-6 space-y-6">
+    <!-- Title -->
+    <app-wishlist-title [count]="products().length"></app-wishlist-title>
+
+    @if (products().length === 0) {
+      <!-- Empty Wishlist State -->
+      <div
+        class="
+          flex
+          flex-col
+          items-center
+          justify-center
+          rounded-2xl
+          border
+          border-dashed
+          border-pink-200
+          bg-pink-50/20
+          py-16
+          px-4
+          text-center
+          sm:py-24
+          my-4
+        "
+      >
+        <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-pink-100/70 flex items-center justify-center text-[#D4146A] mb-4 shadow-xs">
+          <svg [lucideIcon]="heartIcon" class="h-8 w-8 sm:h-10 sm:w-10" [strokeWidth]="1.5"></svg>
+        </div>
+
+        <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">
+          قائمة أمنياتك فارغة
+        </h2>
+
+        <p class="text-xs sm:text-sm text-gray-500 max-w-sm mb-6 leading-relaxed">
+          لم تقومي بإضافة أي منتجات إلى المفضلة بعد. استكشفي أحدث صيحات المكياج ومنتجات الجمال وأضيفي ما تحبين!
+        </p>
+
+        <button
+          type="button"
+          (click)="navigateToProducts()"
+          class="
+            rounded-xl
+            bg-[#D4146A]
+            px-8
+            py-3
+            text-xs
+            sm:text-sm
+            font-bold
+            text-white
+            shadow-md
+            hover:bg-[#b01057]
+            active:scale-95
+            transition-all
+          "
+        >
+          استكشفي المنتجات
+        </button>
+      </div>
+    } @else {
+      <!-- Products Grid -->
+      <app-wishlist-product-grid
+        [products]="products()"
+        (addToCart)="handleAddToCart($event)"
+        (removeProduct)="handleRemove($event)"
+      ></app-wishlist-product-grid>
+    }
+
+    <app-wishlist-promo></app-wishlist-promo>
+  </main>
+
+  <app-mobile-bottom-nav activeItem="favorites"></app-mobile-bottom-nav>
+</div>

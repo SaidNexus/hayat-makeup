@@ -1,0 +1,41 @@
+<div
+  dir="rtl"
+  class="
+    min-h-screen
+    w-full
+    bg-white
+    pb-20
+    lg:pb-10
+  "
+>
+  <!-- Header -->
+  <app-header></app-header>
+
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 space-y-6">
+    <div class="max-w-3xl mx-auto space-y-6">
+      <!-- Success Header -->
+      <app-order-success-header></app-order-success-header>
+
+      <!-- Order Number -->
+      <app-order-number [orderNumber]="orderNumber"></app-order-number>
+
+      <!-- Order Summary -->
+      <app-order-summary [products]="orderProducts"></app-order-summary>
+
+      <!-- Delivery Details -->
+      <app-delivery-details [customer]="customer"></app-delivery-details>
+
+      <!-- Expected Delivery -->
+      <app-expected-delivery></app-expected-delivery>
+
+      <!-- Actions -->
+      <app-order-actions
+        (trackOrder)="onTrackOrder()"
+        (continueShopping)="onContinueShopping()"
+      ></app-order-actions>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <app-mobile-bottom-nav activeItem="home"></app-mobile-bottom-nav>
+</div>

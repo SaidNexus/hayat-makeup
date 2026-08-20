@@ -1,0 +1,111 @@
+<article
+  class="
+    relative
+    flex
+    flex-col
+    justify-between
+    min-w-0
+    overflow-hidden
+    rounded-2xl
+    border
+    border-gray-100
+    bg-white
+    p-3
+    sm:p-4
+    shadow-sm
+    hover:shadow-md
+    transition-all
+    h-full
+  "
+>
+  @if (bundle.featured) {
+    <span
+      class="
+        absolute
+        left-2
+        top-0
+        z-10
+        rounded-b-lg
+        bg-[#D4146A]
+        px-2
+        py-0.5
+        text-[9px]
+        font-bold
+        text-white
+        shadow-sm
+      "
+    >
+      الأكثر توفيرًا
+    </span>
+  }
+
+  <!-- Square Image Area -->
+  <div class="relative w-full aspect-square rounded-xl bg-gray-50/60 p-2 flex items-center justify-center overflow-hidden mb-2">
+    <img
+      [src]="bundle.image"
+      [alt]="bundle.name"
+      class="h-full w-full object-contain transition-transform duration-300 hover:scale-105"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Info -->
+  <div class="text-center space-y-1">
+    <h3 class="text-xs sm:text-sm font-bold text-gray-900 line-clamp-1 leading-snug">
+      {{ bundle.name }}
+    </h3>
+
+    @if (bundle.description) {
+      <p class="text-[10px] sm:text-xs text-gray-400 line-clamp-1">
+        {{ bundle.description }}
+      </p>
+    }
+
+    <!-- Prices -->
+    <div class="flex items-center justify-center gap-2 pt-1">
+      <span class="text-xs sm:text-sm md:text-base font-extrabold text-[#D4146A]">
+        {{ bundle.price }} <span class="text-[9px] font-normal">ر.س</span>
+      </span>
+
+      @if (bundle.oldPrice) {
+        <span class="text-[10px] sm:text-xs text-gray-400 line-through">
+          {{ bundle.oldPrice }} ر.س
+        </span>
+      }
+    </div>
+
+    <!-- Button -->
+    <button
+      type="button"
+      (click)="onAddToCart()"
+      class="
+        mt-2
+        w-full
+        h-8
+        sm:h-9
+        rounded-xl
+        border
+        border-[#D4146A]
+        bg-white
+        text-[#D4146A]
+        text-xs
+        font-bold
+        flex
+        items-center
+        justify-center
+        gap-1.5
+        shadow-sm
+        hover:bg-pink-50
+        active:scale-95
+        transition-all
+      "
+    >
+      <svg
+        [lucideIcon]="shoppingBagIcon"
+        class="h-3.5 w-3.5"
+        [strokeWidth]="1.6"
+      ></svg>
+      <span>وفر {{ bundle.saving }} ر.س</span>
+    </button>
+  </div>
+</article>

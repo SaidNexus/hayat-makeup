@@ -1,0 +1,46 @@
+<section dir="rtl" class="w-full">
+  <div
+    class="
+      flex
+      w-full
+      items-center
+      justify-between
+      rounded-xl
+      border
+      border-gray-200
+      bg-white
+      py-2.5
+      sm:py-3.5
+      px-2
+      shadow-[0_2px_8px_rgba(0,0,0,0.02)]
+    "
+  >
+    @for (feature of features; track feature.label; let i = $index) {
+      <div
+        class="flex flex-1 min-w-0 items-center justify-center gap-1.5 sm:gap-2.5 md:gap-3 px-1 sm:px-2"
+        [class.border-l]="i !== features.length - 1"
+        [class.border-gray-200]="i !== features.length - 1"
+      >
+        <svg
+          [lucideIcon]="feature.icon"
+          class="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 shrink-0 text-[#D4146A]"
+          [strokeWidth]="1.6"
+        ></svg>
+
+        <span
+          class="
+            whitespace-nowrap
+            text-[10px]
+            sm:text-xs
+            md:text-sm
+            lg:text-base
+            font-bold
+            text-gray-800
+          "
+        >
+          {{ feature.label }}
+        </span>
+      </div>
+    }
+  </div>
+</section>

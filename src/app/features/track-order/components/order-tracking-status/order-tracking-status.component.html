@@ -1,0 +1,107 @@
+<div
+  dir="rtl"
+  class="
+    flex
+    items-center
+    gap-3
+    rounded-[14px]
+    border
+    border-[#EEEEEE]
+    bg-white
+    px-4
+    py-4
+
+    sm:gap-4
+    sm:px-5
+    sm:py-5
+
+    md:px-6
+    md:py-6
+  "
+>
+  <div
+    class="
+      flex
+      h-[44px]
+      w-[44px]
+      shrink-0
+      items-center
+      justify-center
+      rounded-full
+
+      sm:h-[56px]
+      sm:w-[56px]
+
+      md:h-[64px]
+      md:w-[64px]
+    "
+    [class.bg-[#FDECEC]]="isCancelled"
+    [class.text-[#D4146A]]="isCancelled"
+    [class.bg-[#FBE3EF]]="!isCancelled"
+    [class.text-[#D4146A]]="!isCancelled"
+  >
+    @if (isCancelled) {
+      <svg
+        [lucideIcon]="xCircleIcon"
+        class="h-6 w-6 sm:h-[30px] sm:w-[30px] md:h-[34px] md:w-[34px]"
+        [strokeWidth]="1.5"
+      ></svg>
+    } @else if (isDelivered) {
+      <svg
+        [lucideIcon]="checkCircleIcon"
+        class="h-6 w-6 sm:h-[30px] sm:w-[30px] md:h-[34px] md:w-[34px]"
+        [strokeWidth]="1.5"
+      ></svg>
+    } @else {
+      <svg
+        [lucideIcon]="packageCheckIcon"
+        class="h-6 w-6 sm:h-[30px] sm:w-[30px] md:h-[34px] md:w-[34px]"
+        [strokeWidth]="1.5"
+      ></svg>
+    }
+  </div>
+
+  <div class="min-w-0 text-right">
+    <p
+      class="
+        text-[11px]
+        text-[#888888]
+
+        sm:text-[14px]
+
+        md:text-[16px]
+      "
+    >
+      حالة الطلب
+    </p>
+
+    <h2
+      class="
+        text-[15px]
+        font-semibold
+        leading-tight
+        text-[#D4146A]
+
+        sm:text-[22px]
+
+        md:text-[26px]
+      "
+    >
+      {{ label }}
+    </h2>
+
+    @if (isCancelled) {
+      <p
+        class="
+          mt-0.5
+          text-[10px]
+          text-[#888888]
+
+          sm:text-[12px]
+        "
+      >
+        لم يتم شحن هذا الطلب، تواصلي معنا للمزيد من التفاصيل.
+      </p>
+    }
+  </div>
+</div>

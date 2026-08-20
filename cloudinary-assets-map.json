@@ -1,0 +1,828 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "updatedAt": "2026-08-20T17:53:11.975Z",
+    "total": 91
+  },
+  "assets": {
+    "about/about-hero.png": {
+      "relativePath": "about/about-hero.png",
+      "publicId": "hayat-makeup/about/about-hero",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248074/hayat-makeup/about/about-hero.png",
+      "bytes": 1411243,
+      "format": "png",
+      "hash": "9ac44e5e6b0e001e9a4bf82e698ac6c0",
+      "uploadedAt": "2026-08-20T17:47:55.527Z"
+    },
+    "avatar.png": {
+      "relativePath": "avatar.png",
+      "publicId": "hayat-makeup/avatar",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248077/hayat-makeup/avatar.png",
+      "bytes": 1516617,
+      "format": "png",
+      "hash": "af16dbba6be2427ce49adb1888f00941",
+      "uploadedAt": "2026-08-20T17:47:58.360Z"
+    },
+    "best-seller/blushs.png": {
+      "relativePath": "best-seller/blushs.png",
+      "publicId": "hayat-makeup/best-seller/blushs",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248081/hayat-makeup/best-seller/blushs.png",
+      "bytes": 2305897,
+      "format": "png",
+      "hash": "22c4b53dd749c954296c6f5ab2cad6a2",
+      "uploadedAt": "2026-08-20T17:48:02.032Z"
+    },
+    "best-seller/bullet-shadow.png": {
+      "relativePath": "best-seller/bullet-shadow.png",
+      "publicId": "hayat-makeup/best-seller/bullet-shadow",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248084/hayat-makeup/best-seller/bullet-shadow.png",
+      "bytes": 1965700,
+      "format": "png",
+      "hash": "794ffdcf45f45b8c4ef59fffea25a983",
+      "uploadedAt": "2026-08-20T17:48:05.689Z"
+    },
+    "best-seller/foundation.png": {
+      "relativePath": "best-seller/foundation.png",
+      "publicId": "hayat-makeup/best-seller/foundation",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248087/hayat-makeup/best-seller/foundation.png",
+      "bytes": 1482009,
+      "format": "png",
+      "hash": "17e1953e203e537ad5c44133590c926f",
+      "uploadedAt": "2026-08-20T17:48:08.486Z"
+    },
+    "best-seller/lipstick.png": {
+      "relativePath": "best-seller/lipstick.png",
+      "publicId": "hayat-makeup/best-seller/lipstick",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248089/hayat-makeup/best-seller/lipstick.png",
+      "bytes": 599245,
+      "format": "png",
+      "hash": "cf43a084d7775d3dbbe5fb51d34769a5",
+      "uploadedAt": "2026-08-20T17:48:09.867Z"
+    },
+    "best-seller/mascara.png": {
+      "relativePath": "best-seller/mascara.png",
+      "publicId": "hayat-makeup/best-seller/mascara",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248091/hayat-makeup/best-seller/mascara.png",
+      "bytes": 1595262,
+      "format": "png",
+      "hash": "763580a69dd2cdafc611a4d88ac61143",
+      "uploadedAt": "2026-08-20T17:48:12.472Z"
+    },
+    "calendarImage.png": {
+      "relativePath": "calendarImage.png",
+      "publicId": "hayat-makeup/calendarImage",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248094/hayat-makeup/calendarImage.png",
+      "bytes": 1395532,
+      "format": "png",
+      "hash": "4efe4702c3be6d7f9f03001ebd96235a",
+      "uploadedAt": "2026-08-20T17:48:14.910Z"
+    },
+    "categories/makeup.jpeg": {
+      "relativePath": "categories/makeup.jpeg",
+      "publicId": "hayat-makeup/categories/makeup",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248095/hayat-makeup/categories/makeup.jpg",
+      "bytes": 272646,
+      "format": "jpg",
+      "hash": "79d62ed7f4e705322583b00b1912cb3c",
+      "uploadedAt": "2026-08-20T17:48:15.885Z"
+    },
+    "categories/perfumes.jpeg": {
+      "relativePath": "categories/perfumes.jpeg",
+      "publicId": "hayat-makeup/categories/perfumes",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248096/hayat-makeup/categories/perfumes.jpg",
+      "bytes": 353187,
+      "format": "jpg",
+      "hash": "4e9c7df87f5b5f649e65954c64776e41",
+      "uploadedAt": "2026-08-20T17:48:17.239Z"
+    },
+    "categories/skin-care.jpeg": {
+      "relativePath": "categories/skin-care.jpeg",
+      "publicId": "hayat-makeup/categories/skin-care",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248097/hayat-makeup/categories/skin-care.jpg",
+      "bytes": 281664,
+      "format": "jpg",
+      "hash": "157e39d55d562b5b40cf625556cbea8b",
+      "uploadedAt": "2026-08-20T17:48:18.233Z"
+    },
+    "categories/tools.jpeg": {
+      "relativePath": "categories/tools.jpeg",
+      "publicId": "hayat-makeup/categories/tools",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248098/hayat-makeup/categories/tools.jpg",
+      "bytes": 96777,
+      "format": "jpg",
+      "hash": "a1b5e342ed8f5618c85596a95b874dbe",
+      "uploadedAt": "2026-08-20T17:48:19.005Z"
+    },
+    "category-eyes.png": {
+      "relativePath": "category-eyes.png",
+      "publicId": "hayat-makeup/category-eyes",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248101/hayat-makeup/category-eyes.png",
+      "bytes": 1824809,
+      "format": "png",
+      "hash": "71ec7f0727f6a53966382106616d5702",
+      "uploadedAt": "2026-08-20T17:48:23.083Z"
+    },
+    "category-face.png": {
+      "relativePath": "category-face.png",
+      "publicId": "hayat-makeup/category-face",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248110/hayat-makeup/category-face.png",
+      "bytes": 2002257,
+      "format": "png",
+      "hash": "33b4fc836f7b8a5769c86ac6372b598f",
+      "uploadedAt": "2026-08-20T17:48:30.959Z"
+    },
+    "category-lips.png": {
+      "relativePath": "category-lips.png",
+      "publicId": "hayat-makeup/category-lips",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248114/hayat-makeup/category-lips.png",
+      "bytes": 1456440,
+      "format": "png",
+      "hash": "29f7ac31b32d45086fed08c341a68944",
+      "uploadedAt": "2026-08-20T17:48:35.508Z"
+    },
+    "category-perfume.png": {
+      "relativePath": "category-perfume.png",
+      "publicId": "hayat-makeup/category-perfume",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248119/hayat-makeup/category-perfume.png",
+      "bytes": 1429130,
+      "format": "png",
+      "hash": "00d07b55abddd9dcc3b2b77be395cc86",
+      "uploadedAt": "2026-08-20T17:48:40.424Z"
+    },
+    "category-skin.png": {
+      "relativePath": "category-skin.png",
+      "publicId": "hayat-makeup/category-skin",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248125/hayat-makeup/category-skin.png",
+      "bytes": 1653423,
+      "format": "png",
+      "hash": "102e9218af893b0f74ea4c9554d63c76",
+      "uploadedAt": "2026-08-20T17:48:45.961Z"
+    },
+    "category-tools.png": {
+      "relativePath": "category-tools.png",
+      "publicId": "hayat-makeup/category-tools",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248133/hayat-makeup/category-tools.png",
+      "bytes": 1749700,
+      "format": "png",
+      "hash": "1a7c6c8827ba0b347eafd3cf68b636c5",
+      "uploadedAt": "2026-08-20T17:48:53.718Z"
+    },
+    "colors/pink-blush.png": {
+      "relativePath": "colors/pink-blush.png",
+      "publicId": "hayat-makeup/colors/pink-blush",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248138/hayat-makeup/colors/pink-blush.png",
+      "bytes": 1397292,
+      "format": "png",
+      "hash": "8ed68548c35030ccc26e05bf1cf4d8dd",
+      "uploadedAt": "2026-08-20T17:48:59.309Z"
+    },
+    "colors/pink-gloss.png": {
+      "relativePath": "colors/pink-gloss.png",
+      "publicId": "hayat-makeup/colors/pink-gloss",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248141/hayat-makeup/colors/pink-gloss.png",
+      "bytes": 1085064,
+      "format": "png",
+      "hash": "34ce0e513c201b065d04f4040a69b797",
+      "uploadedAt": "2026-08-20T17:49:02.345Z"
+    },
+    "colors/pink-lipstick.png": {
+      "relativePath": "colors/pink-lipstick.png",
+      "publicId": "hayat-makeup/colors/pink-lipstick",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248145/hayat-makeup/colors/pink-lipstick.png",
+      "bytes": 1448578,
+      "format": "png",
+      "hash": "e5d732f8b8ec781e4f134a84211e1462",
+      "uploadedAt": "2026-08-20T17:49:05.604Z"
+    },
+    "colors/pink-palette.png": {
+      "relativePath": "colors/pink-palette.png",
+      "publicId": "hayat-makeup/colors/pink-palette",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248148/hayat-makeup/colors/pink-palette.png",
+      "bytes": 2060906,
+      "format": "png",
+      "hash": "b0ab050037b733aed256663bb1e2c208",
+      "uploadedAt": "2026-08-20T17:49:09.188Z"
+    },
+    "guide/brushes.png": {
+      "relativePath": "guide/brushes.png",
+      "publicId": "hayat-makeup/guide/brushes",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248152/hayat-makeup/guide/brushes.png",
+      "bytes": 1733461,
+      "format": "png",
+      "hash": "5603fb8a03d8a92c3badf10e01e4c1c8",
+      "uploadedAt": "2026-08-20T17:49:12.740Z"
+    },
+    "guide/colors.png": {
+      "relativePath": "guide/colors.png",
+      "publicId": "hayat-makeup/guide/colors",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248159/hayat-makeup/guide/colors.png",
+      "bytes": 3032159,
+      "format": "png",
+      "hash": "b0896442dd4cbec092d528821cf2c7e8",
+      "uploadedAt": "2026-08-20T17:49:19.725Z"
+    },
+    "guide/eyeliner.png": {
+      "relativePath": "guide/eyeliner.png",
+      "publicId": "hayat-makeup/guide/eyeliner",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248177/hayat-makeup/guide/eyeliner.png",
+      "bytes": 2225486,
+      "format": "png",
+      "hash": "100a6615d98d5191982f3d779999bfb0",
+      "uploadedAt": "2026-08-20T17:49:37.782Z"
+    },
+    "guide/foundation.png": {
+      "relativePath": "guide/foundation.png",
+      "publicId": "hayat-makeup/guide/foundation",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248182/hayat-makeup/guide/foundation.png",
+      "bytes": 1676913,
+      "format": "png",
+      "hash": "621ec344cf554fdc91e2e171e3abda52",
+      "uploadedAt": "2026-08-20T17:49:42.636Z"
+    },
+    "guide/guide-hero.png": {
+      "relativePath": "guide/guide-hero.png",
+      "publicId": "hayat-makeup/guide/guide-hero",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248185/hayat-makeup/guide/guide-hero.png",
+      "bytes": 2251517,
+      "format": "png",
+      "hash": "661684d4a3cf8177115af6c6dafd568b",
+      "uploadedAt": "2026-08-20T17:49:46.527Z"
+    },
+    "guide/lashes.png": {
+      "relativePath": "guide/lashes.png",
+      "publicId": "hayat-makeup/guide/lashes",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248190/hayat-makeup/guide/lashes.png",
+      "bytes": 2483765,
+      "format": "png",
+      "hash": "0cd9b16102af3b2ee671e6f2a16a6d79",
+      "uploadedAt": "2026-08-20T17:49:50.942Z"
+    },
+    "guide/lips.png": {
+      "relativePath": "guide/lips.png",
+      "publicId": "hayat-makeup/guide/lips",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248195/hayat-makeup/guide/lips.png",
+      "bytes": 2106464,
+      "format": "png",
+      "hash": "2c641c5b3850a199e5623218ff0aa1e6",
+      "uploadedAt": "2026-08-20T17:49:56.200Z"
+    },
+    "guide/makeup-steps.png": {
+      "relativePath": "guide/makeup-steps.png",
+      "publicId": "hayat-makeup/guide/makeup-steps",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248200/hayat-makeup/guide/makeup-steps.png",
+      "bytes": 1674508,
+      "format": "png",
+      "hash": "f29354fc14fdce5d24efae73b46b4bdb",
+      "uploadedAt": "2026-08-20T17:50:00.930Z"
+    },
+    "guide/setting.png": {
+      "relativePath": "guide/setting.png",
+      "publicId": "hayat-makeup/guide/setting",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248203/hayat-makeup/guide/setting.png",
+      "bytes": 2024018,
+      "format": "png",
+      "hash": "9f6c44ac2129f8b179921e4368b0f0a4",
+      "uploadedAt": "2026-08-20T17:50:03.693Z"
+    },
+    "hero-Banner.jpeg": {
+      "relativePath": "hero-Banner.jpeg",
+      "publicId": "hayat-makeup/hero-Banner",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248204/hayat-makeup/hero-Banner.jpg",
+      "bytes": 466538,
+      "format": "jpg",
+      "hash": "9c5522f8fa465aca7a4e0f3e6a14df1e",
+      "uploadedAt": "2026-08-20T17:50:05.219Z"
+    },
+    "hero.png": {
+      "relativePath": "hero.png",
+      "publicId": "hayat-makeup/hero",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248206/hayat-makeup/hero.png",
+      "bytes": 511291,
+      "format": "png",
+      "hash": "9bedded5fc11be615193e2eb6b6d83fb",
+      "uploadedAt": "2026-08-20T17:50:06.848Z"
+    },
+    "looks/bridal.png": {
+      "relativePath": "looks/bridal.png",
+      "publicId": "hayat-makeup/looks/bridal",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248210/hayat-makeup/looks/bridal.png",
+      "bytes": 2599665,
+      "format": "png",
+      "hash": "1525eeb7e7fbcc48ce7a85321edbfd09",
+      "uploadedAt": "2026-08-20T17:50:11.772Z"
+    },
+    "looks/daily.png": {
+      "relativePath": "looks/daily.png",
+      "publicId": "hayat-makeup/looks/daily",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248215/hayat-makeup/looks/daily.png",
+      "bytes": 1827156,
+      "format": "png",
+      "hash": "3131492a912c2898f38cccd10d45b2ea",
+      "uploadedAt": "2026-08-20T17:50:15.894Z"
+    },
+    "looks/day-look.png": {
+      "relativePath": "looks/day-look.png",
+      "publicId": "hayat-makeup/looks/day-look",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248221/hayat-makeup/looks/day-look.png",
+      "bytes": 2624342,
+      "format": "png",
+      "hash": "7eaab7a5204142d3e0c034c718b96787",
+      "uploadedAt": "2026-08-20T17:50:22.981Z"
+    },
+    "looks/evening.png": {
+      "relativePath": "looks/evening.png",
+      "publicId": "hayat-makeup/looks/evening",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248225/hayat-makeup/looks/evening.png",
+      "bytes": 2414311,
+      "format": "png",
+      "hash": "04659ced33e8b09dbed83d38e8d7264c",
+      "uploadedAt": "2026-08-20T17:50:26.272Z"
+    },
+    "looks/glossy.png": {
+      "relativePath": "looks/glossy.png",
+      "publicId": "hayat-makeup/looks/glossy",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248231/hayat-makeup/looks/glossy.png",
+      "bytes": 1415798,
+      "format": "png",
+      "hash": "025493619b1dd4670059b8d1c7b098da",
+      "uploadedAt": "2026-08-20T17:50:31.661Z"
+    },
+    "looks/looks-promo.png": {
+      "relativePath": "looks/looks-promo.png",
+      "publicId": "hayat-makeup/looks/looks-promo",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248247/hayat-makeup/looks/looks-promo.png",
+      "bytes": 2489714,
+      "format": "png",
+      "hash": "d54f0e84e580b24260317a4e0b2799e9",
+      "uploadedAt": "2026-08-20T17:50:48.140Z"
+    },
+    "looks/night-look.png": {
+      "relativePath": "looks/night-look.png",
+      "publicId": "hayat-makeup/looks/night-look",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248252/hayat-makeup/looks/night-look.png",
+      "bytes": 2466148,
+      "format": "png",
+      "hash": "38189266b11784146723dd7a1f16baec",
+      "uploadedAt": "2026-08-20T17:50:52.740Z"
+    },
+    "looks/smoky.jpeg": {
+      "relativePath": "looks/smoky.jpeg",
+      "publicId": "hayat-makeup/looks/smoky",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248253/hayat-makeup/looks/smoky.jpg",
+      "bytes": 381572,
+      "format": "jpg",
+      "hash": "8e7e84a11236d4e4a86e015f3387a7e2",
+      "uploadedAt": "2026-08-20T17:50:54.406Z"
+    },
+    "looks/soft.png": {
+      "relativePath": "looks/soft.png",
+      "publicId": "hayat-makeup/looks/soft",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248256/hayat-makeup/looks/soft.png",
+      "bytes": 1854154,
+      "format": "png",
+      "hash": "dcaa1128f0239e5390140d2f70ffd884",
+      "uploadedAt": "2026-08-20T17:50:57.205Z"
+    },
+    "looks/university.png": {
+      "relativePath": "looks/university.png",
+      "publicId": "hayat-makeup/looks/university",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248259/hayat-makeup/looks/university.png",
+      "bytes": 1964447,
+      "format": "png",
+      "hash": "c1ad5caba9cd2e57cfb36d7447a660ab",
+      "uploadedAt": "2026-08-20T17:51:00.322Z"
+    },
+    "looks/work.png": {
+      "relativePath": "looks/work.png",
+      "publicId": "hayat-makeup/looks/work",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248264/hayat-makeup/looks/work.png",
+      "bytes": 1819205,
+      "format": "png",
+      "hash": "84d9e195ccd4ff7669f8083a85349677",
+      "uploadedAt": "2026-08-20T17:51:05.240Z"
+    },
+    "magazine/featured-skin.png": {
+      "relativePath": "magazine/featured-skin.png",
+      "publicId": "hayat-makeup/magazine/featured-skin",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248271/hayat-makeup/magazine/featured-skin.png",
+      "bytes": 2164017,
+      "format": "png",
+      "hash": "23f8d161e039248ffec7bb0ac3f0259c",
+      "uploadedAt": "2026-08-20T17:51:12.058Z"
+    },
+    "magazine/lipstick-trends.jpeg": {
+      "relativePath": "magazine/lipstick-trends.jpeg",
+      "publicId": "hayat-makeup/magazine/lipstick-trends",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248273/hayat-makeup/magazine/lipstick-trends.jpg",
+      "bytes": 426372,
+      "format": "jpg",
+      "hash": "ac41e777682e7f6b9bb70e026d3a64ad",
+      "uploadedAt": "2026-08-20T17:51:14.377Z"
+    },
+    "magazine/makeup-evening.jpeg": {
+      "relativePath": "magazine/makeup-evening.jpeg",
+      "publicId": "hayat-makeup/magazine/makeup-evening",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248275/hayat-makeup/magazine/makeup-evening.jpg",
+      "bytes": 526168,
+      "format": "jpg",
+      "hash": "bef66471702de9dc9b16f78c87c2a635",
+      "uploadedAt": "2026-08-20T17:51:15.693Z"
+    },
+    "magazine/skincare-summer.jpeg": {
+      "relativePath": "magazine/skincare-summer.jpeg",
+      "publicId": "hayat-makeup/magazine/skincare-summer",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248276/hayat-makeup/magazine/skincare-summer.jpg",
+      "bytes": 352429,
+      "format": "jpg",
+      "hash": "ee50e91a9dd7fb54153918eb97b09b0d",
+      "uploadedAt": "2026-08-20T17:51:17.384Z"
+    },
+    "new-arrivals/blushs.png": {
+      "relativePath": "new-arrivals/blushs.png",
+      "publicId": "hayat-makeup/new-arrivals/blushs",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248281/hayat-makeup/new-arrivals/blushs.png",
+      "bytes": 1681067,
+      "format": "png",
+      "hash": "f0746af9ad34c976fed5c5169363eedd",
+      "uploadedAt": "2026-08-20T17:51:21.961Z"
+    },
+    "new-arrivals/foundation.png": {
+      "relativePath": "new-arrivals/foundation.png",
+      "publicId": "hayat-makeup/new-arrivals/foundation",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248283/hayat-makeup/new-arrivals/foundation.png",
+      "bytes": 1350065,
+      "format": "png",
+      "hash": "495607ab26c2992e5a32bb4ba0ac4beb",
+      "uploadedAt": "2026-08-20T17:51:24.363Z"
+    },
+    "new-arrivals/glowCream.png": {
+      "relativePath": "new-arrivals/glowCream.png",
+      "publicId": "hayat-makeup/new-arrivals/glowCream",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248286/hayat-makeup/new-arrivals/glowCream.png",
+      "bytes": 1807788,
+      "format": "png",
+      "hash": "da20599137ebccc5ee577387ece3e716",
+      "uploadedAt": "2026-08-20T17:51:27.419Z"
+    },
+    "new-arrivals/lipstick.png": {
+      "relativePath": "new-arrivals/lipstick.png",
+      "publicId": "hayat-makeup/new-arrivals/lipstick",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248289/hayat-makeup/new-arrivals/lipstick.png",
+      "bytes": 1745539,
+      "format": "png",
+      "hash": "e716fc204004a421e5abbdfaaf24dea6",
+      "uploadedAt": "2026-08-20T17:51:30.236Z"
+    },
+    "new-arrivals/mascara.png": {
+      "relativePath": "new-arrivals/mascara.png",
+      "publicId": "hayat-makeup/new-arrivals/mascara",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248292/hayat-makeup/new-arrivals/mascara.png",
+      "bytes": 1618928,
+      "format": "png",
+      "hash": "0a0e0db060a35d34c2ee9b530f0f5f49",
+      "uploadedAt": "2026-08-20T17:51:32.985Z"
+    },
+    "new-arrivals/shadow.png": {
+      "relativePath": "new-arrivals/shadow.png",
+      "publicId": "hayat-makeup/new-arrivals/shadow",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248296/hayat-makeup/new-arrivals/shadow.png",
+      "bytes": 2439340,
+      "format": "png",
+      "hash": "630644b51d4c2e7bfff782c30ac3ca10",
+      "uploadedAt": "2026-08-20T17:51:37.352Z"
+    },
+    "new-arrivals-ban.png": {
+      "relativePath": "new-arrivals-ban.png",
+      "publicId": "hayat-makeup/new-arrivals-ban",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248300/hayat-makeup/new-arrivals-ban.png",
+      "bytes": 1931677,
+      "format": "png",
+      "hash": "91629d0e8b6bfac5115c71e42fd4c604",
+      "uploadedAt": "2026-08-20T17:51:41.124Z"
+    },
+    "new-arrivals-banner.png": {
+      "relativePath": "new-arrivals-banner.png",
+      "publicId": "hayat-makeup/new-arrivals-banner",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248303/hayat-makeup/new-arrivals-banner.png",
+      "bytes": 1931677,
+      "format": "png",
+      "hash": "91629d0e8b6bfac5115c71e42fd4c604",
+      "uploadedAt": "2026-08-20T17:51:43.919Z"
+    },
+    "offers/bundle-beauty.png": {
+      "relativePath": "offers/bundle-beauty.png",
+      "publicId": "hayat-makeup/offers/bundle-beauty",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248307/hayat-makeup/offers/bundle-beauty.png",
+      "bytes": 1703601,
+      "format": "png",
+      "hash": "c50b07782a411198f357f2ca1a628d1f",
+      "uploadedAt": "2026-08-20T17:51:47.689Z"
+    },
+    "offers/bundle-care.png": {
+      "relativePath": "offers/bundle-care.png",
+      "publicId": "hayat-makeup/offers/bundle-care",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248310/hayat-makeup/offers/bundle-care.png",
+      "bytes": 1856767,
+      "format": "png",
+      "hash": "62350f914940df8c162b7d1fe9e61af5",
+      "uploadedAt": "2026-08-20T17:51:51.025Z"
+    },
+    "offers/bundle-complete.png": {
+      "relativePath": "offers/bundle-complete.png",
+      "publicId": "hayat-makeup/offers/bundle-complete",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248312/hayat-makeup/offers/bundle-complete.png",
+      "bytes": 957815,
+      "format": "png",
+      "hash": "9ba052df246f5160d1595458e9dad36f",
+      "uploadedAt": "2026-08-20T17:51:52.893Z"
+    },
+    "offers/featured-makeup.png": {
+      "relativePath": "offers/featured-makeup.png",
+      "publicId": "hayat-makeup/offers/featured-makeup",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248316/hayat-makeup/offers/featured-makeup.png",
+      "bytes": 2554359,
+      "format": "png",
+      "hash": "adeaf2fd8c7a9707401c79950ed2cbbf",
+      "uploadedAt": "2026-08-20T17:51:56.630Z"
+    },
+    "offers/featured-perfume.png": {
+      "relativePath": "offers/featured-perfume.png",
+      "publicId": "hayat-makeup/offers/featured-perfume",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248318/hayat-makeup/offers/featured-perfume.png",
+      "bytes": 2109333,
+      "format": "png",
+      "hash": "379d73310476fdb193a9fa7a30a5d91f",
+      "uploadedAt": "2026-08-20T17:51:59.243Z"
+    },
+    "offers/featured-skincare.png": {
+      "relativePath": "offers/featured-skincare.png",
+      "publicId": "hayat-makeup/offers/featured-skincare",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248321/hayat-makeup/offers/featured-skincare.png",
+      "bytes": 2111251,
+      "format": "png",
+      "hash": "46030efa440101e6944d096f2c7ae2a7",
+      "uploadedAt": "2026-08-20T17:52:01.532Z"
+    },
+    "offers/limited-offer.png": {
+      "relativePath": "offers/limited-offer.png",
+      "publicId": "hayat-makeup/offers/limited-offer",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248324/hayat-makeup/offers/limited-offer.png",
+      "bytes": 2158181,
+      "format": "png",
+      "hash": "3858c895e5986565aeb98f7022e32fe6",
+      "uploadedAt": "2026-08-20T17:52:04.693Z"
+    },
+    "offers/offers-hero.png": {
+      "relativePath": "offers/offers-hero.png",
+      "publicId": "hayat-makeup/offers/offers-hero",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248327/hayat-makeup/offers/offers-hero.png",
+      "bytes": 2060717,
+      "format": "png",
+      "hash": "eda6b18b4741ed28dc811ab1b0b8a79f",
+      "uploadedAt": "2026-08-20T17:52:08.062Z"
+    },
+    "packages/arus-package.png": {
+      "relativePath": "packages/arus-package.png",
+      "publicId": "hayat-makeup/packages/arus-package",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248330/hayat-makeup/packages/arus-package.png",
+      "bytes": 1788975,
+      "format": "png",
+      "hash": "15ab1635ab284098d0a089e072172fb0",
+      "uploadedAt": "2026-08-20T17:52:10.886Z"
+    },
+    "packages/daily-package.png": {
+      "relativePath": "packages/daily-package.png",
+      "publicId": "hayat-makeup/packages/daily-package",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248334/hayat-makeup/packages/daily-package.png",
+      "bytes": 2454515,
+      "format": "png",
+      "hash": "cb1684bed7dc5fc8869c181dc57b88c5",
+      "uploadedAt": "2026-08-20T17:52:15.238Z"
+    },
+    "packages/full-face-package.png": {
+      "relativePath": "packages/full-face-package.png",
+      "publicId": "hayat-makeup/packages/full-face-package",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248338/hayat-makeup/packages/full-face-package.png",
+      "bytes": 2381260,
+      "format": "png",
+      "hash": "64686bbed090d2cb7de3fb2088004456",
+      "uploadedAt": "2026-08-20T17:52:18.827Z"
+    },
+    "packages/lips-package.png": {
+      "relativePath": "packages/lips-package.png",
+      "publicId": "hayat-makeup/packages/lips-package",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248340/hayat-makeup/packages/lips-package.png",
+      "bytes": 1455274,
+      "format": "png",
+      "hash": "1ece543bbdb1fdfa0da5cd96bc9e661b",
+      "uploadedAt": "2026-08-20T17:52:21.055Z"
+    },
+    "packages/sahra-package.png": {
+      "relativePath": "packages/sahra-package.png",
+      "publicId": "hayat-makeup/packages/sahra-package",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248343/hayat-makeup/packages/sahra-package.png",
+      "bytes": 2602768,
+      "format": "png",
+      "hash": "3758bdee2f4b5feab73651229459b404",
+      "uploadedAt": "2026-08-20T17:52:24.399Z"
+    },
+    "product-details/lipstick-1.png": {
+      "relativePath": "product-details/lipstick-1.png",
+      "publicId": "hayat-makeup/product-details/lipstick-1",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248347/hayat-makeup/product-details/lipstick-1.png",
+      "bytes": 3170912,
+      "format": "png",
+      "hash": "4113d2cff34bd1b6e446e4a3b5bec7f8",
+      "uploadedAt": "2026-08-20T17:52:28.779Z"
+    },
+    "product-details/lipstick-2.png": {
+      "relativePath": "product-details/lipstick-2.png",
+      "publicId": "hayat-makeup/product-details/lipstick-2",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248351/hayat-makeup/product-details/lipstick-2.png",
+      "bytes": 2493864,
+      "format": "png",
+      "hash": "64e1502d8d30f87efdc04df5dddcd981",
+      "uploadedAt": "2026-08-20T17:52:32.021Z"
+    },
+    "product-details/lipstick-3.jpeg": {
+      "relativePath": "product-details/lipstick-3.jpeg",
+      "publicId": "hayat-makeup/product-details/lipstick-3",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248352/hayat-makeup/product-details/lipstick-3.jpg",
+      "bytes": 60584,
+      "format": "jpg",
+      "hash": "d441b8769177d35cb87769026ffba805",
+      "uploadedAt": "2026-08-20T17:52:32.703Z"
+    },
+    "product-details/lipstick-main.png": {
+      "relativePath": "product-details/lipstick-main.png",
+      "publicId": "hayat-makeup/product-details/lipstick-main",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248354/hayat-makeup/product-details/lipstick-main.png",
+      "bytes": 1453090,
+      "format": "png",
+      "hash": "c4c805645ae036e2f2603a6570e530c1",
+      "uploadedAt": "2026-08-20T17:52:34.755Z"
+    },
+    "products/eye-shadow.png": {
+      "relativePath": "products/eye-shadow.png",
+      "publicId": "hayat-makeup/products/eye-shadow",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248356/hayat-makeup/products/eye-shadow.png",
+      "bytes": 2174364,
+      "format": "png",
+      "hash": "cf2733d706b6f545ffc54b93a4a646e0",
+      "uploadedAt": "2026-08-20T17:52:37.238Z"
+    },
+    "products/foundation.png": {
+      "relativePath": "products/foundation.png",
+      "publicId": "hayat-makeup/products/foundation",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248358/hayat-makeup/products/foundation.png",
+      "bytes": 1479469,
+      "format": "png",
+      "hash": "b1806dbf5246206305a6f18553c123c6",
+      "uploadedAt": "2026-08-20T17:52:39.304Z"
+    },
+    "products/lipstick.png": {
+      "relativePath": "products/lipstick.png",
+      "publicId": "hayat-makeup/products/lipstick",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248360/hayat-makeup/products/lipstick.png",
+      "bytes": 1464497,
+      "format": "png",
+      "hash": "24bc89cdc601865f756d71b60cff0193",
+      "uploadedAt": "2026-08-20T17:52:41.121Z"
+    },
+    "products/maskara.png": {
+      "relativePath": "products/maskara.png",
+      "publicId": "hayat-makeup/products/maskara",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248362/hayat-makeup/products/maskara.png",
+      "bytes": 1455736,
+      "format": "png",
+      "hash": "a9fb3b21cd791622a610a2b6f729a11c",
+      "uploadedAt": "2026-08-20T17:52:43.438Z"
+    },
+    "promo-banner.jpeg": {
+      "relativePath": "promo-banner.jpeg",
+      "publicId": "hayat-makeup/promo-banner",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248363/hayat-makeup/promo-banner.jpg",
+      "bytes": 86674,
+      "format": "jpg",
+      "hash": "b9470cc490f1e3f8c5197c82210b2a2a",
+      "uploadedAt": "2026-08-20T17:52:44.117Z"
+    },
+    "promo.png": {
+      "relativePath": "promo.png",
+      "publicId": "hayat-makeup/promo",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248365/hayat-makeup/promo.png",
+      "bytes": 1779014,
+      "format": "png",
+      "hash": "49a66013892d3467dc37c311a6a31fdc",
+      "uploadedAt": "2026-08-20T17:52:46.171Z"
+    },
+    "react.svg": {
+      "relativePath": "react.svg",
+      "publicId": "hayat-makeup/react",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248366/hayat-makeup/react.svg",
+      "bytes": 4126,
+      "format": "svg",
+      "hash": "f0402b67b6ce880f65666bb49e841696",
+      "uploadedAt": "2026-08-20T17:52:47.884Z"
+    },
+    "returns/returns-hero.png": {
+      "relativePath": "returns/returns-hero.png",
+      "publicId": "hayat-makeup/returns/returns-hero",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248369/hayat-makeup/returns/returns-hero.png",
+      "bytes": 2330882,
+      "format": "png",
+      "hash": "11a68b3d12e3f4f1a1627ef0c79626ee",
+      "uploadedAt": "2026-08-20T17:52:50.444Z"
+    },
+    "skin/1.png": {
+      "relativePath": "skin/1.png",
+      "publicId": "hayat-makeup/skin/1",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248372/hayat-makeup/skin/1.png",
+      "bytes": 1850420,
+      "format": "png",
+      "hash": "0574ea8d74e4d5769d19ac1da5003cd2",
+      "uploadedAt": "2026-08-20T17:52:52.613Z"
+    },
+    "skin/2.png": {
+      "relativePath": "skin/2.png",
+      "publicId": "hayat-makeup/skin/2",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248374/hayat-makeup/skin/2.png",
+      "bytes": 1843305,
+      "format": "png",
+      "hash": "cf8c8774529d0101d7202cf3863a458f",
+      "uploadedAt": "2026-08-20T17:52:54.783Z"
+    },
+    "skin/3.png": {
+      "relativePath": "skin/3.png",
+      "publicId": "hayat-makeup/skin/3",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248376/hayat-makeup/skin/3.png",
+      "bytes": 1618227,
+      "format": "png",
+      "hash": "0a93320c40f4f30bf042ffab486a6be0",
+      "uploadedAt": "2026-08-20T17:52:57.237Z"
+    },
+    "skin/4.png": {
+      "relativePath": "skin/4.png",
+      "publicId": "hayat-makeup/skin/4",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248379/hayat-makeup/skin/4.png",
+      "bytes": 1994711,
+      "format": "png",
+      "hash": "b0302aa8092aa9a117023d23a186984f",
+      "uploadedAt": "2026-08-20T17:53:00.038Z"
+    },
+    "skin/5.png": {
+      "relativePath": "skin/5.png",
+      "publicId": "hayat-makeup/skin/5",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248381/hayat-makeup/skin/5.png",
+      "bytes": 1940172,
+      "format": "png",
+      "hash": "2f2bae60ad646986e5d42c1c0634ca90",
+      "uploadedAt": "2026-08-20T17:53:02.597Z"
+    },
+    "skin/cool.png": {
+      "relativePath": "skin/cool.png",
+      "publicId": "hayat-makeup/skin/cool",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248383/hayat-makeup/skin/cool.png",
+      "bytes": 1148155,
+      "format": "png",
+      "hash": "a64049a81e3699c92d1e6593f65d9920",
+      "uploadedAt": "2026-08-20T17:53:04.349Z"
+    },
+    "skin/foundation.png": {
+      "relativePath": "skin/foundation.png",
+      "publicId": "hayat-makeup/skin/foundation",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248385/hayat-makeup/skin/foundation.png",
+      "bytes": 1612115,
+      "format": "png",
+      "hash": "3980a5780b9cdc5ceaf210364f1edd72",
+      "uploadedAt": "2026-08-20T17:53:06.518Z"
+    },
+    "skin/neutral.png": {
+      "relativePath": "skin/neutral.png",
+      "publicId": "hayat-makeup/skin/neutral",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248388/hayat-makeup/skin/neutral.png",
+      "bytes": 1202117,
+      "format": "png",
+      "hash": "9aa6b9bc0bd82def08fbfe5fcfada902",
+      "uploadedAt": "2026-08-20T17:53:08.492Z"
+    },
+    "skin/warm.png": {
+      "relativePath": "skin/warm.png",
+      "publicId": "hayat-makeup/skin/warm",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248389/hayat-makeup/skin/warm.png",
+      "bytes": 1177066,
+      "format": "png",
+      "hash": "a583a20f89b1df62c1f1cdca7ccab3d3",
+      "uploadedAt": "2026-08-20T17:53:10.447Z"
+    },
+    "vite.svg": {
+      "relativePath": "vite.svg",
+      "publicId": "hayat-makeup/vite",
+      "secureUrl": "https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248390/hayat-makeup/vite.svg",
+      "bytes": 8709,
+      "format": "svg",
+      "hash": "9960a24288958394ac50e57ff638b036",
+      "uploadedAt": "2026-08-20T17:53:11.975Z"
+    }
+  }
+}

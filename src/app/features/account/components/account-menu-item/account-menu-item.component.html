@@ -1,0 +1,89 @@
+<button
+  type="button"
+  (click)="onClick()"
+  class="
+    flex
+    w-full
+    items-center
+    gap-3
+    border-b
+    border-[#EEEEEE]
+    px-3
+    py-3
+    text-right
+
+    sm:gap-4
+    sm:px-4
+    sm:py-4
+  "
+>
+  <div
+    class="
+      flex
+      h-[30px]
+      w-[30px]
+      shrink-0
+      items-center
+      justify-center
+      text-[#D4146A]
+
+      sm:h-[38px]
+      sm:w-[38px]
+    "
+  >
+    @if (icon) {
+      <svg
+        [lucideIcon]="icon"
+        class="h-4 w-4 sm:h-[21px] sm:w-[21px]"
+        [strokeWidth]="1.6"
+      ></svg>
+    }
+  </div>
+
+  <span
+    class="
+      flex-1
+      text-[13px]
+      font-normal
+      leading-none
+      text-[#111111]
+
+      sm:text-[16px]
+
+      md:text-[18px]
+    "
+  >
+    {{ label }}
+  </span>
+
+  @if (badge != null && badge > 0) {
+    <span
+      class="
+        flex
+        h-[18px]
+        min-w-[18px]
+        items-center
+        justify-center
+        rounded-full
+        bg-[#D4146A]
+        px-1
+        text-[9px]
+        font-medium
+        leading-none
+        text-white
+
+        sm:h-[22px]
+        sm:min-w-[22px]
+        sm:text-[11px]
+      "
+    >
+      {{ badge }}
+    </span>
+  }
+
+  <svg
+    [lucideIcon]="chevronLeftIcon"
+    class="shrink-0 h-4 w-4 sm:h-5 sm:w-5 text-[#999999]"
+    [strokeWidth]="1.5"
+  ></svg>
+</button>

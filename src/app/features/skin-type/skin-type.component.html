@@ -1,0 +1,39 @@
+<div
+  class="
+    min-h-screen
+    bg-white
+    pb-20
+    lg:pb-10
+  "
+>
+  <app-header></app-header>
+
+  <main
+    class="
+      mx-auto
+      w-full
+      max-w-7xl
+      px-3
+      sm:px-6
+      lg:px-8
+      pt-4
+      sm:pt-6
+      space-y-6
+    "
+  >
+    <app-skin-type-header></app-skin-type-header>
+
+    <!-- Skin Types Grid -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+      @for (item of skinTypes(); track item.id) {
+        <app-skin-type-card [item]="item"></app-skin-type-card>
+      }
+    </section>
+
+    <app-skin-type-advice></app-skin-type-advice>
+
+    <app-skin-type-cta></app-skin-type-cta>
+  </main>
+
+  <app-mobile-bottom-nav></app-mobile-bottom-nav>
+</div>

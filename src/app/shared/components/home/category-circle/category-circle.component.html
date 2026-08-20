@@ -1,0 +1,55 @@
+<button
+  type="button"
+  (click)="onClick()"
+  class="flex flex-col items-center justify-center cursor-pointer bg-transparent group focus:outline-none w-full text-center"
+>
+  <div
+    class="
+      h-[68px]
+      w-[68px]
+      sm:h-[84px]
+      sm:w-[84px]
+      md:h-[100px]
+      md:w-[100px]
+      lg:h-[115px]
+      lg:w-[115px]
+      rounded-full
+      border
+      border-pink-100
+      bg-pink-50/20
+      p-1
+      shadow-sm
+      transition-transform
+      duration-300
+      group-hover:scale-105
+    "
+  >
+    <img
+      [src]="image"
+      [alt]="name"
+      class="
+        h-full
+        w-full
+        rounded-full
+        object-cover
+      "
+      loading="lazy"
+    />
+  </div>
+
+  <span
+    class="
+      mt-2
+      whitespace-nowrap
+      text-[11px]
+      sm:text-sm
+      md:text-base
+      font-semibold
+      text-gray-800
+      group-hover:text-[#D4146A]
+      transition-colors
+    "
+  >
+    {{ name }}
+  </span>
+</button>

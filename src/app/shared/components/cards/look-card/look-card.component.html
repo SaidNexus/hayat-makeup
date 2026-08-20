@@ -1,0 +1,89 @@
+<article
+  class="
+    min-w-0
+    overflow-hidden
+    rounded-[7px]
+    border
+    border-[#E8E8E8]
+    bg-white
+
+    sm:rounded-[13px]
+
+    md:rounded-[16px]
+  "
+>
+  <!-- Image -->
+  <div
+    class="
+      h-[120px]
+      w-full
+      overflow-hidden
+
+      sm:h-[170px]
+
+      md:h-[230px]
+
+      lg:h-[270px]
+    "
+  >
+    <img
+      [src]="look.image"
+      [alt]="look.title"
+      class="
+        h-full
+        w-full
+        object-cover
+      "
+    />
+  </div>
+
+  <!-- Bottom -->
+  <div
+    class="
+      flex
+      h-[34px]
+      items-center
+      justify-between
+      px-2
+
+      sm:h-[45px]
+      sm:px-3
+
+      md:h-[54px]
+      md:px-4
+    "
+  >
+    <span
+      class="
+        min-w-0
+        truncate
+        text-[11px]
+        font-medium
+        text-[#111]
+        sm:text-[14px]
+
+        md:text-[18px]
+
+        lg:text-[21px]
+      "
+    >
+      {{ look.title }}
+    </span>
+
+    <span
+      class="
+        flex
+        shrink-0
+        items-center
+        justify-center
+        text-[#C91F72]
+      "
+    >
+      <svg
+        [lucideIcon]="arrowLeftIcon"
+        class="h-[13px] w-[13px] sm:h-5 sm:w-5 md:h-6 md:w-6"
+        [strokeWidth]="1.7"
+      ></svg>
+    </span>
+  </div>
+</article>
