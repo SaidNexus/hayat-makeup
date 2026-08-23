@@ -1,0 +1,69 @@
+﻿<div class="space-y-4">
+  <div class="bg-card border border-border rounded-2xl overflow-hidden mb-4">
+    <div class="p-4 bg-muted/30 border-b border-border font-medium">رأس الصفحة</div>
+    <div class="p-4 space-y-3">
+      <div class="flex flex-col gap-1.5 mb-3">
+        <span class="text-sm font-medium">صورة البانر</span>
+        <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-100">
+          <div class="w-16 h-16 rounded-md overflow-hidden flex items-center justify-center bg-gray-200">
+            <ng-container *ngIf="config.heroImage; else noImage">
+              <img [src]="config.heroImage" alt="Banner" class="w-full h-full object-cover" />
+            </ng-container>
+            <ng-template #noImage>
+              <lucide-icon [img]="ImageIcon" class="text-gray-400"></lucide-icon>
+            </ng-template>
+          </div>
+          <button
+            (click)="promptImage()"
+            class="flex items-center gap-2 px-3 py-1.5 border border-pink-200 text-pink-600 rounded-md text-xs hover:bg-pink-50 bg-white mr-auto"
+          >
+            <lucide-icon [img]="Edit2" [size]="14"></lucide-icon>
+            <span>تغيير</span>
+          </button>
+        </div>
+      </div>
+      <label class="flex flex-col gap-1.5">
+        <span class="text-sm font-medium">العنوان</span>
+        <input
+          type="text"
+          [ngModel]="config.pageTitle"
+          (ngModelChange)="updateConfig('pageTitle', $event)"
+          class="lk-input h-10 px-3 rounded-xl border border-border"
+        />
+      </label>
+      <label class="flex flex-col gap-1.5">
+        <span class="text-sm font-medium">الوصف</span>
+        <input
+          type="text"
+          [ngModel]="config.pageSubtitle"
+          (ngModelChange)="updateConfig('pageSubtitle', $event)"
+          class="lk-input h-10 px-3 rounded-xl border border-border"
+        />
+      </label>
+    </div>
+  </div>
+
+  <div class="bg-card border border-border rounded-2xl overflow-hidden mb-4">
+    <div class="p-4 bg-muted/30 border-b border-border font-medium">إعدادات العرض</div>
+    <div class="p-4 space-y-3">
+      <label class="flex items-center justify-between">
+        <span class="text-sm font-medium">إظهار جدول المقاسات</span>
+        <input
+          type="checkbox"
+          [ngModel]="config.showMeasurementsTable"
+          (ngModelChange)="updateConfig('showMeasurementsTable', $event)"
+          class="lk-checkbox"
+        />
+      </label>
+      <label class="flex items-center justify-between">
+        <span class="text-sm font-medium">إظهار قسم المساعدة</span>
+        <input
+          type="checkbox"
+          [ngModel]="config.showHelpSection"
+          (ngModelChange)="updateConfig('showHelpSection', $event)"
+          class="lk-checkbox"
+        />
+      </label>
+    </div>
+  </div>
+</div>

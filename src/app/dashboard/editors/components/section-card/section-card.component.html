@@ -1,0 +1,77 @@
+﻿<div
+  class="mb-4 bg-white rounded-xl border border-gray-200 overflow-visible transition-shadow hover:shadow-md"
+  [draggable]="true"
+  (dragstart)="onDragStart.emit($event)"
+  (dragend)="onDragEnd.emit($event)"
+  (dragover)="onDragOver.emit($event)"
+  (drop)="onDrop.emit($event)"
+>
+  <div class="flex items-center p-3 bg-gray-50/50 border-b border-gray-100 cursor-grab active:cursor-grabbing">
+    <div class="text-gray-400 ml-2">
+      <lucide-icon [img]="GripVertical" [size]="16"></lucide-icon>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <span class="font-bold text-gray-900 ml-1">{{ index + 1 }}.</span>
+      <h3 class="font-bold text-gray-900">{{ title }}</h3>
+    </div>
+    
+    <!-- Spacer -->
+    <div class="flex-1"></div>
+    
+    <!-- Optional Add Button -->
+    <div *ngIf="addAction" class="ml-3">
+      <app-add-item-button [label]="addAction.label" (onClick)="handleAddActionClick()"></app-add-item-button>
+    </div>
+    
+    <!-- Reorder Arrows -->
+    <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-md p-1 ml-2">
+      <button 
+        (click)="onMoveUp.emit()" 
+        [disabled]="isFirst" 
+        class="p-1 text-gray-400 hover:text-gray-700 disabled:opacity-30 disabled:hover:text-gray-400"
+      >
+        <lucide-icon [img]="ArrowUp" [size]="14"></lucide-icon>
+      </button>
+      <div class="w-[1px] h-4 bg-gray-200"></div>
+      <button 
+        (click)="onMoveDown.emit()" 
+        [disabled]="isLast" 
+        class="p-1 text-gray-400 hover:text-gray-700 disabled:opacity-30 disabled:hover:text-gray-400"
+      >
+        <lucide-icon [img]="ArrowDown" [size]="14"></lucide-icon>
+      </button>
+    </div>
+    
+    <!-- Copy/Delete -->
+    <button 
+      (click)="onDuplicate.emit()" 
+      class="p-1.5 text-gray-400 hover:text-pink-600 hover:bg-pink-50 rounded-md transition-colors ml-1" 
+      title="تكرار"
+    >
+      <lucide-icon [img]="Copy" [size]="16"></lucide-icon>
+    </button>
+    <button 
+      (click)="onDelete.emit()" 
+      class="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors ml-2" 
+      title="حذف"
+    >
+      <lucide-icon [img]="Trash2" [size]="16"></lucide-icon>
+    </button>
+    
+    <!-- Toggle -->
+    <label class="relative inline-flex items-center cursor-pointer">
+      <input
+        type="checkbox"
+        class="sr-only peer"
+        [checked]="enabled"
+        (change)="handleToggle($event)"
+      />
+      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-600"></div>
+    </label>
+  </div>
+  
+  <div class="p-3">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,215 @@
+﻿<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
+  <div class="text-center mb-4">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">صفحة المفضلة</h2>
+    <p class="text-sm text-gray-500">التحكم في عناصر وتصميم المفضلة</p>
+  </div>
+
+  <app-section-card 
+    title="رأس الصفحة والأدوات" 
+    [index]="0" 
+    [enabled]="config.showTitle" 
+    [isFirst]="true" 
+    [isLast]="false" 
+    (onToggle)="updateConfig({ showTitle: $event })"
+    (onDuplicate)="noop()" (onDelete)="noop()" (onMoveUp)="noop()" (onMoveDown)="noop()" (onDragStart)="noop()" (onDragEnd)="noop()" (onDragOver)="noop()" (onDrop)="noop()">
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">العنوان الرئيسي</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.headerTitle || ''" 
+        (ngModelChange)="updateConfig({ headerTitle: $event })" />
+    </div>
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">النص الفرعي</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.headerSubtitle || ''" 
+        (ngModelChange)="updateConfig({ headerSubtitle: $event })" />
+    </div>
+    
+    <hr class="my-3 border-gray-100" />
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار شريط الأدوات</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showToolbar" (ngModelChange)="updateConfig({ showToolbar: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار خيارات الترتيب</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showSort" (ngModelChange)="updateConfig({ showSort: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار عدد المنتجات</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showCount" (ngModelChange)="updateConfig({ showCount: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <hr class="my-3 border-gray-100" />
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار زر إضافة الكل للسلة</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showAddAllToCart" (ngModelChange)="updateConfig({ showAddAllToCart: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص زر إضافة الكل للسلة</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.addAllToCartText || ''" 
+        (ngModelChange)="updateConfig({ addAllToCartText: $event })" />
+    </div>
+  </app-section-card>
+
+  <app-section-card 
+    title="بطاقة المنتج" 
+    [index]="1" 
+    [enabled]="true" 
+    [isFirst]="false" 
+    [isLast]="false" 
+    (onToggle)="noop()"
+    (onDuplicate)="noop()" (onDelete)="noop()" (onMoveUp)="noop()" (onMoveDown)="noop()" (onDragStart)="noop()" (onDragEnd)="noop()" (onDragOver)="noop()" (onDrop)="noop()">
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار اللون</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showProductColor" (ngModelChange)="updateConfig({ showProductColor: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار المقاس</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showProductSize" (ngModelChange)="updateConfig({ showProductSize: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار السعر الحالي</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showProductPrice" (ngModelChange)="updateConfig({ showProductPrice: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار السعر القديم (قبل الخصم)</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showProductOldPrice" (ngModelChange)="updateConfig({ showProductOldPrice: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار حالة التوفر</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showProductStock" (ngModelChange)="updateConfig({ showProductStock: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <hr class="my-3 border-gray-100" />
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار زر الحذف</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showRemoveAction" (ngModelChange)="updateConfig({ showRemoveAction: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار زر النقل للسلة</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showMoveToCartAction" (ngModelChange)="updateConfig({ showMoveToCartAction: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+  </app-section-card>
+
+  <app-section-card 
+    title="حالة المفضلة الفارغة" 
+    [index]="2" 
+    [enabled]="true" 
+    [isFirst]="false" 
+    [isLast]="false" 
+    (onToggle)="noop()"
+    (onDuplicate)="noop()" (onDelete)="noop()" (onMoveUp)="noop()" (onMoveDown)="noop()" (onDragStart)="noop()" (onDragEnd)="noop()" (onDragOver)="noop()" (onDrop)="noop()">
+    
+    <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors mb-2">
+      <span class="text-sm text-gray-700">إظهار الرسم التوضيحي (Illustration)</span>
+      <div class="relative inline-flex items-center">
+        <input type="checkbox" class="sr-only peer" [ngModel]="!!config.showEmptyStateIllustration" (ngModelChange)="updateConfig({ showEmptyStateIllustration: $event })" />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </div>
+    </label>
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">العنوان</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.emptyStateTitle || ''" 
+        (ngModelChange)="updateConfig({ emptyStateTitle: $event })" />
+    </div>
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">الوصف</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.emptyStateSubtitle || ''" 
+        (ngModelChange)="updateConfig({ emptyStateSubtitle: $event })" />
+    </div>
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص زر التسوق</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.emptyStateButtonText || ''" 
+        (ngModelChange)="updateConfig({ emptyStateButtonText: $event })" />
+    </div>
+  </app-section-card>
+
+  <app-section-card 
+    title="مميزات التسوق" 
+    [index]="3" 
+    [enabled]="config.showTrustBadges" 
+    [isFirst]="false" 
+    [isLast]="true" 
+    (onToggle)="updateConfig({ showTrustBadges: $event })"
+    (onDuplicate)="noop()" (onDelete)="noop()" (onMoveUp)="noop()" (onMoveDown)="noop()" (onDragStart)="noop()" (onDragEnd)="noop()" (onDragOver)="noop()" (onDrop)="noop()"
+    [addAction]="{ label: 'إضافة ميزة', onClick: addBadge.bind(this) }">
+    
+    <div class="flex flex-col gap-3">
+      <div *ngFor="let badge of config.trustBadges || []; let idx = index" class="flex gap-2 bg-gray-50 border border-gray-200 rounded-lg p-3">
+        <div class="flex flex-col gap-2 flex-1">
+          <input type="text" class="w-full text-sm font-bold bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="badge.title" 
+            (ngModelChange)="updateBadge(idx, { title: $event })" placeholder="العنوان" />
+          <input type="text" class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1 text-gray-600" 
+            [ngModel]="badge.subtitle" 
+            (ngModelChange)="updateBadge(idx, { subtitle: $event })" placeholder="الوصف القصير" />
+          <select class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="badge.icon" 
+            (ngModelChange)="updateBadge(idx, { icon: $event })">
+            <option value="BadgeCheck">شارة توثيق (BadgeCheck)</option>
+            <option value="Truck">سيارة شحن (Truck)</option>
+            <option value="RotateCcw">استرجاع (RotateCcw)</option>
+            <option value="ShieldCheck">درع حماية (ShieldCheck)</option>
+          </select>
+        </div>
+        <button (click)="removeBadge(idx)" class="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-md h-fit">
+          <lucide-icon [img]="Trash2" [size]="16"></lucide-icon>
+        </button>
+      </div>
+    </div>
+  </app-section-card>
+</div>

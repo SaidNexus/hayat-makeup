@@ -1,0 +1,63 @@
+﻿<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
+  <div class="text-center mb-4">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">تتبع الطلب</h2>
+    <p class="text-sm text-gray-500">تخصيص محتوى صفحة تتبع الطلب</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4 mb-2">
+    <h3 class="font-bold text-gray-900 border-b pb-2">رأس الصفحة</h3>
+    
+    <div class="flex flex-col gap-1.5 mb-2">
+      <span class="text-xs font-bold text-gray-700">عنوان الصفحة</span>
+      <input 
+        type="text" 
+        class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500"
+        [ngModel]="config.headerTitle || ''" 
+        (ngModelChange)="updateConfig({ headerTitle: $event })"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1.5 mb-2">
+      <span class="text-xs font-bold text-gray-700">النص الفرعي</span>
+      <input 
+        type="text" 
+        class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500"
+        [ngModel]="config.description || ''" 
+        (ngModelChange)="updateConfig({ description: $event })"
+      />
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <h3 class="font-bold text-gray-900 border-b pb-2">عناصر الصفحة</h3>
+    <div class="grid gap-2">
+      
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">إظهار بطاقة حالة الطلب</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="config.showTimeline ?? true" 
+            (ngModelChange)="updateConfig({ showTimeline: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">إظهار الدعم الفني (واتساب)</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="config.showSupportInfo ?? true" 
+            (ngModelChange)="updateConfig({ showSupportInfo: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+
+    </div>
+  </div>
+</div>

@@ -221,6 +221,16 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'admin',
+    loadChildren: () =>
+      import('./dashboard/dashboard.routes').then((m) => m.dashboardRoutes),
+  },
+  {
+    path: 'dashboard',
+    redirectTo: 'admin',
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',

@@ -1,0 +1,203 @@
+﻿<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
+  <div class="text-center mb-4">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">من نحن</h2>
+    <p class="text-sm text-gray-500">إدارة محتوى صفحة من نحن</p>
+  </div>
+
+  <app-section-card 
+    title="الرأس والمقدمة" 
+    [index]="0" 
+    [enabled]="config.showTitle" 
+    [isFirst]="true" 
+    [isLast]="false" 
+    (onToggle)="updateConfig({ showTitle: $event })"
+    (onDuplicate)="noop()" (onDelete)="noop()" (onMoveUp)="noop()" (onMoveDown)="noop()" (onDragStart)="noop()" (onDragEnd)="noop()" (onDragOver)="noop()" (onDrop)="noop()">
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">العنوان الرئيسي</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.headerTitle || ''" 
+        (ngModelChange)="updateConfig({ headerTitle: $event })" />
+    </div>
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">النص الفرعي</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.headerSubtitle || ''" 
+        (ngModelChange)="updateConfig({ headerSubtitle: $event })" />
+    </div>
+    
+    <hr class="my-3 border-gray-100" />
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص المقدمة</span>
+      <textarea class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.introText || ''" 
+        (ngModelChange)="updateConfig({ introText: $event })" rows="4"></textarea>
+    </div>
+  </app-section-card>
+
+  <app-section-card 
+    title="قسم لماذا نحن؟" 
+    [index]="1" 
+    [enabled]="config.showReasonsSection" 
+    [isFirst]="false" 
+    [isLast]="false" 
+    (onToggle)="updateConfig({ showReasonsSection: $event })"
+    (onDuplicate)="noop()" (onDelete)="noop()" (onMoveUp)="noop()" (onMoveDown)="noop()" (onDragStart)="noop()" (onDragEnd)="noop()" (onDragOver)="noop()" (onDrop)="noop()"
+    [addAction]="{ label: 'إضافة سبب', onClick: addReason.bind(this) }">
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">عنوان القسم</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.reasonsTitle || ''" 
+        (ngModelChange)="updateConfig({ reasonsTitle: $event })" />
+    </div>
+    
+    <div class="flex flex-col gap-3">
+      <div *ngFor="let item of config.reasons || []; let idx = index" class="flex gap-2 bg-gray-50 border border-gray-200 rounded-lg p-3">
+        <div class="flex flex-col gap-2 flex-1">
+          <input type="text" class="w-full text-sm font-bold bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="item.title" 
+            (ngModelChange)="updateReason(idx, { title: $event })" placeholder="العنوان" />
+          <textarea class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="item.text" 
+            (ngModelChange)="updateReason(idx, { text: $event })" placeholder="الوصف" rows="2"></textarea>
+          <select class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="item.icon" 
+            (ngModelChange)="updateReason(idx, { icon: $event })">
+            <option value="ShieldCheck">درع (ShieldCheck)</option>
+            <option value="Heart">قلب (Heart)</option>
+            <option value="Star">نجمة (Star)</option>
+          </select>
+        </div>
+        <button (click)="removeReason(idx)" class="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-md h-fit">
+          <lucide-icon [img]="Trash2" [size]="16"></lucide-icon>
+        </button>
+      </div>
+    </div>
+  </app-section-card>
+
+  <app-section-card 
+    title="قسم الرؤية والرسالة" 
+    [index]="2" 
+    [enabled]="config.showVisionSection" 
+    [isFirst]="false" 
+    [isLast]="false" 
+    (onToggle)="updateConfig({ showVisionSection: $event })"
+    (onDuplicate)="noop()" (onDelete)="noop()" (onMoveUp)="noop()" (onMoveDown)="noop()" (onDragStart)="noop()" (onDragEnd)="noop()" (onDragOver)="noop()" (onDrop)="noop()">
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">عنوان الرؤية</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.visionTitle || ''" 
+        (ngModelChange)="updateConfig({ visionTitle: $event })" />
+    </div>
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص الرؤية</span>
+      <textarea class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.visionText || ''" 
+        (ngModelChange)="updateConfig({ visionText: $event })" rows="4"></textarea>
+    </div>
+    
+    <hr class="my-3 border-gray-100" />
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">عنوان الرسالة</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.missionTitle || ''" 
+        (ngModelChange)="updateConfig({ missionTitle: $event })" />
+    </div>
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص الرسالة</span>
+      <textarea class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.missionText || ''" 
+        (ngModelChange)="updateConfig({ missionText: $event })" rows="4"></textarea>
+    </div>
+  </app-section-card>
+
+  <app-section-card 
+    title="القيم" 
+    [index]="3" 
+    [enabled]="config.showValuesSection" 
+    [isFirst]="false" 
+    [isLast]="false" 
+    (onToggle)="updateConfig({ showValuesSection: $event })"
+    (onDuplicate)="noop()" (onDelete)="noop()" (onMoveUp)="noop()" (onMoveDown)="noop()" (onDragStart)="noop()" (onDragEnd)="noop()" (onDragOver)="noop()" (onDrop)="noop()"
+    [addAction]="{ label: 'إضافة قيمة', onClick: addValue.bind(this) }">
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">عنوان القسم</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.valuesTitle || ''" 
+        (ngModelChange)="updateConfig({ valuesTitle: $event })" />
+    </div>
+    
+    <div class="flex flex-col gap-3">
+      <div *ngFor="let item of config.values || []; let idx = index" class="flex gap-2 bg-gray-50 border border-gray-200 rounded-lg p-3">
+        <div class="flex flex-col gap-2 flex-1">
+          <input type="text" class="w-full text-sm font-bold bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="item.label" 
+            (ngModelChange)="updateValue(idx, { label: $event })" placeholder="القيمة" />
+          <select class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="item.icon" 
+            (ngModelChange)="updateValue(idx, { icon: $event })">
+            <option value="ShieldCheck">درع (ShieldCheck)</option>
+            <option value="Heart">قلب (Heart)</option>
+            <option value="Star">نجمة (Star)</option>
+            <option value="Target">هدف (Target)</option>
+            <option value="Check">علامة صح (Check)</option>
+          </select>
+        </div>
+        <button (click)="removeValue(idx)" class="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-md h-fit">
+          <lucide-icon [img]="Trash2" [size]="16"></lucide-icon>
+        </button>
+      </div>
+    </div>
+  </app-section-card>
+
+  <app-section-card 
+    title="تواصل معنا" 
+    [index]="4" 
+    [enabled]="config.showContactSection" 
+    [isFirst]="false" 
+    [isLast]="true" 
+    (onToggle)="updateConfig({ showContactSection: $event })"
+    (onDuplicate)="noop()" (onDelete)="noop()" (onMoveUp)="noop()" (onMoveDown)="noop()" (onDragStart)="noop()" (onDragEnd)="noop()" (onDragOver)="noop()" (onDrop)="noop()"
+    [addAction]="{ label: 'إضافة وسيلة تواصل', onClick: addContact.bind(this) }">
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">عنوان القسم</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.contactTitle || ''" 
+        (ngModelChange)="updateConfig({ contactTitle: $event })" />
+    </div>
+    
+    <div class="flex flex-col gap-3">
+      <div *ngFor="let item of config.contacts || []; let idx = index" class="flex gap-2 bg-gray-50 border border-gray-200 rounded-lg p-3">
+        <div class="flex flex-col gap-2 flex-1">
+          <input type="text" class="w-full text-sm font-bold bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="item.label" 
+            (ngModelChange)="updateContact(idx, { label: $event })" placeholder="الاسم" />
+          <input type="text" class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="item.link" 
+            (ngModelChange)="updateContact(idx, { link: $event })" placeholder="الرابط" dir="ltr" />
+          <select class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="item.icon" 
+            (ngModelChange)="updateContact(idx, { icon: $event })">
+            <option value="facebook">فيسبوك (facebook)</option>
+            <option value="instagram">إنستغرام (instagram)</option>
+            <option value="mail">بريد (mail)</option>
+            <option value="phone">هاتف (phone)</option>
+            <option value="whatsapp">واتساب (whatsapp)</option>
+          </select>
+        </div>
+        <button (click)="removeContact(idx)" class="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-md h-fit">
+          <lucide-icon [img]="Trash2" [size]="16"></lucide-icon>
+        </button>
+      </div>
+    </div>
+  </app-section-card>
+</div>

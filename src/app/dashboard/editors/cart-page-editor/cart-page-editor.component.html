@@ -1,0 +1,259 @@
+﻿<div class="w-full flex flex-col gap-4 pb-24" dir="rtl">
+  <div class="text-center mb-2">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">سلة التسوق</h2>
+    <p class="text-sm text-gray-500">تحكم في عناصر وتصميم سلة التسوق</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <h3 class="font-bold text-gray-900 border-b pb-2">رأس الصفحة</h3>
+    <div class="flex flex-col gap-1.5 mb-2">
+      <span class="text-xs font-bold text-gray-700">عنوان الصفحة</span>
+      <input 
+        type="text" 
+        class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config.headerTitle || ''" 
+        (ngModelChange)="updateConfig({ headerTitle: $event })" 
+      />
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <h3 class="font-bold text-gray-900 border-b pb-2">عناصر السلة</h3>
+    <div class="grid grid-cols-2 gap-2">
+      
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">صورة المنتج</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="!!config.showProductImage" 
+            (ngModelChange)="updateConfig({ showProductImage: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">أزرار الكمية</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="!!config.showQuantityControls" 
+            (ngModelChange)="updateConfig({ showQuantityControls: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">زر الحذف</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="!!config.showRemoveButton" 
+            (ngModelChange)="updateConfig({ showRemoveButton: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <div class="flex items-center justify-between border-b pb-2">
+      <h3 class="font-bold text-gray-900">كود الخصم</h3>
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input 
+          type="checkbox" 
+          class="sr-only peer" 
+          [ngModel]="!!config.showCouponSection" 
+          (ngModelChange)="updateConfig({ showCouponSection: $event })" 
+        />
+        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+      </label>
+    </div>
+    
+    <div *ngIf="config.showCouponSection" class="flex flex-col gap-2">
+      <div class="flex flex-col gap-1.5 mb-2">
+        <span class="text-xs font-bold text-gray-700">عنوان القسم</span>
+        <input 
+          type="text" 
+          class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+          [ngModel]="config.couponTitle || ''" 
+          (ngModelChange)="updateConfig({ couponTitle: $event })" 
+        />
+      </div>
+      <div class="flex flex-col gap-1.5 mb-2">
+        <span class="text-xs font-bold text-gray-700">النص الإرشادي (Placeholder)</span>
+        <input 
+          type="text" 
+          class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+          [ngModel]="config.couponPlaceholder || ''" 
+          (ngModelChange)="updateConfig({ couponPlaceholder: $event })" 
+        />
+      </div>
+      <div class="flex flex-col gap-1.5 mb-2">
+        <span class="text-xs font-bold text-gray-700">نص زر التطبيق</span>
+        <input 
+          type="text" 
+          class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+          [ngModel]="config.couponButtonText || ''" 
+          (ngModelChange)="updateConfig({ couponButtonText: $event })" 
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <h3 class="font-bold text-gray-900 border-b pb-2">ملخص الطلب</h3>
+    <div class="grid grid-cols-2 gap-2">
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">المجموع الفرعي</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="!!config.showSubtotal" 
+            (ngModelChange)="updateConfig({ showSubtotal: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">رسوم الشحن</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="!!config.showShipping" 
+            (ngModelChange)="updateConfig({ showShipping: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">الخصم</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="!!config.showDiscount" 
+            (ngModelChange)="updateConfig({ showDiscount: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">الإجمالي</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="!!config.showTotal" 
+            (ngModelChange)="updateConfig({ showTotal: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+    </div>
+    <div class="mt-4">
+      <div class="flex flex-col gap-1.5 mb-2">
+        <span class="text-xs font-bold text-gray-700">نص زر إتمام الطلب</span>
+        <input 
+          type="text" 
+          class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+          [ngModel]="config.checkoutButtonText || ''" 
+          (ngModelChange)="updateConfig({ checkoutButtonText: $event })" 
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <h3 class="font-bold text-gray-900 border-b pb-2">السلة الفارغة</h3>
+    <div class="flex flex-col gap-2">
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">إظهار الرسم التوضيحي</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="!!config.emptyCartIllustration" 
+            (ngModelChange)="updateConfig({ emptyCartIllustration: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+      <div class="flex flex-col gap-1.5 mb-2">
+        <span class="text-xs font-bold text-gray-700">نص السلة الفارغة</span>
+        <input 
+          type="text" 
+          class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+          [ngModel]="config.emptyCartText || ''" 
+          (ngModelChange)="updateConfig({ emptyCartText: $event })" 
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <div class="flex items-center justify-between border-b pb-2">
+      <h3 class="font-bold text-gray-900">شارات الثقة</h3>
+      <div class="flex items-center gap-2">
+        <button 
+          (click)="addTrustBadge()"
+          class="text-xs bg-pink-50 text-pink-600 px-2 py-1 rounded hover:bg-pink-100 font-bold"
+        >
+          + إضافة شارة
+        </button>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="!!config.showTrustBadges" 
+            (ngModelChange)="updateConfig({ showTrustBadges: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </label>
+      </div>
+    </div>
+    
+    <div *ngIf="config.showTrustBadges" class="flex flex-col gap-2 mt-2">
+      <div *ngFor="let badge of config.trustBadges; let idx = index; trackBy: trackByFn" class="flex gap-2 items-center bg-gray-50 border border-gray-200 rounded-lg p-2">
+        <div class="flex flex-col gap-2 flex-1">
+          <input 
+            type="text" 
+            class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1" 
+            [ngModel]="badge.title" 
+            (ngModelChange)="updateTrustBadge(idx, { title: $event })" 
+            placeholder="العنوان" 
+          />
+          <input 
+            type="text" 
+            class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1 text-gray-500" 
+            [ngModel]="badge.subtitle" 
+            (ngModelChange)="updateTrustBadge(idx, { subtitle: $event })" 
+            placeholder="الوصف" 
+          />
+          <select 
+            class="w-full text-sm bg-white border border-gray-200 rounded-md px-2 py-1 text-gray-700"
+            [ngModel]="badge.icon"
+            (ngModelChange)="updateTrustBadge(idx, { icon: $event })"
+          >
+            <option value="BadgeCheck">شارة الجودة (BadgeCheck)</option>
+            <option value="Truck">شاحنة (Truck)</option>
+            <option value="RotateCcw">إرجاع (RotateCcw)</option>
+            <option value="ShieldCheck">درع الحماية (ShieldCheck)</option>
+          </select>
+        </div>
+        <button (click)="removeTrustBadge(idx)" class="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-md">
+          <lucide-icon [img]="TrashIcon" [size]="16"></lucide-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

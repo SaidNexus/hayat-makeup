@@ -1,0 +1,86 @@
+<app-dashboard-layout>
+  <div class="flex flex-col h-full bg-slate-50/50">
+    <!-- Toolbar -->
+    <div class="flex items-center justify-between p-4 flex-row-reverse bg-white border-b border-slate-200">
+      <div class="flex flex-col items-center gap-1">
+        <h1 class="text-xl font-black text-slate-900 tracking-tight">
+          تخصيص المتجر
+        </h1>
+        <span class="text-xs text-slate-500 hidden md:inline">
+          قم بتخصيص وتعديل واجهات المتجر المختلفة. ستظهر التغييرات بشكل مباشر.
+        </span>
+      </div>
+
+      <div class="flex flex-row-reverse items-center gap-4">
+        <!-- Quick Navigation Dropdown -->
+        <div class="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-700">
+          <span class="text-slate-500 font-medium text-xs">الصفحة الحالية:</span>
+          <select 
+            class="bg-transparent font-bold font-mono text-xs outline-none cursor-pointer text-[#e60067]"
+            [(ngModel)]="selectedPageId"
+            (ngModelChange)="onPageSelect($event)"
+            dir="rtl"
+          >
+            <option *ngIf="selectedPageId === 'unknown'" value="unknown" disabled hidden>صفحة أخرى...</option>
+            <option *ngFor="let page of pageRegistry" [value]="page.id">{{ page.label }}</option>
+          </select>
+        </div>
+
+        <div class="flex bg-slate-100 rounded-lg p-1">
+          <button
+            class="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
+            [ngClass]="previewMode === 'desktop' ? 'bg-white text-[#e60067] shadow-sm font-bold' : 'text-slate-600 hover:bg-slate-200'"
+            (click)="setPreviewMode('desktop')"
+          >
+            <lucide-icon [img]="Monitor" [size]="18"></lucide-icon>
+            عرض اللابتوب
+          </button>
+          <button
+            class="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
+            [ngClass]="previewMode === 'mobile' ? 'bg-white text-[#e60067] shadow-sm font-bold' : 'text-slate-600 hover:bg-slate-200'"
+            (click)="setPreviewMode('mobile')"
+          >
+            <lucide-icon [img]="Smartphone" [size]="18"></lucide-icon>
+            عرض الموبايل
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse items-center gap-2">
+        <button class="flex items-center gap-2 px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-md transition-colors font-medium border border-slate-200 ml-4 cursor-pointer">
+          معاينة
+          <lucide-icon [img]="Eye" [size]="18"></lucide-icon>
+        </button>
+        <button
+          class="p-2 text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors cursor-pointer"
+          title="تراجع"
+        >
+          <lucide-icon [img]="Undo2" [size]="20"></lucide-icon>
+        </button>
+        <button
+          class="p-2 text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors cursor-pointer"
+          title="إعادة"
+        >
+          <lucide-icon [img]="Redo2" [size]="20"></lucide-icon>
+        </button>
+        <button class="flex items-center gap-2 px-6 py-2 bg-[#e60067] text-white rounded-md font-medium hover:bg-[#c20056] transition-colors shadow-sm shadow-pink-200 mr-2 cursor-pointer">
+          <lucide-icon [img]="Lock" [size]="16" class="mb-0.5"></lucide-icon>
+          <span>حفظ التغييرات</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-col lg:flex-row p-6 gap-8 items-start relative h-[calc(100vh-80px)] overflow-hidden bg-slate-50">
+      <!-- Editor Area (Right side in RTL) -->
+      <div class="w-full lg:flex-1 h-full relative overflow-y-auto custom-scrollbar no-scrollbar rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+        <app-editor-router [selectedPageId]="selectedPageId"></app-editor-router>
+      </div>
+      
+      <!-- Live Preview Area (Left side in RTL) -->
+      <div class="w-full lg:w-[45%] flex-shrink-0 flex justify-center items-center h-full overflow-hidden bg-slate-100/90 rounded-2xl border border-slate-200 p-4">
+        <app-live-preview class="block w-full h-full" [mode]="previewMode" [selectedPage]="selectedPage" [iframeRoute]="iframeRoute"></app-live-preview>
+      </div>
+    </div>
+  </div>
+</app-dashboard-layout>

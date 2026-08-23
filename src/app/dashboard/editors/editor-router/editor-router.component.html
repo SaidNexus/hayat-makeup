@@ -1,0 +1,47 @@
+<div
+  class="w-full h-full transition-all duration-150 ease-in-out"
+  [ngClass]="isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'"
+>
+  <app-home-page-editor *ngIf="selectedPageId === 'home'"></app-home-page-editor>
+  <app-best-sellers-page-editor *ngIf="selectedPageId === 'best-sellers'"></app-best-sellers-page-editor>
+  <app-new-arrivals-page-editor *ngIf="selectedPageId === 'new-arrivals'"></app-new-arrivals-page-editor>
+  <app-categories-page-editor *ngIf="selectedPageId === 'categories'"></app-categories-page-editor>
+  
+  <app-skin-quiz-page-editor *ngIf="selectedPageId === 'skin-quiz'"></app-skin-quiz-page-editor>
+  <app-skin-types-page-editor *ngIf="selectedPageId === 'skin-types'"></app-skin-types-page-editor>
+  <app-faces-page-editor *ngIf="selectedPageId === 'faces'"></app-faces-page-editor>
+  <app-bundles-page-editor *ngIf="selectedPageId === 'bundles'"></app-bundles-page-editor>
+  
+  <app-product-page-editor *ngIf="selectedPageId === 'product-details'"></app-product-page-editor>
+  <app-cart-page-editor *ngIf="selectedPageId === 'cart'"></app-cart-page-editor>
+  <app-checkout-page-editor *ngIf="selectedPageId === 'checkout'"></app-checkout-page-editor>
+  <app-wishlist-page-editor *ngIf="selectedPageId === 'wishlist'"></app-wishlist-page-editor>
+  
+  <app-faq-page-editor *ngIf="selectedPageId === 'faq'"></app-faq-page-editor>
+  <app-account-page-editor *ngIf="selectedPageId === 'account'"></app-account-page-editor>
+  <app-menu-page-editor *ngIf="selectedPageId === 'menu'"></app-menu-page-editor>
+  <app-offers-page-editor *ngIf="selectedPageId === 'offers'"></app-offers-page-editor>
+  
+  <app-search-page-editor *ngIf="selectedPageId === 'search'"></app-search-page-editor>
+  <app-track-order-page-editor *ngIf="selectedPageId === 'track-order'"></app-track-order-page-editor>
+  <app-category-page-editor *ngIf="selectedPageId === 'products'"></app-category-page-editor>
+  <app-policies-page-editor *ngIf="selectedPageId === 'policies'"></app-policies-page-editor>
+  
+  <app-about-page-editor *ngIf="selectedPageId === 'about'"></app-about-page-editor>
+  <app-all-shapers-page-editor *ngIf="selectedPageId === 'shapers'"></app-all-shapers-page-editor>
+  <app-contact-page-editor *ngIf="selectedPageId === 'contact'"></app-contact-page-editor>
+  <app-favorites-page-editor *ngIf="selectedPageId === 'favorites'"></app-favorites-page-editor>
+  
+  <app-login-page-editor *ngIf="selectedPageId === 'login'"></app-login-page-editor>
+  <app-my-orders-page-editor *ngIf="selectedPageId === 'my-orders'"></app-my-orders-page-editor>
+  <app-notifications-page-editor *ngIf="selectedPageId === 'notifications'"></app-notifications-page-editor>
+  <app-order-confirmation-page-editor *ngIf="selectedPageId === 'order-confirmation'"></app-order-confirmation-page-editor>
+  
+  <app-profile-page-editor *ngIf="selectedPageId === 'profile'"></app-profile-page-editor>
+  <app-size-guide-page-editor *ngIf="selectedPageId === 'size-guide'"></app-size-guide-page-editor>
+
+  <div *ngIf="!['home', 'best-sellers', 'new-arrivals', 'categories', 'skin-quiz', 'skin-types', 'faces', 'bundles', 'product-details', 'cart', 'checkout', 'wishlist', 'faq', 'account', 'menu', 'offers', 'search', 'track-order', 'products', 'policies', 'about', 'shapers', 'contact', 'favorites', 'login', 'my-orders', 'notifications', 'order-confirmation', 'profile', 'size-guide'].includes(selectedPageId)" class="flex flex-col items-center justify-center h-full text-center p-6 text-gray-500">
+    <h3 class="text-lg font-bold text-gray-900 mb-2">محرر: {{ selectedPageId }}</h3>
+    <p class="text-sm">هذا المحرر قيد الإنشاء في الإصدار الجديد من لوحة التحكم.</p>
+  </div>
+</div>

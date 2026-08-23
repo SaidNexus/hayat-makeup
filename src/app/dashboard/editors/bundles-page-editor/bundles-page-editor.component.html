@@ -1,0 +1,126 @@
+﻿<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
+  <div class="text-center mb-4">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">الباقات والمجموعات</h2>
+    <p class="text-sm text-gray-500">تخصيص محتوى صفحة الباقات</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4 mb-2">
+    <h3 class="font-bold text-gray-900 border-b pb-2">رأس الصفحة</h3>
+    <div class="flex flex-col gap-1.5 mb-2">
+      <span class="text-xs font-bold text-gray-700">عنوان الصفحة</span>
+      <input 
+        type="text" 
+        class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500"
+        [ngModel]="config.headerTitle || ''" 
+        (ngModelChange)="updateConfig({ headerTitle: $event })"
+      />
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <h3 class="font-bold text-gray-900 border-b pb-2">عناصر الصفحة</h3>
+    <div class="grid gap-2">
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">إظهار الباقات</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="config.showBundleItems ?? true" 
+            (ngModelChange)="updateConfig({ showBundleItems: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+      
+      <label class="flex items-center justify-between p-2 bg-gray-50 rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+        <span class="text-sm text-gray-700">إظهار مميزات الشحن والتغليف</span>
+        <div class="relative inline-flex items-center">
+          <input 
+            type="checkbox" 
+            class="sr-only peer" 
+            [ngModel]="config.showBundleSaving ?? true" 
+            (ngModelChange)="updateConfig({ showBundleSaving: $event })" 
+          />
+          <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="config?.showBundleItems !== false" class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <div class="flex items-center justify-between border-b pb-2">
+      <h3 class="font-bold text-gray-900">الباقات</h3>
+      <button 
+        (click)="addBundle()"
+        class="text-xs bg-pink-50 text-pink-600 px-2 py-1 rounded hover:bg-pink-100 font-bold"
+      >
+        + إضافة باقة
+      </button>
+    </div>
+    <p class="text-xs text-gray-500 mb-2">تحكم في تفاصيل الباقات والمجموعات المتاحة للشراء</p>
+    
+    <div class="flex flex-col gap-3">
+      <div *ngFor="let bundle of config?.bundles || []; let i = index" class="flex flex-col gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
+        <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center gap-2">
+            <div class="flex flex-col gap-1 mr-2">
+              <button (click)="moveBundleUp(i)" class="text-gray-400 hover:text-pink-600 text-[10px]">▲</button>
+              <button (click)="moveBundleDown(i)" class="text-gray-400 hover:text-pink-600 text-[10px]">▼</button>
+            </div>
+            <span class="text-sm font-bold text-gray-700">{{ bundle.title }}</span>
+          </div>
+          <button (click)="removeBundle(i)" class="text-red-400 hover:text-red-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <input 
+            type="text" placeholder="العنوان" class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5" 
+            [ngModel]="bundle.title" (ngModelChange)="updateBundle(i, { title: $event })" 
+          />
+          <input 
+            type="text" placeholder="رابط الصورة" class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5" 
+            [ngModel]="bundle.image" (ngModelChange)="updateBundle(i, { image: $event })" 
+          />
+        </div>
+
+        <textarea 
+          placeholder="الوصف" class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5 min-h-[40px]" 
+          [ngModel]="bundle.description" (ngModelChange)="updateBundle(i, { description: $event })" 
+        ></textarea>
+
+        <div class="grid grid-cols-3 gap-2">
+          <input 
+            type="number" placeholder="السعر" class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5" 
+            [ngModel]="bundle.price" (ngModelChange)="updateBundle(i, { price: $event })" 
+          />
+          <input 
+            type="number" placeholder="السعر قبل الخصم" class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5" 
+            [ngModel]="bundle.oldPrice" (ngModelChange)="updateBundle(i, { oldPrice: $event })" 
+          />
+          <input 
+            type="number" placeholder="عدد المنتجات" class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5" 
+            [ngModel]="bundle.productsCount" (ngModelChange)="updateBundle(i, { productsCount: toNumber($event) })" 
+          />
+        </div>
+
+        <div class="grid grid-cols-3 gap-2">
+          <input 
+            type="text" placeholder="نص الخصم" class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5" 
+            [ngModel]="bundle.discount" (ngModelChange)="updateBundle(i, { discount: $event })" 
+          />
+          <input 
+            type="text" placeholder="الشريط الإعلاني" class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5" 
+            [ngModel]="bundle.badge" (ngModelChange)="updateBundle(i, { badge: $event })" 
+          />
+          <input 
+            type="text" placeholder="أيقونة الشريط (مثال: ♛)" class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5" 
+            [ngModel]="bundle.badgeIcon" (ngModelChange)="updateBundle(i, { badgeIcon: $event })" 
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

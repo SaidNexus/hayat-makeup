@@ -1,0 +1,36 @@
+﻿<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
+  <div class="text-center mb-4">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">إعدادات صفحة الدفع (Checkout)</h2>
+    <p class="text-sm text-gray-500">التحكم في عناصر الدفع</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+    <div class="p-4 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-bold text-gray-700">إظهار ملخص الطلب</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            class="sr-only peer"
+            [ngModel]="config?.showOrderSummary ?? true"
+            (ngModelChange)="updateConfig({ showOrderSummary: $event })"
+          />
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+        </label>
+      </div>
+
+      <div class="flex items-center justify-between border-t border-gray-100 pt-4 mt-2">
+        <span class="text-sm font-bold text-gray-700">إظهار شارات الأمان والثقة</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            class="sr-only peer"
+            [ngModel]="config?.showTrustBadges ?? true"
+            (ngModelChange)="updateConfig({ showTrustBadges: $event })"
+          />
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

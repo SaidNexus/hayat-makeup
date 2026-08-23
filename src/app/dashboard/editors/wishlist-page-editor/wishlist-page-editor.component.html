@@ -1,0 +1,73 @@
+﻿<div class="space-y-6" dir="rtl">
+  <div>
+    <h2 class="text-xl font-bold text-gray-900">صفحة المفضلة</h2>
+    <p class="text-sm text-gray-500 mt-1">تخصيص نصوص وعناوين صفحة المنتجات المفضلة.</p>
+  </div>
+
+  <div class="space-y-4">
+    
+    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm space-y-4">
+      <h3 class="font-semibold text-gray-900 border-b pb-2">عناوين الصفحة</h3>
+      
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-medium text-gray-700 mb-1">العنوان الرئيسي</label>
+          <input
+            type="text"
+            [ngModel]="config.headerTitle"
+            (ngModelChange)="handleChange('headerTitle', $event)"
+            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-gray-700 mb-1">النص الوصفي الفرعي</label>
+          <input
+            type="text"
+            [ngModel]="config.subtitle"
+            (ngModelChange)="handleChange('subtitle', $event)"
+            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+          />
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm space-y-4">
+      <h3 class="font-semibold text-gray-900 border-b pb-2">حالة القائمة الفارغة</h3>
+      
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-medium text-gray-700 mb-1">العنوان عند فراغ القائمة</label>
+          <input
+            type="text"
+            [ngModel]="config.emptyStateTitle"
+            (ngModelChange)="handleChange('emptyStateTitle', $event)"
+            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-gray-700 mb-1">النص الوصفي عند فراغ القائمة</label>
+          <input
+            type="text"
+            [ngModel]="config.emptyStateDescription"
+            (ngModelChange)="handleChange('emptyStateDescription', $event)"
+            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-gray-700 mb-1">نص زر التوجه للتسوق</label>
+          <input
+            type="text"
+            [ngModel]="config.emptyStateButtonText"
+            (ngModelChange)="handleChange('emptyStateButtonText', $event)"
+            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+          />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

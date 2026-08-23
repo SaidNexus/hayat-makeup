@@ -1,0 +1,98 @@
+﻿<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
+  <div class="text-center mb-4">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">تسوقي حسب شكل الوجه / الإطلالة</h2>
+    <p class="text-sm text-gray-500">التحكم في عنوان الصفحة وقائمة الإطلالات المتاحة</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <h3 class="font-bold text-gray-900 border-b pb-2">رأس الصفحة</h3>
+    
+    <div class="flex flex-col gap-1.5 mb-2">
+      <span class="text-xs font-bold text-gray-700">عنوان الصفحة</span>
+      <input 
+        type="text" 
+        class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" 
+        [ngModel]="config?.headerTitle || ''" 
+        (ngModelChange)="updateConfig({ headerTitle: $event })" 
+      />
+    </div>
+
+    <div class="flex flex-col gap-1.5 mb-2">
+      <span class="text-xs font-bold text-gray-700">الوصف</span>
+      <textarea 
+        class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500 min-h-[80px]" 
+        [ngModel]="config?.description || ''" 
+        (ngModelChange)="updateConfig({ description: $event })" 
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden p-4 space-y-4">
+    <div class="flex items-center justify-between border-b pb-2">
+      <h3 class="font-bold text-gray-900">الإطلالات المتاحة</h3>
+      <button 
+        (click)="addFace()"
+        class="text-xs bg-pink-50 text-pink-600 px-2 py-1 rounded hover:bg-pink-100 font-bold"
+      >
+        + إضافة إطلالة
+      </button>
+    </div>
+    <p class="text-xs text-gray-500 mb-2">تحكم في الإطلالات (الترتيب، الصورة، العنوان، والأيقونة)</p>
+    
+    <div class="flex flex-col gap-2">
+      <div *ngFor="let face of config?.faces || []; let i = index" class="flex flex-col gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
+        <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center gap-2">
+            <div class="flex flex-col gap-1 mr-2">
+              <button (click)="moveFaceUp(i)" class="text-gray-400 hover:text-pink-600 text-[10px]">▲</button>
+              <button (click)="moveFaceDown(i)" class="text-gray-400 hover:text-pink-600 text-[10px]">▼</button>
+            </div>
+            <span class="text-sm font-bold text-gray-700">{{ face.name }}</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input 
+                type="checkbox" 
+                class="sr-only peer" 
+                [ngModel]="!!face.visible" 
+                (ngModelChange)="updateFace(i, { visible: $event })" 
+              />
+              <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+            </label>
+            <button (click)="removeFace(i)" class="text-red-400 hover:text-red-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+            </button>
+          </div>
+        </div>
+        <input 
+          type="text" 
+          placeholder="اسم الإطلالة" 
+          class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5" 
+          [ngModel]="face.name" 
+          (ngModelChange)="updateFace(i, { name: $event })" 
+        />
+        <div class="flex gap-2">
+          <input 
+            type="text" 
+            placeholder="رابط الصورة" 
+            class="w-full text-xs bg-white border border-gray-200 rounded px-2 py-1.5 flex-1" 
+            [ngModel]="face.image" 
+            (ngModelChange)="updateFace(i, { image: $event })" 
+          />
+          <select 
+            class="text-xs bg-white border border-gray-200 rounded px-2 py-1.5"
+            [ngModel]="face.icon"
+            (ngModelChange)="updateFace(i, { icon: $event })"
+          >
+            <option value="Sun">شمس (Sun)</option>
+            <option value="Flower2">زهرة (Flower)</option>
+            <option value="Moon">قمر (Moon)</option>
+            <option value="BriefcaseBusiness">حقيبة (Work)</option>
+            <option value="Leaf">ورقة شجر (Leaf)</option>
+            <option value="Eye">عين (Eye)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

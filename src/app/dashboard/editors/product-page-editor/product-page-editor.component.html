@@ -1,0 +1,89 @@
+﻿<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
+  <div class="text-center mb-4">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">إعدادات صفحة تفاصيل المنتج</h2>
+    <p class="text-sm text-gray-500">التحكم في ظهور عناصر صفحة المنتج</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+    <div class="p-4 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-bold text-gray-700">إظهار مسار التصفح (Breadcrumbs)</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            class="sr-only peer"
+            [ngModel]="config?.showBreadcrumbs ?? true"
+            (ngModelChange)="updateConfig({ showBreadcrumbs: $event })"
+          />
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+        </label>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-bold text-gray-700">إظهار زر المفضلة على الصورة</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            class="sr-only peer"
+            [ngModel]="config?.showWishlistBtn ?? true"
+            (ngModelChange)="updateConfig({ showWishlistBtn: $event })"
+          />
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+        </label>
+      </div>
+      
+      <hr class="border-gray-100" />
+
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-bold text-gray-700">إظهار شبكة المميزات (Features)</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            class="sr-only peer"
+            [ngModel]="config?.showTrustBadges ?? true"
+            (ngModelChange)="updateConfig({ showTrustBadges: $event })"
+          />
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+        </label>
+      </div>
+
+      <div class="border-t border-gray-100 pt-4 mt-2">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-sm font-bold text-gray-700">إظهار قسم "منتجات ذات صلة"</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              class="sr-only peer"
+              [ngModel]="config?.showRelatedProducts ?? true"
+              (ngModelChange)="updateConfig({ showRelatedProducts: $event })"
+            />
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+          </label>
+        </div>
+
+        <div *ngIf="config?.showRelatedProducts !== false" class="space-y-3 bg-gray-50 p-3 rounded-lg border border-gray-100">
+          <div class="flex flex-col gap-1.5">
+            <span class="text-xs font-bold text-gray-700">عنوان القسم</span>
+            <input
+              type="text"
+              class="w-full text-sm bg-white border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500"
+              [ngModel]="config?.relatedProductsTitle || 'قد يعجبك أيضاً'"
+              (ngModelChange)="updateConfig({ relatedProductsTitle: $event })"
+            />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <span class="text-xs font-bold text-gray-700">عدد المنتجات المعروضة</span>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              class="w-full text-sm bg-white border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500"
+              [ngModel]="config?.relatedProductsCount || 4"
+              (ngModelChange)="updateConfig({ relatedProductsCount: +$event })"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

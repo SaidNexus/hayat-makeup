@@ -1,0 +1,125 @@
+﻿<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
+  <div class="text-center mb-4">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">طلباتي / تتبع الطلب</h2>
+    <p class="text-sm text-gray-500">إدارة نصوص صفحة التتبع</p>
+  </div>
+
+  <app-section-card 
+    title="رأس الصفحة وحقول البحث" 
+    [index]="0" 
+    [enabled]="true" 
+    [isFirst]="true" 
+    [isLast]="false" 
+    (onToggle)="noop()" 
+    (onDuplicate)="noop()" 
+    (onDelete)="noop()" 
+    (onMoveUp)="noop()" 
+    (onMoveDown)="noop()" 
+    (onDragStart)="noop()" 
+    (onDragEnd)="noop()" 
+    (onDragOver)="noop()" 
+    (onDrop)="noop()">
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">العنوان الرئيسي</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().headerTitle" (ngModelChange)="updateConfig({ headerTitle: $event })" />
+    </div>
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">النص الفرعي</span>
+      <textarea class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().headerSubtitle" (ngModelChange)="updateConfig({ headerSubtitle: $event })" rows="3"></textarea>
+    </div>
+
+    <hr class="my-3 border-gray-100" />
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص حقل الهاتف</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().phonePlaceholder" (ngModelChange)="updateConfig({ phonePlaceholder: $event })" />
+    </div>
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص حقل الطلب</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().orderPlaceholder" (ngModelChange)="updateConfig({ orderPlaceholder: $event })" />
+    </div>
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص زر البحث</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().buttonText" (ngModelChange)="updateConfig({ buttonText: $event })" />
+    </div>
+  </app-section-card>
+
+  <app-section-card 
+    title="الحالات الفارغة" 
+    [index]="1" 
+    [enabled]="true" 
+    [isFirst]="false" 
+    [isLast]="false" 
+    (onToggle)="noop()" 
+    (onDuplicate)="noop()" 
+    (onDelete)="noop()" 
+    (onMoveUp)="noop()" 
+    (onMoveDown)="noop()" 
+    (onDragStart)="noop()" 
+    (onDragEnd)="noop()" 
+    (onDragOver)="noop()" 
+    (onDrop)="noop()">
+    
+    <div class="mb-2 font-bold text-sm text-gray-800">حالة: لا توجد طلبات</div>
+    
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">العنوان</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().emptyTitle" (ngModelChange)="updateConfig({ emptyTitle: $event })" />
+    </div>
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">النص</span>
+      <textarea class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().emptyText" (ngModelChange)="updateConfig({ emptyText: $event })" rows="3"></textarea>
+    </div>
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص زر التسوق</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().emptyCta" (ngModelChange)="updateConfig({ emptyCta: $event })" />
+    </div>
+
+    <hr class="my-3 border-gray-100" />
+
+    <div class="mb-2 font-bold text-sm text-gray-800">حالة: لم يتم العثور على الطلب</div>
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">العنوان</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().notFoundTitle" (ngModelChange)="updateConfig({ notFoundTitle: $event })" />
+    </div>
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">النص</span>
+      <textarea class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().notFoundText" (ngModelChange)="updateConfig({ notFoundText: $event })" rows="3"></textarea>
+    </div>
+  </app-section-card>
+
+  <app-section-card 
+    title="بطاقة الدعم" 
+    [index]="2" 
+    [enabled]="config().showSupportCard" 
+    [isFirst]="false" 
+    [isLast]="true" 
+    (onToggle)="updateConfig({ showSupportCard: $event })" 
+    (onDuplicate)="noop()" 
+    (onDelete)="noop()" 
+    (onMoveUp)="noop()" 
+    (onMoveDown)="noop()" 
+    (onDragStart)="noop()" 
+    (onDragEnd)="noop()" 
+    (onDragOver)="noop()" 
+    (onDrop)="noop()">
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">عنوان البطاقة</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().supportTitle" (ngModelChange)="updateConfig({ supportTitle: $event })" />
+    </div>
+
+    <div class="flex flex-col gap-1.5 mb-3">
+      <span class="text-xs font-bold text-gray-700">نص البطاقة</span>
+      <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="config().supportText" (ngModelChange)="updateConfig({ supportText: $event })" />
+    </div>
+  </app-section-card>
+</div>
