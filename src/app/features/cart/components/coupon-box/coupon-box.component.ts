@@ -1,15 +1,16 @@
 import { Component, EventEmitter, Input, Output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
 export const COUPON_CODE = 'HAYAT10';
 
 @Component({
   selector: 'app-coupon-box',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, TranslatePipe],
   templateUrl: './coupon-box.component.html',
   styleUrl: './coupon-box.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CouponBoxComponent {
   @Input() applied = false;

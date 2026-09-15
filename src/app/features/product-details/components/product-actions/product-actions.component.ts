@@ -1,15 +1,17 @@
-import { Component, Input, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LucideDynamicIcon, LucideShoppingBag } from '@lucide/angular';
 import { CartService } from '../../../../core/services/cart.service';
+import { LocalizeFieldPipe } from '../../../../shared/pipes/localize-field.pipe';
 
 @Component({
   selector: 'app-product-actions',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [CommonModule, LucideDynamicIcon, LocalizeFieldPipe],
   templateUrl: './product-actions.component.html',
   styleUrl: './product-actions.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductActionsComponent {
   @Input({ required: true }) product: any;

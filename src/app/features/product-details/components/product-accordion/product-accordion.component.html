@@ -1,6 +1,6 @@
-<section dir="rtl" class="mt-3">
+<section class="mt-3">
   <div class="overflow-hidden rounded-[9px] border border-[#EAEAEA]">
-    @for (item of accordionList(); track item.title; let i = $index) {
+    @for (item of items; track item.titleAr; let i = $index) {
       <div>
         <button
           type="button"
@@ -15,7 +15,7 @@
             border-b
             border-[#EEEEEE]
             px-2.5
-            text-right
+            text-start
             last:border-b-0
 
             sm:h-[47px]
@@ -42,7 +42,7 @@
                 md:text-[15px]
               "
             >
-              {{ item.title }}
+              {{ item.titleAr | localize: item.titleAr : item.titleEn }}
             </span>
           </div>
 
@@ -88,7 +88,7 @@
                 md:text-[14px]
               "
             >
-              {{ item.content }}
+              {{ item.contentAr | localize: item.contentAr : item.contentEn }}
             </p>
           </div>
         }

@@ -1,5 +1,4 @@
 <div
-  dir="rtl"
   (click)="handleSelect()"
   class="
     group
@@ -29,10 +28,10 @@
     <button
       type="button"
       (click)="handleFavorite($event)"
-      [attr.aria-label]="isFavorite ? 'إزالة من المفضلة' : 'إضافة للمفضلة'"
+      [attr.aria-label]="isFavorite ? ('FAVORITES.REMOVE' | translate) : ('FAVORITES.ADD' | translate)"
       class="
         absolute
-        left-1.5
+        start-1.5
         top-1.5
         z-10
         flex
@@ -71,11 +70,11 @@
   <div class="flex flex-1 flex-col justify-between space-y-1.5">
     <div class="text-center space-y-0.5">
       <h3 class="text-xs sm:text-sm font-bold text-gray-800 line-clamp-1 leading-snug">
-        {{ name }}
+        {{ name | localize: nameAr : nameEn }}
       </h3>
       @if (description) {
         <p class="text-[10px] sm:text-xs text-gray-400 line-clamp-1">
-          {{ description }}
+          {{ description | localize: descriptionAr : descriptionEn }}
         </p>
       }
     </div>
@@ -83,7 +82,7 @@
     <!-- Rating + Price Row -->
     <div class="flex items-center justify-between px-1 text-xs">
       <span class="text-xs sm:text-sm md:text-base font-extrabold text-[#D4146A]">
-        {{ price }} <span class="text-[10px] sm:text-xs font-normal">ر.س</span>
+        {{ price }} <span class="text-[10px] sm:text-xs font-normal">{{ 'COMMON.CURRENCY' | translate }}</span>
       </span>
 
       <div class="flex items-center gap-0.5 text-[10px] sm:text-xs text-gray-500 font-medium" dir="ltr">
@@ -116,7 +115,7 @@
         transition-all
       "
     >
-      <span>أضف للسلة</span>
+      <span>{{ 'أضف للسلة' | localize: 'أضف للسلة' : 'Add to Cart' }}</span>
       <svg [lucideIcon]="cartIcon" class="h-3.5 w-3.5 shrink-0" [strokeWidth]="1.8"></svg>
     </button>
   </div>

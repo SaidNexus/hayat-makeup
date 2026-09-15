@@ -10,7 +10,7 @@
     border-[#EEEEEE]
     px-3
     py-3
-    text-right
+    text-start
 
     sm:gap-4
     sm:px-4
@@ -53,7 +53,7 @@
       md:text-[18px]
     "
   >
-    {{ label }}
+    {{ labelKey ? (labelKey | translate) : label }}
   </span>
 
   @if (badge != null && badge > 0) {
@@ -83,7 +83,7 @@
 
   <svg
     [lucideIcon]="chevronLeftIcon"
-    class="shrink-0 h-4 w-4 sm:h-5 sm:w-5 text-[#999999]"
+    class="shrink-0 h-4 w-4 sm:h-5 sm:w-5 text-[#999999] rtl-flip"
     [strokeWidth]="1.5"
   ></svg>
 </button>

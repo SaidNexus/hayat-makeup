@@ -1,27 +1,39 @@
-<div
-  dir="rtl"
-  class="
-    min-h-screen
-    w-full
-    bg-white
-    pb-20
-    lg:pb-10
-  "
->
+<div class="min-h-screen w-full bg-white pb-20 lg:pb-10">
   <app-header></app-header>
 
   <main class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 space-y-4 sm:space-y-7 md:space-y-9 pt-2 sm:pt-4">
-    <app-hero-banner></app-hero-banner>
-
-    <app-service-features></app-service-features>
-
-    <app-categories-section></app-categories-section>
-
-    <app-best-sellers></app-best-sellers>
-
-    <app-promo-banner></app-promo-banner>
-
-    <app-look-carousel></app-look-carousel>
+    @for (section of config().sections; track section.id; let sIdx = $index) {
+      @if (section.enabled) {
+        <div 
+          [id]="'section-' + section.id"
+          [attr.data-section-id]="section.id"
+          [attr.data-section-type]="section.type"
+          [attr.data-section-index]="sIdx"
+          class="lk-home-section-wrapper transition-all duration-300"
+        >
+          @switch (section.type) {
+            @case ('hero') { 
+              <app-hero-banner [config]="section"></app-hero-banner> 
+            }
+            @case ('benefits') { 
+              <app-service-features [config]="section"></app-service-features> 
+            }
+            @case ('categories') { 
+              <app-categories-section [config]="section"></app-categories-section> 
+            }
+            @case ('bestsellers') { 
+              <app-best-sellers [config]="section"></app-best-sellers> 
+            }
+            @case ('promo') { 
+              <app-promo-banner [config]="section"></app-promo-banner> 
+            }
+            @case ('looks') { 
+              <app-look-carousel [config]="section"></app-look-carousel> 
+            }
+          }
+        </div>
+      }
+    }
   </main>
 
   <app-mobile-bottom-nav [activeItem]="'home'"></app-mobile-bottom-nav>

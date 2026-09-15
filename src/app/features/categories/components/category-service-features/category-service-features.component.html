@@ -1,5 +1,4 @@
 <section
-  dir="rtl"
   class="
     mx-auto
     flex
@@ -76,7 +75,7 @@
         ></svg>
 
         <!-- Text -->
-        <div class="text-right">
+        <div class="text-start">
           <h3
             class="
               whitespace-nowrap
@@ -92,7 +91,7 @@
               lg:text-[12px]
             "
           >
-            {{ feature.title }}
+            {{ feature.title | localize: feature.titleAr : feature.titleEn }}
           </h3>
 
           <p
@@ -111,7 +110,7 @@
               lg:text-[10px]
             "
           >
-            {{ feature.description }}
+            {{ feature.description | localize: feature.descriptionAr : feature.descriptionEn }}
           </p>
         </div>
       </div>

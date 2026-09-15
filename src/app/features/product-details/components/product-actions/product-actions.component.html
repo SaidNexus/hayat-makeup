@@ -33,7 +33,7 @@
       md:text-[16px]
     "
   >
-    أضف إلى السلة
+    {{ 'أضف إلى السلة' | localize: 'أضف إلى السلة' : 'Add to Cart' }}
     <svg
       [lucideIcon]="shoppingBagIcon"
       class="h-[15px] w-[15px] sm:h-[18px] sm:w-[18px] md:h-[21px] md:w-[21px]"
@@ -64,6 +64,6 @@
       md:text-[16px]
     "
   >
-    اشتري الآن
+    {{ 'اشتري الآن' | localize: 'اشتري الآن' : 'Buy Now' }}
   </button>
 </div>

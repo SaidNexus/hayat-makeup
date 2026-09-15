@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
+import { LocalizeFieldPipe } from '../../../../shared/pipes/localize-field.pipe';
 
 export const PRODUCT_SHADES = [
   '#A82F49',
@@ -10,9 +13,10 @@ export const PRODUCT_SHADES = [
 @Component({
   selector: 'app-product-options',
   standalone: true,
+  imports: [CommonModule, TranslatePipe, LocalizeFieldPipe],
   templateUrl: './product-options.component.html',
   styleUrl: './product-options.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductOptionsComponent {
   @Input() product: any;

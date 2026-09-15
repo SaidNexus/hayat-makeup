@@ -3,7 +3,7 @@
     [lucideIcon]="searchIcon"
     class="
       absolute
-      right-3
+      start-3
       top-1/2
       -translate-y-1/2
       text-[#999999]
@@ -13,19 +13,18 @@
       sm:h-[22px]
       sm:w-[22px]
 
-      md:right-4
+      md:start-4
     "
     [strokeWidth]="1.6"
   ></svg>
 
   <input
-    dir="rtl"
     type="search"
     inputMode="search"
     [value]="value"
     (input)="onInput($event)"
-    placeholder="ابحثي عن منتجك..."
-    aria-label="بحث"
+    [placeholder]="'ابحثي عن منتجك...' | localize: 'ابحثي عن منتجك...' : 'Search for products...'"
+    [attr.aria-label]="'COMMON.SEARCH' | translate"
     class="
       h-[44px]
       w-full
@@ -34,8 +33,8 @@
       border-[#EEEEEE]
       bg-white
       py-2
-      pl-[46px]
-      pr-[42px]
+      pe-[46px]
+      ps-[42px]
       text-[12px]
       leading-none
       text-[#111111]
@@ -44,8 +43,8 @@
       focus:border-[#D4146A]
 
       sm:h-[52px]
-      sm:pl-[54px]
-      sm:pr-[52px]
+      sm:pe-[54px]
+      sm:ps-[52px]
       sm:text-[14px]
 
       md:h-[58px]
@@ -56,19 +55,20 @@
   @if (value) {
     <button
       type="button"
-      aria-label="مسح البحث"
+      [attr.aria-label]="'مسح البحث' | localize: 'مسح البحث' : 'Clear search'"
       (click)="onClear()"
       class="
         absolute
-        left-3
+        end-3
         top-1/2
         flex
         -translate-y-1/2
         items-center
         justify-center
         text-[#999999]
+        cursor-pointer
 
-        sm:left-4
+        sm:end-4
       "
     >
       <svg

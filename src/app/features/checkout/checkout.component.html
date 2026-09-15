@@ -1,4 +1,4 @@
-<div dir="rtl" class="min-h-screen w-full bg-white pb-20 lg:pb-12">
+<div class="min-h-screen w-full bg-white pb-20 lg:pb-12">
   <!-- Top Header -->
   <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 md:h-20">
@@ -6,15 +6,15 @@
       <button
         type="button"
         (click)="navigateTo('/cart')"
-        aria-label="العودة للسلة"
-        class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-gray-700 hover:text-[#D4146A] transition-colors"
+        [attr.aria-label]="'CHECKOUT.BACK_TO_CART' | translate"
+        class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-gray-700 hover:text-[#D4146A] transition-colors cursor-pointer"
       >
         <svg
           [lucideIcon]="arrowRightIcon"
-          class="h-4 w-4 sm:h-5 sm:w-5"
+          class="h-4 w-4 sm:h-5 sm:w-5 rtl-flip"
           [strokeWidth]="1.8"
         ></svg>
-        <span>العودة للسلة</span>
+        <span>{{ 'CHECKOUT.BACK_TO_CART' | translate }}</span>
       </button>
 
       <!-- Logo -->
@@ -33,7 +33,7 @@
           class="h-3.5 w-3.5"
           [strokeWidth]="1.8"
         ></svg>
-        <span class="hidden sm:inline">دفع آمن 100%</span>
+        <span class="hidden sm:inline">{{ 'CHECKOUT.SECURE_SHOPPING' | translate }}</span>
       </div>
     </div>
   </header>
@@ -42,10 +42,10 @@
   <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-6">
     <div class="mb-6">
       <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
-        الدفع وإتمام الطلب
+        {{ 'CART.CHECKOUT' | translate }}
       </h1>
       <p class="mt-1 text-xs sm:text-sm text-gray-500">
-        يرجى تعبئة بيانات الشحن واختيار طريقة الدفع المناسبة
+        {{ 'CHECKOUT.ENTER_DETAILS' | translate }}
       </p>
     </div>
 
@@ -64,27 +64,27 @@
                 [strokeWidth]="1.8"
               ></svg>
               <h2 class="text-base sm:text-lg font-bold text-[#222222]">
-                معلومات العميل والشحن
+                {{ 'CHECKOUT.CUSTOMER_DETAILS' | translate }}
               </h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <!-- Name -->
               <div class="relative">
-                <label class="block text-xs font-semibold text-gray-700 mb-1">الاسم الكامل *</label>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">{{ 'COMMON.FULLNAME' | translate }} *</label>
                 <input
                   type="text"
                   name="name"
                   [(ngModel)]="form.name"
                   required
-                  placeholder="أدخل اسمك الكامل"
+                  placeholder="Full Name"
                   class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
                 />
               </div>
 
               <!-- Phone -->
               <div class="relative">
-                <label class="block text-xs font-semibold text-gray-700 mb-1">رقم الجوال *</label>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">{{ 'COMMON.PHONE' | translate }} *</label>
                 <div class="relative flex items-center">
                   <input
                     type="tel"
@@ -94,13 +94,13 @@
                     placeholder="5XXXXXXXX"
                     class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
                   />
-                  <span class="absolute left-3 text-xs text-gray-400 font-bold" dir="ltr">+966</span>
+                  <span class="absolute end-3 text-xs text-gray-400 font-bold" dir="ltr">+966</span>
                 </div>
               </div>
 
               <!-- Email -->
               <div class="relative">
-                <label class="block text-xs font-semibold text-gray-700 mb-1">البريد الإلكتروني (اختياري)</label>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">{{ 'AUTH.EMAIL' | translate }}</label>
                 <input
                   type="email"
                   name="email"
@@ -112,14 +112,14 @@
 
               <!-- City -->
               <div class="relative">
-                <label class="block text-xs font-semibold text-gray-700 mb-1">المدينة *</label>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">{{ 'CHECKOUT.CITY' | translate }} *</label>
                 <select
                   name="city"
                   [(ngModel)]="form.city"
                   required
                   class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
                 >
-                  <option value="">اختاري المدينة</option>
+                  <option value="">{{ 'اختر المدينة' | localize: 'اختر المدينة' : 'Select City' }}</option>
                   @for (city of cities; track city) {
                     <option [value]="city">{{ city }}</option>
                   }
@@ -128,14 +128,14 @@
 
               <!-- Area -->
               <div class="relative">
-                <label class="block text-xs font-semibold text-gray-700 mb-1">المنطقة / الحي *</label>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">{{ 'المنطقة / الحي' | localize: 'المنطقة / الحي' : 'Region / District' }} *</label>
                 <select
                   name="area"
                   [(ngModel)]="form.area"
                   required
                   class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
                 >
-                  <option value="">اختاري المنطقة</option>
+                  <option value="">{{ 'اختر المنطقة' | localize: 'اختر المنطقة' : 'Select Region' }}</option>
                   @for (area of areas; track area) {
                     <option [value]="area">{{ area }}</option>
                   }
@@ -144,13 +144,13 @@
 
               <!-- Address Detail -->
               <div class="relative">
-                <label class="block text-xs font-semibold text-gray-700 mb-1">العنوان بالتفصيل *</label>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">{{ 'COMMON.ADDRESS' | translate }} *</label>
                 <input
                   type="text"
                   name="address"
                   [(ngModel)]="form.address"
                   required
-                  placeholder="اسم الشارع، رقم المبنى"
+                  placeholder="Street name, building #"
                   class="w-full h-11 rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
                 />
               </div>
@@ -158,12 +158,12 @@
 
             <!-- Notes -->
             <div class="pt-2">
-              <label class="block text-xs font-semibold text-gray-700 mb-1">ملاحظات إضافية للتوصيل (اختياري)</label>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">{{ 'COMMON.NOTES' | translate }}</label>
               <textarea
                 name="notes"
                 [(ngModel)]="form.notes"
                 rows="2"
-                placeholder="أي توجيهات خاصة للمندوب..."
+                placeholder="Any special instructions for delivery..."
                 class="w-full rounded-xl border border-gray-200 bg-gray-50/50 p-3 text-sm text-gray-800 outline-none transition focus:border-[#D4146A] focus:bg-white"
               ></textarea>
             </div>
@@ -178,7 +178,7 @@
                 [strokeWidth]="1.8"
               ></svg>
               <h2 class="text-base sm:text-lg font-bold text-[#222222]">
-                طريقة الدفع
+                {{ 'CHECKOUT.PAYMENT_METHOD' | translate }}
               </h2>
             </div>
 
@@ -187,7 +187,7 @@
               <button
                 type="button"
                 (click)="setPayment('cash')"
-                class="flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all text-center"
+                class="flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all text-center cursor-pointer"
                 [ngClass]="
                   paymentMethod === 'cash'
                     ? 'border-[#D4146A] bg-pink-50/40 text-[#D4146A] shadow-sm'
@@ -199,15 +199,15 @@
                   class="h-6 w-6 mb-2"
                   [strokeWidth]="1.5"
                 ></svg>
-                <span class="text-xs sm:text-sm font-bold">الدفع عند الاستلام</span>
-                <span class="text-[10px] text-gray-400 mt-0.5">نقداً أو شبكة</span>
+                <span class="text-xs sm:text-sm font-bold">{{ 'COMMON.CASHONDELIVERY' | translate }}</span>
+                <span class="text-[10px] text-gray-400 mt-0.5">{{ 'نقداً أو شبكة' | localize: 'نقداً أو شبكة' : 'Cash or POS' }}</span>
               </button>
 
               <!-- Bank Card -->
               <button
                 type="button"
                 (click)="setPayment('bank')"
-                class="flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all text-center"
+                class="flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all text-center cursor-pointer"
                 [ngClass]="
                   paymentMethod === 'bank'
                     ? 'border-[#D4146A] bg-pink-50/40 text-[#D4146A] shadow-sm'
@@ -219,15 +219,15 @@
                   class="h-6 w-6 mb-2"
                   [strokeWidth]="1.5"
                 ></svg>
-                <span class="text-xs sm:text-sm font-bold">بطاقة بنكية / مدى</span>
-                <span class="text-[10px] text-gray-400 mt-0.5">مدى، فيزا، ماستركارد</span>
+                <span class="text-xs sm:text-sm font-bold">{{ 'بطاقة بنكية / مدى' | localize: 'بطاقة بنكية / مدى' : 'Credit Card / Mada' }}</span>
+                <span class="text-[10px] text-gray-400 mt-0.5">Mada, Visa, Mastercard</span>
               </button>
 
               <!-- Wallet -->
               <button
                 type="button"
                 (click)="setPayment('wallet')"
-                class="flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all text-center"
+                class="flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all text-center cursor-pointer"
                 [ngClass]="
                   paymentMethod === 'wallet'
                     ? 'border-[#D4146A] bg-pink-50/40 text-[#D4146A] shadow-sm'
@@ -240,7 +240,7 @@
                   [strokeWidth]="1.5"
                 ></svg>
                 <span class="text-xs sm:text-sm font-bold">Apple Pay / STC Pay</span>
-                <span class="text-[10px] text-gray-400 mt-0.5">دفع إلكتروني سريع</span>
+                <span class="text-[10px] text-gray-400 mt-0.5">{{ 'دفع إلكتروني سريع' | localize: 'دفع إلكتروني سريع' : 'Fast Digital Pay' }}</span>
               </button>
             </div>
           </section>
@@ -248,9 +248,9 @@
           <!-- Confirm Order Button (Desktop & Mobile) -->
           <button
             type="submit"
-            class="w-full rounded-xl bg-[#D4146A] py-4 text-base font-bold text-white shadow-lg shadow-pink-500/20 transition hover:bg-[#b01057] active:scale-[0.99]"
+            class="w-full rounded-xl bg-[#D4146A] py-4 text-base font-bold text-white shadow-lg shadow-pink-500/20 transition hover:bg-[#b01057] active:scale-[0.99] cursor-pointer"
           >
-            تأكيد الطلب ({{ total() }} ر.س)
+            {{ 'COMMON.PLACEORDER' | translate }} ({{ total() }} {{ 'COMMON.CURRENCY' | translate }})
           </button>
         </div>
 
@@ -261,8 +261,8 @@
             <!-- Summary Box -->
             <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm space-y-4">
               <div class="flex items-center justify-between pb-3 border-b border-gray-100">
-                <h3 class="text-base font-bold text-[#222222]">ملخص الطلب</h3>
-                <span class="text-xs text-gray-500">{{ cartService.totalItems() }} منتجات</span>
+                <h3 class="text-base font-bold text-[#222222]">{{ 'CHECKOUT.ORDER_SUMMARY' | translate }}</h3>
+                <span class="text-xs text-gray-500">{{ cartService.totalItems() }} {{ 'منتجات' | localize: 'منتجات' : 'items' }}</span>
               </div>
 
               <!-- Mini Item List -->
@@ -276,10 +276,10 @@
                     />
                     <div class="flex-1 min-w-0">
                       <p class="text-xs font-semibold text-gray-800 truncate">{{ item.name }}</p>
-                      <p class="text-[10px] text-gray-400">الكمية: {{ item.quantity || 1 }}</p>
+                      <p class="text-[10px] text-gray-400">{{ 'COMMON.QUANTITY' | translate }}: {{ item.quantity || 1 }}</p>
                     </div>
                     <span class="text-xs font-bold text-[#D4146A]">
-                      {{ item.price }} ر.س
+                      {{ item.price }} {{ 'COMMON.CURRENCY' | translate }}
                     </span>
                   </div>
                 }
@@ -287,22 +287,22 @@
 
               <div class="border-t border-gray-100 pt-3 space-y-2 text-xs text-gray-600">
                 <div class="flex justify-between">
-                  <span>المجموع الفرعي</span>
-                  <span class="font-semibold text-gray-800">{{ subtotal() }} ر.س</span>
+                  <span>{{ 'COMMON.SUBTOTAL' | translate }}</span>
+                  <span class="font-semibold text-gray-800">{{ subtotal() }} {{ 'COMMON.CURRENCY' | translate }}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span>رسوم الشحن</span>
-                  <span class="font-semibold text-green-600">{{ shipping() > 0 ? shipping() + ' ر.س' : 'مجاني' }}</span>
+                  <span>{{ 'COMMON.DELIVERY' | translate }}</span>
+                  <span class="font-semibold text-green-600">{{ shipping() > 0 ? (shipping() + ' ' + ('COMMON.CURRENCY' | translate)) : ('COMMON.FREE' | translate) }}</span>
                 </div>
                 <div class="flex justify-between text-pink-600 font-semibold">
-                  <span>الخصم المطبق ({{ couponCode }})</span>
-                  <span>-{{ discount }} ر.س</span>
+                  <span>{{ 'COMMON.DISCOUNT' | translate }} ({{ couponCode }})</span>
+                  <span>-{{ discount }} {{ 'COMMON.CURRENCY' | translate }}</span>
                 </div>
               </div>
 
               <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
-                <span class="text-sm font-bold text-gray-900">المجموع الكلي</span>
-                <span class="text-lg font-bold text-[#D4146A]">{{ total() }} ر.س</span>
+                <span class="text-sm font-bold text-gray-900">{{ 'CART.TOTAL' | translate }}</span>
+                <span class="text-lg font-bold text-[#D4146A]">{{ total() }} {{ 'COMMON.CURRENCY' | translate }}</span>
               </div>
             </div>
 
@@ -311,24 +311,24 @@
               <div class="flex items-center gap-3">
                 <svg [lucideIcon]="badgeCheckIcon" class="h-5 w-5 text-[#D4146A] shrink-0" [strokeWidth]="1.5"></svg>
                 <div class="text-xs">
-                  <p class="font-bold text-gray-800">منتجات أصلية 100%</p>
-                  <p class="text-gray-400 text-[10px]">مضمونة المصدر والجودة</p>
+                  <p class="font-bold text-gray-800">{{ 'CART.ORIGINAL_PRODUCTS' | translate }}</p>
+                  <p class="text-gray-400 text-[10px]">{{ 'CART.GUARANTEED_100' | translate }}</p>
                 </div>
               </div>
 
               <div class="flex items-center gap-3">
                 <svg [lucideIcon]="shieldCheckIcon" class="h-5 w-5 text-[#D4146A] shrink-0" [strokeWidth]="1.5"></svg>
                 <div class="text-xs">
-                  <p class="font-bold text-gray-800">تسوق آمن ومحمي</p>
-                  <p class="text-gray-400 text-[10px]">تشفير كامل لبيانات الدفع</p>
+                  <p class="font-bold text-gray-800">{{ 'CART.SECURE_PAYMENT' | translate }}</p>
+                  <p class="text-gray-400 text-[10px]">{{ 'CART.SECURE_100' | translate }}</p>
                 </div>
               </div>
 
               <div class="flex items-center gap-3">
                 <svg [lucideIcon]="headphonesIcon" class="h-5 w-5 text-[#D4146A] shrink-0" [strokeWidth]="1.5"></svg>
                 <div class="text-xs">
-                  <p class="font-bold text-gray-800">دعم العملاء متواصل</p>
-                  <p class="text-gray-400 text-[10px]">جاهزون لمساعدتك دائماً</p>
+                  <p class="font-bold text-gray-800">{{ 'CONTACT.CUSTOMER_SERVICE' | translate }}</p>
+                  <p class="text-gray-400 text-[10px]">{{ '24/7' }}</p>
                 </div>
               </div>
             </div>

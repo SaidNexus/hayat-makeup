@@ -1,5 +1,6 @@
 import { Component, computed, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { HeaderComponent } from '../../shared/components/layout/header/header.component';
 import { MobileBottomNavComponent } from '../../shared/components/navigation/mobile-bottom-nav/mobile-bottom-nav.component';
 import {
@@ -29,6 +30,7 @@ export const USER_MOCK: UserProfile = {
     AccountProfileCardComponent,
     AccountStatsComponent,
     AccountSectionsComponent,
+    TranslatePipe,
   ],
   templateUrl: './account.component.html',
   styleUrl: './account.component.css',
@@ -45,16 +47,19 @@ export class AccountComponent {
     {
       id: 'favorites',
       label: 'المفضلة',
+      key: 'ACCOUNT.FAVORITES',
       value: this.favoritesService.favorites().length,
     },
     {
       id: 'cart',
       label: 'السلة',
+      key: 'ACCOUNT.CART',
       value: this.cartService.totalItems(),
     },
     {
       id: 'orders',
       label: 'الطلبات',
+      key: 'ACCOUNT.ORDERS',
       value: 1,
     },
   ]);

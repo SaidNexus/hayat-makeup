@@ -1,4 +1,9 @@
-<section dir="rtl" class="w-full py-1 sm:py-2">
+<section class="w-full py-1 sm:py-2">
+  <div *ngIf="config?.title" class="mb-3">
+    <h2 class="text-base sm:text-xl md:text-2xl font-bold text-[#111111]">
+      {{ config.title | localize: config.titleAr : config.titleEn }}
+    </h2>
+  </div>
   <div
     class="
       grid
@@ -13,12 +18,12 @@
       py-1
     "
   >
-    @for (category of categories(); track category.name) {
+    @for (category of categoriesList; track category.name) {
       <div class="w-full flex justify-center">
         <app-category-circle
           [image]="category.image"
-          [name]="category.name"
-          (categoryClick)="onCategorySelect(category.name)"
+          [name]="(category.name | localize: category.nameAr : category.nameEn)"
+          (categoryClick)="onCategorySelect(category)"
         ></app-category-circle>
       </div>
     }

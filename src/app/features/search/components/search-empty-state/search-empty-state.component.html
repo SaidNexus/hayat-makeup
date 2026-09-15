@@ -47,10 +47,10 @@
 
       sm:mt-5
       sm:text-[22px]
-      sm:text-[26px]
+      md:text-[26px]
     "
   >
-    {{ query ? 'لا توجد نتائج مطابقة' : 'ابحثي عن منتجك' }}
+    {{ (query ? 'لا توجد نتائج مطابقة' : 'ابحثي عن منتجك') | localize: (query ? 'لا توجد نتائج مطابقة' : 'ابحثي عن منتجك') : (query ? 'No matching results' : 'Search for your product') }}
   </h2>
 
   <p
@@ -67,9 +67,13 @@
     "
   >
     {{
-      query
+      (query
         ? 'لم نعثر على نتائج لبحثك، جربي كلمة مختلفة.'
-        : 'اكتبي اسم المنتج أو نوعه للعثور على ما تبحثين عنه.'
+        : 'اكتبي اسم المنتج أو نوعه للعثور على ما تبحثين عنه.') | localize: (query
+        ? 'لم نعثر على نتائج لبحثك، جربي كلمة مختلفة.'
+        : 'اكتبي اسم المنتج أو نوعه للعثور على ما تبحثين عنه.') : (query
+        ? 'We could not find any results for your query. Try another keyword.'
+        : 'Type product name or category to find what you desire.')
     }}
   </p>
 
@@ -89,13 +93,16 @@
         font-medium
         leading-none
         text-white
+        cursor-pointer
+        hover:bg-[#b01057]
+        transition-colors
 
         sm:px-7
         sm:py-3
         sm:text-[14px]
       "
     >
-      تصفحي جميع المنتجات
+      {{ 'COMMON.START_SHOPPING' | translate }}
     </button>
 
     @if (query) {
@@ -115,13 +122,16 @@
           font-medium
           leading-none
           text-[#D4146A]
+          cursor-pointer
+          hover:bg-pink-50
+          transition-colors
 
           sm:px-7
           sm:py-3
           sm:text-[14px]
         "
       >
-        مسح البحث
+        {{ 'مسح البحث' | localize: 'مسح البحث' : 'Clear search' }}
       </button>
     }
   </div>

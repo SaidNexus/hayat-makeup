@@ -1,46 +1,84 @@
-<section dir="rtl" class="w-full">
+<section class="w-full" aria-label="Store Benefits">
   <div
     class="
-      flex
       w-full
-      items-center
-      justify-between
-      rounded-xl
-      border
-      border-gray-200
+      rounded-xl sm:rounded-2xl
+      border border-gray-100
       bg-white
-      py-2.5
-      sm:py-3.5
-      px-2
-      shadow-[0_2px_8px_rgba(0,0,0,0.02)]
+      py-2.5 sm:py-3.5 md:py-4
+      px-2 sm:px-4 md:px-6
+      shadow-[0_2px_10px_rgba(0,0,0,0.03)]
     "
   >
-    @for (feature of features; track feature.label; let i = $index) {
-      <div
-        class="flex flex-1 min-w-0 items-center justify-center gap-1.5 sm:gap-2.5 md:gap-3 px-1 sm:px-2"
-        [class.border-l]="i !== features.length - 1"
-        [class.border-gray-200]="i !== features.length - 1"
-      >
-        <svg
-          [lucideIcon]="feature.icon"
-          class="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 shrink-0 text-[#D4146A]"
-          [strokeWidth]="1.6"
-        ></svg>
-
-        <span
+    <div
+      class="grid items-center w-full divide-x divide-gray-100 rtl:divide-x-reverse"
+      [style.grid-template-columns]="'repeat(' + processedBenefits.length + ', minmax(0, 1fr))'"
+    >
+      @for (benefit of processedBenefits; track benefit.id; let i = $index) {
+        <div
           class="
-            whitespace-nowrap
-            text-[10px]
-            sm:text-xs
-            md:text-sm
-            lg:text-base
-            font-bold
-            text-gray-800
+            flex
+            items-center
+            justify-center
+            gap-1.5 sm:gap-2.5 md:gap-3.5
+            px-1 sm:px-2 md:px-3
+            min-w-0
           "
         >
-          {{ feature.label }}
-        </span>
-      </div>
-    }
+          <!-- Icon Halo -->
+          <div
+            class="
+              flex
+              items-center
+              justify-center
+              h-7 w-7 sm:h-9 sm:w-9 md:h-10 md:w-10
+              rounded-full
+              bg-[#FFF0F6]
+              text-[#D4146A]
+              shrink-0
+              transition-transform duration-200
+            "
+          >
+            <svg
+              [lucideIcon]="getIcon(benefit.icon)"
+              class="h-3.5 w-3.5 sm:h-4.5 sm:w-4.5 md:h-5 md:w-5"
+              [strokeWidth]="1.8"
+            ></svg>
+          </div>
+
+          <!-- Text Block -->
+          <div class="flex flex-col min-w-0 text-start overflow-hidden">
+            <span
+              class="
+                font-bold
+                text-[#111111]
+                text-[10px] sm:text-xs md:text-sm
+                leading-tight sm:leading-snug
+                truncate
+              "
+              [title]="benefit.titleAr | localize: benefit.titleAr : benefit.titleEn"
+            >
+              {{ benefit.titleAr | localize: benefit.titleAr : benefit.titleEn }}
+            </span>
+
+            @if (benefit.subtitleEn || benefit.subtitleAr) {
+              <span
+                class="
+                  text-[8px] sm:text-[10px] md:text-[11px]
+                  text-gray-400 sm:text-gray-500
+                  font-medium
+                  leading-tight
+                  truncate
+                  mt-0.5
+                "
+                [title]="benefit.subtitleAr | localize: benefit.subtitleAr : benefit.subtitleEn"
+              >
+                {{ benefit.subtitleAr | localize: benefit.subtitleAr : benefit.subtitleEn }}
+              </span>
+            }
+          </div>
+        </div>
+      }
+    </div>
   </div>
 </section>

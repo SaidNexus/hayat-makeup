@@ -3,7 +3,11 @@ import { Injectable, computed, signal } from '@angular/core';
 export interface CartItem {
   id: string | number;
   name: string;
+  nameAr?: string;
+  nameEn?: string;
   description?: string;
+  descriptionAr?: string;
+  descriptionEn?: string;
   color?: string;
   colorCode?: string;
   price: number;

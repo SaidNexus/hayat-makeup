@@ -1,5 +1,4 @@
 <form
-  dir="rtl"
   (submit)="onSubmit($event)"
   class="
     flex
@@ -13,7 +12,7 @@
   <label
     for="track-order-input"
     class="
-      text-right
+      text-start
       text-[12px]
       font-medium
       text-[#111111]
@@ -21,19 +20,18 @@
       sm:text-[16px]
     "
   >
-    رقم الطلب
+    {{ 'COMMON.ORDER_NUMBER' | translate }}
   </label>
 
   <div class="relative">
     <input
       id="track-order-input"
-      dir="ltr"
       type="text"
       inputMode="numeric"
       [value]="value"
       (input)="onInput($event)"
       placeholder="10245"
-      aria-label="رقم الطلب"
+      aria-label="Order number"
       class="
         h-[46px]
         w-full
@@ -42,9 +40,9 @@
         border-[#EEEEEE]
         bg-white
         py-2
-        pl-4
-        pr-11
-        text-right
+        px-4
+        pe-11
+        text-start
         text-[13px]
         leading-none
         text-[#111111]
@@ -63,7 +61,7 @@
       [lucideIcon]="searchIcon"
       class="
         absolute
-        right-3.5
+        end-3.5
         top-1/2
         -translate-y-1/2
         text-[#999999]
@@ -112,6 +110,6 @@
       ></svg>
     }
 
-    <span>تتبع الطلب</span>
+    <span>{{ 'TRACK_ORDER.TITLE' | translate }}</span>
   </button>
 </form>

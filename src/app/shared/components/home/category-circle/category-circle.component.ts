@@ -12,6 +12,15 @@ export class CategoryCircleComponent {
   @Input() name = '';
   @Output() categoryClick = new EventEmitter<void>();
 
+  readonly fallbackImage = 'https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248101/hayat-makeup/category-eyes.png';
+
+  onImgError(event: Event): void {
+    const target = event.target as HTMLImageElement;
+    if (target && target.src !== this.fallbackImage) {
+      target.src = this.fallbackImage;
+    }
+  }
+
   onClick(): void {
     this.categoryClick.emit();
   }

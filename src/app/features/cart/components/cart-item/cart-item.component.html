@@ -1,5 +1,4 @@
 <article
-  dir="rtl"
   class="
     relative
     flex
@@ -19,7 +18,7 @@
     transition-all
   "
 >
-  <!-- Right Side: Image + Details -->
+  <!-- Image + Details -->
   <div class="flex items-center gap-3 min-w-0 flex-1">
     <!-- Image -->
     <div
@@ -48,9 +47,9 @@
     </div>
 
     <!-- Info -->
-    <div class="min-w-0 flex-1 space-y-1 text-right">
+    <div class="min-w-0 flex-1 space-y-1 text-start">
       <h3 class="text-xs sm:text-sm md:text-base font-bold text-gray-900 line-clamp-1">
-        {{ item.name }}
+        {{ item.name | localize: item.nameAr : item.nameEn }}
       </h3>
 
       @if (item.description) {
@@ -61,7 +60,7 @@
 
       @if (item.color) {
         <div class="flex items-center gap-1.5 text-[10px] sm:text-xs text-gray-600">
-          <span>اللون: {{ item.color }}</span>
+          <span>{{ 'PRODUCT.COLOR' | translate }}: {{ item.color }}</span>
           @if (item.colorCode) {
             <span
               class="h-3 w-3 rounded-full border border-gray-200"
@@ -72,19 +71,19 @@
       }
 
       <div class="text-xs sm:text-sm font-extrabold text-[#D4146A]">
-        {{ item.price }} <span class="text-[10px] sm:text-xs font-normal">ر.س</span>
+        {{ item.price }} <span class="text-[10px] sm:text-xs font-normal">{{ 'COMMON.CURRENCY' | translate }}</span>
       </div>
     </div>
   </div>
 
-  <!-- Left Side: Quantity Selector + Delete Button -->
+  <!-- Quantity Selector + Delete Button -->
   <div class="flex flex-col items-end justify-between h-full space-y-3 shrink-0">
     <!-- Delete Button -->
     <button
       type="button"
       (click)="onRemove()"
-      aria-label="حذف المنتج"
-      class="text-gray-400 hover:text-red-500 transition-colors p-1"
+      [attr.aria-label]="'COMMON.DELETE' | translate"
+      class="text-gray-400 hover:text-red-500 transition-colors p-1 cursor-pointer"
     >
       <svg
         [lucideIcon]="trashIcon"
@@ -98,7 +97,7 @@
       <button
         type="button"
         (click)="onIncrease()"
-        class="h-full px-2 text-[#D4146A] hover:bg-pink-50 transition-colors flex items-center justify-center"
+        class="h-full px-2 text-[#D4146A] hover:bg-pink-50 transition-colors flex items-center justify-center cursor-pointer"
       >
         <svg [lucideIcon]="plusIcon" class="h-3 w-3 sm:h-3.5 sm:w-3.5" [strokeWidth]="2"></svg>
       </button>
@@ -111,7 +110,7 @@
         type="button"
         (click)="onDecrease()"
         [disabled]="item.quantity <= 1"
-        class="h-full px-2 text-[#D4146A] disabled:opacity-30 hover:bg-pink-50 transition-colors flex items-center justify-center"
+        class="h-full px-2 text-[#D4146A] disabled:opacity-30 hover:bg-pink-50 transition-colors flex items-center justify-center cursor-pointer"
       >
         <svg [lucideIcon]="minusIcon" class="h-3 w-3 sm:h-3.5 sm:w-3.5" [strokeWidth]="2"></svg>
       </button>

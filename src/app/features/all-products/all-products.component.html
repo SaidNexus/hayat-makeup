@@ -1,5 +1,4 @@
 <div
-  dir="rtl"
   class="
     min-h-screen
     w-full
@@ -13,13 +12,13 @@
 
   <main class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 pt-3 sm:pt-6">
     <!-- Page Header -->
-    <section class="mb-3 text-center sm:text-right">
+    <section class="mb-3 text-center sm:text-start">
       <h1 class="text-lg sm:text-2xl md:text-3xl font-bold text-[#222222]">
-        جميع المنتجات
+        {{ 'NAV.PRODUCTS' | translate }}
       </h1>
 
       <p class="mt-1 text-xs sm:text-sm text-gray-500">
-        {{ visibleProducts().length }} منتج
+        {{ visibleProducts().length }} {{ 'منتج' | localize: 'منتج' : 'products' }}
       </p>
     </section>
 
@@ -36,7 +35,11 @@
           [id]="product.id"
           [image]="product.image"
           [name]="product.name"
+          [nameAr]="product.nameAr || product.name"
+          [nameEn]="product.nameEn || product.name"
           [description]="product.description"
+          [descriptionAr]="product.descriptionAr || product.description"
+          [descriptionEn]="product.descriptionEn || product.description"
           [price]="product.price"
           [rating]="product.rating"
           [reviews]="product.reviews"

@@ -22,6 +22,8 @@ import {
   LucideHeadphones,
 } from '@lucide/angular';
 import { CartService } from '../../core/services/cart.service';
+import { TranslatePipe } from '../../core/i18n/translate.pipe';
+import { LocalizeFieldPipe } from '../../shared/pipes/localize-field.pipe';
 
 export interface CheckoutForm {
   name: string;
@@ -40,10 +42,17 @@ export const COUPON_CODE = 'HAYAT10';
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, LucideDynamicIcon],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    LucideDynamicIcon,
+    TranslatePipe,
+    LocalizeFieldPipe,
+  ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckoutComponent {
   private readonly router = inject(Router);

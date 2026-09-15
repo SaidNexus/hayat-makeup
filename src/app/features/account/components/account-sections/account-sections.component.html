@@ -9,7 +9,7 @@
           border-[#EEEEEE]
           px-3
           py-2.5
-          text-right
+          text-start
           text-[11px]
           font-medium
           text-[#888888]
@@ -18,13 +18,14 @@
           sm:text-[13px]
         "
       >
-        {{ group.title }}
+        {{ group.titleKey ? (group.titleKey | translate) : group.title }}
       </h2>
 
       @for (item of group.items; track item.id) {
         <app-account-menu-item
           [icon]="item.icon"
           [label]="item.label"
+          [labelKey]="item.labelKey"
           [badge]="item.badge"
           (itemClick)="onNavigate(item.to)"
         ></app-account-menu-item>
@@ -67,7 +68,7 @@
         sm:text-[16px]
       "
     >
-      تسجيل الخروج
+      {{ 'ACCOUNT.LOGOUT' | translate }}
     </span>
   </button>
 </div>

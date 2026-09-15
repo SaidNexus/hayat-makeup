@@ -1,4 +1,5 @@
 import { Component, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../../shared/components/layout/header/header.component';
 import { MobileBottomNavComponent } from '../../shared/components/navigation/mobile-bottom-nav/mobile-bottom-nav.component';
@@ -9,6 +10,8 @@ import {
   ALL_PRODUCTS_DATA,
   ProductItem,
 } from '../all-products/all-products.component';
+import { TranslatePipe } from '../../core/i18n/translate.pipe';
+import { LocalizeFieldPipe } from '../../shared/pipes/localize-field.pipe';
 
 export type AllProduct = ProductItem;
 
@@ -16,15 +19,18 @@ export type AllProduct = ProductItem;
   selector: 'app-search',
   standalone: true,
   imports: [
+    CommonModule,
     HeaderComponent,
     MobileBottomNavComponent,
     SearchInputComponent,
     SearchResultsComponent,
     SearchEmptyStateComponent,
+    TranslatePipe,
+    LocalizeFieldPipe,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent {
   private readonly router = inject(Router);

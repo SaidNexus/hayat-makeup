@@ -84,7 +84,7 @@
           md:text-[15px]
         "
       >
-        {{ stat.label }}
+        {{ stat.key ? (stat.key | translate) : stat.label }}
       </span>
     </button>
   }

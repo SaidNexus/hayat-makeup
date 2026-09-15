@@ -4,11 +4,12 @@ import {
   LucideMapPin,
   LucideShoppingBag,
 } from '@lucide/angular';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
 @Component({
   selector: 'app-order-actions',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [LucideDynamicIcon, TranslatePipe],
   templateUrl: './order-actions.component.html',
   styleUrl: './order-actions.component.css',
 changeDetection: ChangeDetectionStrategy.OnPush,

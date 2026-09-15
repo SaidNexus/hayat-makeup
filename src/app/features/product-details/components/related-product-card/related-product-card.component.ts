@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   LucideDynamicIcon,
   LucideHeart,
@@ -7,10 +8,14 @@ import {
 } from '@lucide/angular';
 import { CartService } from '../../../../core/services/cart.service';
 import { FavoritesService } from '../../../../core/services/favorites.service';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
+import { LocalizeFieldPipe } from '../../../../shared/pipes/localize-field.pipe';
 
 export interface RelatedProduct {
   id: number | string;
   name: string;
+  nameAr?: string;
+  nameEn?: string;
   price: number | string;
   rating: number | string;
   image: string;
@@ -19,10 +24,10 @@ export interface RelatedProduct {
 @Component({
   selector: 'app-related-product-card',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [CommonModule, LucideDynamicIcon, TranslatePipe, LocalizeFieldPipe],
   templateUrl: './related-product-card.component.html',
   styleUrl: './related-product-card.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RelatedProductCardComponent {
   @Input({ required: true }) product!: RelatedProduct;

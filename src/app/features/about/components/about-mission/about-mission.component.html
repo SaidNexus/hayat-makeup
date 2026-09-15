@@ -25,7 +25,7 @@
       lg:text-[42px]
     "
   >
-    مهمتنا
+    {{ 'مهمتنا' | localize: 'مهمتنا' : 'Our Mission' }}
   </h2>
 
   <!-- Underline -->
@@ -55,7 +55,7 @@
       items-center
       justify-center
       gap-3
-      text-right
+      text-start
       sm:mt-4
       sm:gap-4
 
@@ -76,8 +76,7 @@
         md:leading-7
       "
     >
-      نقدم منتجات تجميل أصلية عالية الجودة تلهم كل امرأة
-      لتشعر بالجمال والثقة كل يوم.
+      {{ 'نقدم منتجات تجميل أصلية عالية الجودة تلهم كل امرأة لتشعر بالجمال والثقة كل يوم.' | localize: 'نقدم منتجات تجميل أصلية عالية الجودة تلهم كل امرأة لتشعر بالجمال والثقة كل يوم.' : 'We provide genuine, high-quality beauty products that inspire every woman to feel stunning and confident every single day.' }}
     </p>
 
     <svg

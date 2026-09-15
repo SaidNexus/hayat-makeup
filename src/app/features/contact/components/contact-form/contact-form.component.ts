@@ -1,4 +1,5 @@
 import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   LucideDynamicIcon,
@@ -9,14 +10,22 @@ import {
   LucideShieldCheck,
   LucideUserRound,
 } from '@lucide/angular';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
+import { LocalizeFieldPipe } from '../../../../shared/pipes/localize-field.pipe';
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [FormsModule, LucideDynamicIcon],
+  imports: [
+    CommonModule,
+    FormsModule,
+    LucideDynamicIcon,
+    TranslatePipe,
+    LocalizeFieldPipe,
+  ],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactFormComponent {
   readonly userRoundIcon = LucideUserRound;

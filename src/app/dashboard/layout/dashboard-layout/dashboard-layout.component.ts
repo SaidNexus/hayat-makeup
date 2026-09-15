@@ -55,9 +55,9 @@ export class DashboardLayoutComponent {
   searchQuery = '';
 
   activeAccount = {
-    name: 'مدير النظام (Admin)',
-    email: 'admin@moonlight.com',
-    roleLabel: 'مدير النظام',
+    name: 'مدير المتجر (Admin)',
+    email: 'admin@hayatmakeup.com',
+    roleLabel: 'مدير المتجر',
     avatar: '',
   };
 

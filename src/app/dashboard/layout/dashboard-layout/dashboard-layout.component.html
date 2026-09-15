@@ -8,14 +8,12 @@
     >
       <lucide-icon [img]="Menu" [size]="27" [strokeWidth]="2"></lucide-icon>
     </button>
-    <div class="dashboard-home__brand" aria-label="MOON LIGHT">
-      <span class="dashboard-home__brand-primary font-black tracking-wider">MOON</span>
-      <span class="dashboard-home__brand-secondary font-black tracking-wider text-[#e60067]">LIGHT</span>
+    <div class="dashboard-home__brand" aria-label="HAYAT MAKEUP">
+      <span class="dashboard-home__brand-primary font-black tracking-wider">HAYAT</span>
+      <span class="dashboard-home__brand-secondary font-black tracking-wider text-[#D4146A]">MAKEUP</span>
     </div>
-    <div class="dashboard-home__header-actions" aria-label="روابط الداشبورد السريعة">
-      <button type="button" (click)="router.navigate(['/admin'])">عرض الأسعار</button>
-      <button type="button" (click)="router.navigate(['/admin'])">عرض المنتجات</button>
-      <button type="button" (click)="router.navigate(['/admin'])">الاعتمادات</button>
+    <div class="dashboard-home__header-actions" aria-label="روابط المتجر">
+      <button type="button" (click)="router.navigate(['/'])">الذهاب للمتجر</button>
     </div>
   </header>
 
@@ -35,11 +33,10 @@
         <button
           type="button"
           class="dashboard-sidebar__avatar"
-          aria-label="تغيير أو حذف صورة الحساب"
+          aria-label="صورة الحساب"
         >
           <img *ngIf="activeAccount.avatar" [src]="activeAccount.avatar" [alt]="activeAccount.name" />
           <span *ngIf="!activeAccount.avatar">{{ initials(activeAccount.name) }}</span>
-          <small><lucide-icon [img]="Camera" [size]="13"></lucide-icon></small>
         </button>
         <div class="dashboard-sidebar__identity dashboard-sidebar__identity--name-only">
           <strong>{{ activeAccount.name }}</strong>
@@ -47,14 +44,6 @@
       </header>
 
       <ng-container *ngIf="sidebarView === 'menu'">
-        <label class="dashboard-sidebar__search">
-          <lucide-icon [img]="Search" [size]="16"></lucide-icon>
-          <input
-            [ngModel]="searchQuery"
-            (ngModelChange)="searchQuery = $event"
-            placeholder="ابحث في القائمة..."
-          />
-        </label>
         <nav class="dashboard-sidebar__nav">
           <div class="dashboard-sidebar__nav-group">
             <button
@@ -64,31 +53,7 @@
             >
               <span class="dashboard-sidebar__nav-main">
                 <lucide-icon [img]="LayoutDashboard" [size]="17"></lucide-icon>
-                <span>لوحة التحكم وتخصيص المتجر</span>
-              </span>
-              <lucide-icon [img]="ChevronLeft" [size]="15"></lucide-icon>
-            </button>
-
-            <button
-              type="button"
-              class="dashboard-sidebar__nav-row"
-              (click)="router.navigate(['/catalog']); closeSidebar()"
-            >
-              <span class="dashboard-sidebar__nav-main">
-                <lucide-icon [img]="Package" [size]="17"></lucide-icon>
-                <span>المنتجات والتصنيفات</span>
-              </span>
-              <lucide-icon [img]="ChevronLeft" [size]="15"></lucide-icon>
-            </button>
-
-            <button
-              type="button"
-              class="dashboard-sidebar__nav-row"
-              (click)="router.navigate(['/orderTracking']); closeSidebar()"
-            >
-              <span class="dashboard-sidebar__nav-main">
-                <lucide-icon [img]="Database" [size]="17"></lucide-icon>
-                <span>تتبع وإدارة الطلبات</span>
+                <span>إدارة وتخصيص المتجر</span>
               </span>
               <lucide-icon [img]="ChevronLeft" [size]="15"></lucide-icon>
             </button>

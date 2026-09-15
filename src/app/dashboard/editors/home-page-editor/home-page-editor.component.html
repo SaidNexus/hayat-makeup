@@ -1,13 +1,17 @@
-﻿<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
+<div class="w-full flex flex-col gap-2 pb-24" dir="rtl">
   <div class="text-center mb-4">
     <h2 class="text-xl font-bold text-gray-900 mb-1">عناصر الصفحة الرئيسية</h2>
-    <p class="text-sm text-gray-500">تحكم في ترتيب وتعديل عناصر الصفحة الرئيسية</p>
+    <p class="text-sm text-gray-500">تحكم في محتوى وترتيب وترجمة عناصر الصفحة الرئيسية</p>
   </div>
   
   <div class="flex flex-col">
     <ng-container *ngFor="let section of config.sections; let index = index">
       
       <app-section-card 
+        [attr.id]="'editor-card-' + section.id"
+        [attr.data-card-type]="section.type"
+        (click)="onCardClick(section)"
+        (focusin)="onCardClick(section)"
         [title]="titles[section.type] || 'قسم جديد'"
         [index]="index"
         [enabled]="section.enabled"
@@ -25,21 +29,22 @@
         (drop)="handleDrop($event, index)"
       >
 
+        <!-- HERO SECTION -->
         <ng-container *ngIf="section.type === 'hero'">
-          <div class="flex gap-2 overflow-x-auto pb-2">
+          <div class="flex gap-2 overflow-x-auto pb-2 mb-3">
             <div *ngFor="let slide of getHeroSlides(section); let sIdx = index" class="relative w-32 flex-shrink-0 group">
-              <div class="w-full h-24 rounded-lg overflow-hidden border-2 border-transparent group-hover:border-pink-500 transition-colors">
+              <div class="w-full h-24 rounded-lg overflow-hidden border-2 border-transparent group-hover:border-[#D4146A] transition-colors">
                 <img [src]="slide.image" alt="" class="w-full h-full object-cover" />
               </div>
-              <div class="absolute top-1 right-1 bg-pink-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">{{ sIdx + 1 }}</div>
+              <div class="absolute top-1 right-1 bg-[#D4146A] text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">{{ sIdx + 1 }}</div>
               <div class="absolute top-1 left-1 flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button (click)="deleteSlide(section, sIdx)" class="p-1.5 bg-white text-red-500 rounded-md shadow hover:bg-red-50">
+                <button (click)="deleteSlide(section, sIdx)" class="p-1.5 bg-white text-red-500 rounded-md shadow hover:bg-red-50" title="حذف">
                   <lucide-icon [img]="Trash2" [size]="14"></lucide-icon>
                 </button>
-                <button (click)="duplicateSlide(section, sIdx)" class="p-1.5 bg-white text-pink-500 rounded-md shadow hover:bg-pink-50">
+                <button (click)="duplicateSlide(section, sIdx)" class="p-1.5 bg-white text-pink-500 rounded-md shadow hover:bg-pink-50" title="تكرار">
                   <lucide-icon [img]="Copy" [size]="14"></lucide-icon>
                 </button>
-                <button (click)="promptHeroImage(section, sIdx, slide.image)" class="p-1.5 bg-white text-green-500 rounded-md shadow hover:bg-green-50">
+                <button (click)="promptHeroImage(section, sIdx, slide.image)" class="p-1.5 bg-white text-green-500 rounded-md shadow hover:bg-green-50" title="تغيير الصورة">
                   <lucide-icon [img]="Edit2" [size]="14"></lucide-icon>
                 </button>
               </div>
@@ -52,77 +57,112 @@
               </div>
             </div>
           </div>
+
+          <!-- Slide Titles -->
+          <div *ngFor="let slide of getHeroSlides(section); let sIdx = index" class="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-2">
+            <span class="text-xs font-bold text-gray-600 mb-2 block">نص الشريحة {{ sIdx + 1 }}:</span>
+            <app-bilingual-input 
+              title="عنوان الشريحة" 
+              labelAr="عربي / AR" 
+              labelEn="English / EN"
+              [valueAr]="slide.titleAr || slide.title || ''"
+              [valueEn]="slide.titleEn || ''"
+              (valueChange)="updateSlide(section, sIdx, { titleAr: $event.lang === 'Ar' ? $event.value : slide.titleAr, titleEn: $event.lang === 'En' ? $event.value : slide.titleEn, title: $event.lang === 'Ar' ? $event.value : slide.title })"
+              [isTextArea]="true"
+            ></app-bilingual-input>
+          </div>
         </ng-container>
 
+        <!-- BENEFITS SECTION -->
         <ng-container *ngIf="section.type === 'benefits'">
-          <div class="space-y-2 mb-2">
-            <div *ngFor="let benefit of section.benefits; let bIdx = index" class="flex items-center gap-4 bg-white border border-gray-200 rounded-lg p-2">
-              <div class="flex items-center gap-3 flex-1">
-                <div class="text-gray-600 bg-gray-100 p-1.5 rounded">
-                  <lucide-icon *ngIf="bIdx === 0" [img]="Banknote" [size]="18"></lucide-icon>
-                  <lucide-icon *ngIf="bIdx === 1" [img]="Truck" [size]="18"></lucide-icon>
-                  <lucide-icon *ngIf="bIdx > 1" [img]="Package" [size]="18"></lucide-icon>
+          <div class="space-y-3 mb-2">
+            <div *ngFor="let benefit of section.benefits; let bIdx = index" class="flex flex-col gap-2 bg-gray-50 border border-gray-200 rounded-lg p-3">
+              <div class="flex items-center justify-between border-b border-gray-200 pb-2">
+                <div class="flex items-center gap-2">
+                  <div class="text-gray-600 bg-white border border-gray-200 p-1.5 rounded">
+                    <lucide-icon *ngIf="bIdx === 0" [img]="Banknote" [size]="18"></lucide-icon>
+                    <lucide-icon *ngIf="bIdx === 1" [img]="Truck" [size]="18"></lucide-icon>
+                    <lucide-icon *ngIf="bIdx > 1" [img]="Package" [size]="18"></lucide-icon>
+                  </div>
+                  <span class="text-xs font-bold text-gray-600">الميزة {{ bIdx + 1 }}</span>
                 </div>
-                <div class="text-sm font-medium text-gray-800">{{ benefit.text.replace('\n', ' ') }}</div>
+                <div class="flex items-center gap-2">
+                  <button (click)="deleteBenefit(section, bIdx)" class="text-red-400 hover:text-red-600 p-1" title="حذف">
+                    <lucide-icon [img]="Trash2" [size]="16"></lucide-icon>
+                  </button>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" [checked]="benefit.enabled" (change)="updateBenefit(section, bIdx, { enabled: $any($event.target).checked })" />
+                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#D4146A]"></div>
+                  </label>
+                </div>
               </div>
-              <button (click)="deleteBenefit(section, bIdx)" class="text-red-400 hover:text-red-600 p-1">
-                <lucide-icon [img]="Trash2" [size]="16"></lucide-icon>
-              </button>
-              <label class="relative inline-flex items-center cursor-pointer ml-2">
-                <input type="checkbox" class="sr-only peer" [checked]="benefit.enabled" (change)="updateBenefit(section, bIdx, benefit, $any($event.target).checked)" />
-                <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pink-600"></div>
-              </label>
+              <app-bilingual-input 
+                title="نص الميزة"
+                labelAr="عربي / AR"
+                labelEn="English / EN"
+                [valueAr]="benefit.textAr || benefit.text || ''"
+                [valueEn]="benefit.textEn || ''"
+                (valueChange)="updateBenefit(section, bIdx, { textAr: $event.lang === 'Ar' ? $event.value : benefit.textAr, textEn: $event.lang === 'En' ? $event.value : benefit.textEn, text: $event.lang === 'Ar' ? $event.value : benefit.text })"
+              ></app-bilingual-input>
             </div>
           </div>
         </ng-container>
 
+        <!-- PROMO BANNER SECTION -->
         <ng-container *ngIf="section.type === 'promo'">
           <div class="flex flex-col gap-3">
             <div class="flex flex-row items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-100">
-              <div class="w-24 h-16 rounded-md overflow-hidden flex items-center justify-center">
+              <div class="w-24 h-16 rounded-md overflow-hidden flex items-center justify-center bg-gray-100">
                 <img *ngIf="section.image" [src]="section.image" alt="Banner" class="w-full h-full object-cover" />
                 <lucide-icon *ngIf="!section.image" [img]="ImageIcon" class="text-gray-400" [size]="24"></lucide-icon>
               </div>
-              <button (click)="promptPromoImage(section)" class="flex flex-row items-center gap-2 px-4 py-2 border border-pink-200 text-pink-600 rounded-md text-sm hover:bg-pink-50 bg-white mr-auto">
+              <button (click)="promptPromoImage(section)" class="flex flex-row items-center gap-2 px-4 py-2 border border-pink-200 text-[#D4146A] rounded-md text-sm hover:bg-pink-50 bg-white mr-auto">
                 <lucide-icon [img]="Edit2" [size]="16"></lucide-icon>
                 <span>تغيير الصورة</span>
               </button>
             </div>
             <div class="flex flex-col gap-2">
-              <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="section.eyebrow || ''" (ngModelChange)="updateSection(section.id, { eyebrow: $event })" placeholder="النص الصغير (مثال: وصل حديثاً)" />
-              <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="section.title || ''" (ngModelChange)="updateSection(section.id, { title: $event })" placeholder="العنوان الرئيسي" />
-              <input type="text" class="w-full text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="section.subtitle || ''" (ngModelChange)="updateSection(section.id, { subtitle: $event })" placeholder="النص الفرعي" />
+              <app-bilingual-input 
+                title="النص الصغير (Eyebrow)"
+                labelAr="عربي / AR"
+                labelEn="English / EN"
+                [valueAr]="section.eyebrowAr || section.eyebrow || ''"
+                [valueEn]="section.eyebrowEn || ''"
+                (valueChange)="updateSection(section.id, { eyebrowAr: $event.lang === 'Ar' ? $event.value : section.eyebrowAr, eyebrowEn: $event.lang === 'En' ? $event.value : section.eyebrowEn, eyebrow: $event.lang === 'Ar' ? $event.value : section.eyebrow })"
+              ></app-bilingual-input>
+
+              <app-bilingual-input 
+                title="العنوان الرئيسي"
+                labelAr="عربي / AR"
+                labelEn="English / EN"
+                [valueAr]="section.titleAr || section.title || ''"
+                [valueEn]="section.titleEn || ''"
+                (valueChange)="updateSection(section.id, { titleAr: $event.lang === 'Ar' ? $event.value : section.titleAr, titleEn: $event.lang === 'En' ? $event.value : section.titleEn, title: $event.lang === 'Ar' ? $event.value : section.title })"
+              ></app-bilingual-input>
+
+              <app-bilingual-input 
+                title="النص الفرعي"
+                labelAr="عربي / AR"
+                labelEn="English / EN"
+                [valueAr]="section.subtitleAr || section.subtitle || ''"
+                [valueEn]="section.subtitleEn || ''"
+                (valueChange)="updateSection(section.id, { subtitleAr: $event.lang === 'Ar' ? $event.value : section.subtitleAr, subtitleEn: $event.lang === 'En' ? $event.value : section.subtitleEn, subtitle: $event.lang === 'Ar' ? $event.value : section.subtitle })"
+              ></app-bilingual-input>
             </div>
           </div>
         </ng-container>
 
-        <ng-container *ngIf="section.type === 'categories' || section.type === 'bestsellers' || section.type === 'shopByNeed' || section.type === 'reviews'">
+        <!-- CATEGORIES, BESTSELLERS, LOOKS SECTIONS -->
+        <ng-container *ngIf="section.type === 'categories' || section.type === 'bestsellers' || section.type === 'looks'">
           <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-3 w-full">
-              <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
-                <input type="checkbox" class="sr-only peer" [checked]="!!section.title" (change)="updateSectionTitleToggle(section, $any($event.target).checked)" />
-                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-pink-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
-              </label>
-              <input type="text" class="flex-1 text-sm bg-gray-50 border border-gray-200 rounded-md px-3 py-2 outline-none focus:border-pink-500" [ngModel]="section.title || ''" (ngModelChange)="updateSection(section.id, { title: $event })" placeholder="عنوان القسم" [disabled]="!section.title" />
-            </div>
-            
-            <ng-container *ngIf="section.type === 'categories' || section.type === 'bestsellers'">
-              <div class="mt-4">
-                <div class="text-xs font-bold text-gray-700 mb-2">{{ section.type === 'categories' ? 'المنتجات (' + (section.categories?.length || 0) + ')' : 'المنتجات (' + (section.products?.length || 0) + ')' }}</div>
-                <div class="flex gap-2 overflow-x-auto pb-2">
-                  <ng-container *ngIf="section.type === 'categories'">
-                    <div *ngFor="let c of section.categories" class="w-14 h-14 bg-gray-100 rounded-md border border-gray-200 overflow-hidden flex-shrink-0">
-                      <img [src]="c.image" [alt]="c.name" class="w-full h-full object-cover" />
-                    </div>
-                  </ng-container>
-                  <ng-container *ngIf="section.type === 'bestsellers'">
-                    <div *ngFor="let p of section.products" class="w-14 h-14 bg-gray-100 rounded-md border border-gray-200 overflow-hidden flex-shrink-0 p-1">
-                      <img [src]="p.image" [alt]="p.name" class="w-full h-full object-contain mix-blend-multiply" />
-                    </div>
-                  </ng-container>
-                </div>
-              </div>
-            </ng-container>
+            <app-bilingual-input 
+              title="عنوان القسم"
+              labelAr="عربي / AR"
+              labelEn="English / EN"
+              [valueAr]="section.titleAr || section.title || ''"
+              [valueEn]="section.titleEn || ''"
+              (valueChange)="updateSection(section.id, { titleAr: $event.lang === 'Ar' ? $event.value : section.titleAr, titleEn: $event.lang === 'En' ? $event.value : section.titleEn, title: $event.lang === 'Ar' ? $event.value : section.title })"
+            ></app-bilingual-input>
           </div>
         </ng-container>
 
@@ -130,40 +170,37 @@
     </ng-container>
   </div>
 
-  <div class="relative mt-4">
-    <button (click)="showAddMenu = !showAddMenu" class="w-full flex items-center justify-center gap-2 py-3 bg-gray-900 text-white rounded-xl text-sm font-bold shadow-md hover:bg-gray-800 transition-colors">
-      <lucide-icon [img]="Plus" [size]="18"></lucide-icon> إضافة قسم جديد
-      <lucide-icon [img]="ChevronDown" [size]="18" [class]="'transition-transform ' + (showAddMenu ? 'rotate-180' : '')"></lucide-icon>
+  <!-- Add Section Button -->
+  <div class="relative mt-4 flex justify-center">
+    <button 
+      (click)="showAddMenu = !showAddMenu"
+      class="flex items-center gap-2 px-5 py-2.5 bg-gray-900 hover:bg-black text-white rounded-xl text-sm font-semibold transition-all shadow-md"
+    >
+      <lucide-icon [img]="Plus" [size]="18"></lucide-icon>
+      <span>إضافة قسم جديد</span>
+      <lucide-icon [img]="ChevronDown" [size]="16"></lucide-icon>
     </button>
-    
-    <div *ngIf="showAddMenu" class="absolute bottom-full left-0 w-full mb-2 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden z-10 flex flex-col">
-      <button (click)="addSection('hero')" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-right border-b border-gray-100">
-        <lucide-icon [img]="ImageIcon" class="text-gray-400" [size]="18"></lucide-icon>
-        <span class="font-medium text-gray-900">الصورة الرئيسية (البانر)</span>
+
+    <div *ngIf="showAddMenu" class="absolute bottom-full mb-2 w-64 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden z-20 py-1">
+      <button (click)="addSection('hero')" class="w-full text-right px-4 py-2.5 text-sm hover:bg-pink-50 hover:text-[#D4146A] transition-colors flex items-center justify-between">
+        <span>الصورة الرئيسية (البانر)</span>
+        <span class="text-xs text-gray-400">Hero</span>
       </button>
-      <button (click)="addSection('categories')" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-right border-b border-gray-100">
-        <lucide-icon [img]="Package" class="text-gray-400" [size]="18"></lucide-icon>
-        <span class="font-medium text-gray-900">الأقسام</span>
+      <button (click)="addSection('benefits')" class="w-full text-right px-4 py-2.5 text-sm hover:bg-pink-50 hover:text-[#D4146A] transition-colors flex items-center justify-between">
+        <span>شريط المزايا</span>
+        <span class="text-xs text-gray-400">Benefits</span>
       </button>
-      <button (click)="addSection('bestsellers')" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-right border-b border-gray-100">
-        <lucide-icon [img]="Banknote" class="text-gray-400" [size]="18"></lucide-icon>
-        <span class="font-medium text-gray-900">مجموعة منتجات</span>
+      <button (click)="addSection('categories')" class="w-full text-right px-4 py-2.5 text-sm hover:bg-pink-50 hover:text-[#D4146A] transition-colors flex items-center justify-between">
+        <span>التصنيفات</span>
+        <span class="text-xs text-gray-400">Categories</span>
       </button>
-      <button (click)="addSection('benefits')" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-right border-b border-gray-100">
-        <lucide-icon [img]="Truck" class="text-gray-400" [size]="18"></lucide-icon>
-        <span class="font-medium text-gray-900">شريط المميزات</span>
+      <button (click)="addSection('bestsellers')" class="w-full text-right px-4 py-2.5 text-sm hover:bg-pink-50 hover:text-[#D4146A] transition-colors flex items-center justify-between">
+        <span>الأكثر مبيعاً</span>
+        <span class="text-xs text-gray-400">Best Sellers</span>
       </button>
-      <button (click)="addSection('promo')" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-right border-b border-gray-100">
-        <lucide-icon [img]="ImageIcon" class="text-gray-400" [size]="18"></lucide-icon>
-        <span class="font-medium text-gray-900">صورة ترويجية</span>
-      </button>
-      <button (click)="addSection('shopByNeed')" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-right border-b border-gray-100">
-        <lucide-icon [img]="Package" class="text-gray-400" [size]="18"></lucide-icon>
-        <span class="font-medium text-gray-900">تسوقي حسب احتياجك</span>
-      </button>
-      <button (click)="addSection('reviews')" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-right">
-        <lucide-icon [img]="Package" class="text-gray-400" [size]="18"></lucide-icon>
-        <span class="font-medium text-gray-900">آراء عملائنا</span>
+      <button (click)="addSection('promo')" class="w-full text-right px-4 py-2.5 text-sm hover:bg-pink-50 hover:text-[#D4146A] transition-colors flex items-center justify-between">
+        <span>بانر العروض الترويجية</span>
+        <span class="text-xs text-gray-400">Promo</span>
       </button>
     </div>
   </div>

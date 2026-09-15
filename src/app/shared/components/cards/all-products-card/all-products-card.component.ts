@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   LucideDynamicIcon,
   LucideHeart,
@@ -8,6 +9,8 @@ import {
 import { CartService } from '../../../../core/services/cart.service';
 import { FavoritesService } from '../../../../core/services/favorites.service';
 import { ALL_PRODUCTS_DATA, ProductItem } from '../../../../features/all-products/all-products.component';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
+import { LocalizeFieldPipe } from '../../../pipes/localize-field.pipe';
 
 export type AllProduct = ProductItem;
 export { ALL_PRODUCTS_DATA };
@@ -16,16 +19,20 @@ export type { ProductItem };
 @Component({
   selector: 'app-all-products-card',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [CommonModule, LucideDynamicIcon, TranslatePipe, LocalizeFieldPipe],
   templateUrl: './all-products-card.component.html',
   styleUrl: './all-products-card.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllProductsCardComponent {
   @Input() id: string | number = '';
   @Input() image = '';
   @Input() name = '';
+  @Input() nameAr = '';
+  @Input() nameEn = '';
   @Input() description = '';
+  @Input() descriptionAr = '';
+  @Input() descriptionEn = '';
   @Input() price: number | string = 0;
   @Input() rating: number | string = '4.9';
   @Input() reviews: number | string = '98';

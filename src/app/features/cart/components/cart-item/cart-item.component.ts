@@ -6,14 +6,16 @@ import {
   LucideTrash2,
 } from '@lucide/angular';
 import { CartService, CartItem } from '../../../../core/services/cart.service';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
+import { LocalizeFieldPipe } from '../../../../shared/pipes/localize-field.pipe';
 
 @Component({
   selector: 'app-cart-item',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [LucideDynamicIcon, TranslatePipe, LocalizeFieldPipe],
   templateUrl: './cart-item.component.html',
   styleUrl: './cart-item.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartItemComponent {
   @Input({ required: true }) item!: CartItem;

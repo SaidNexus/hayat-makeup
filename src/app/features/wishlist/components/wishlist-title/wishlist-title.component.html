@@ -10,11 +10,11 @@
 
       <div>
         <h1 class="text-xl sm:text-2xl font-bold text-[#111111]">
-          المفضلة
+          {{ 'FAVORITES.TITLE' | translate }}
         </h1>
 
         <p class="text-xs sm:text-sm text-gray-500">
-          منتجاتك المفضلة في مكان واحد
+          {{ 'FAVORITES.SUBTITLE' | translate }}
         </p>
       </div>
     </div>
@@ -22,7 +22,7 @@
     <!-- Count -->
     <div class="rounded-full border border-gray-200 bg-gray-50/50 px-3 py-1">
       <span class="text-xs sm:text-sm font-semibold text-gray-700">
-        <span class="text-[#D4146A]">{{ count }}</span> منتجات
+        <span class="text-[#D4146A]">{{ count }}</span> {{ 'منتجات' | localize: 'منتجات' : 'items' }}
       </span>
     </div>
   </div>

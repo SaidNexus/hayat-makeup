@@ -1,5 +1,4 @@
 <div
-  dir="rtl"
   class="
     min-h-screen
     w-full
@@ -14,15 +13,15 @@
   <!-- Unified Application Header -->
   <app-header></app-header>
 
-  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+  <main id="section-cart" data-section-type="cart" class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
     <!-- Page Header -->
     <div class="mb-5 flex items-center justify-between">
       <div>
         <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#111111]">
-          السلة
+          {{ (cartConfig().headerTitle || 'السلة') | localize: cartConfig().headerTitleAr : cartConfig().headerTitleEn }}
         </h1>
         <p class="mt-1 text-xs sm:text-sm text-gray-500">
-          {{ itemsCount() }} منتجات
+          {{ itemsCount() }} {{ 'COMMON.CART' | translate }}
         </p>
       </div>
 
@@ -30,12 +29,12 @@
       <button
         type="button"
         (click)="navigateTo('/products')"
-        class="flex items-center gap-1 text-xs sm:text-sm md:text-base font-semibold text-[#D4146A] hover:opacity-80 transition"
+        class="flex items-center gap-1 text-xs sm:text-sm md:text-base font-semibold text-[#D4146A] hover:opacity-80 transition cursor-pointer"
       >
-        <span>متابعة التسوق</span>
+        <span>{{ 'COMMON.START_SHOPPING_FEM' | translate }}</span>
         <svg
           [lucideIcon]="chevronLeftIcon"
-          class="h-4 w-4 sm:h-5 sm:w-5"
+          class="h-4 w-4 sm:h-5 sm:w-5 rtl-flip"
           [strokeWidth]="1.8"
         ></svg>
       </button>
@@ -61,7 +60,7 @@
           my-6
         "
       >
-        <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-pink-100/70 flex items-center justify-center text-[#D4146A] mb-4 shadow-xs">
+        <div *ngIf="cartConfig().emptyCartIllustration !== false" class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-pink-100/70 flex items-center justify-center text-[#D4146A] mb-4 shadow-xs">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -76,11 +75,11 @@
         </div>
 
         <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">
-          سلتك فارغة حالياً
+          {{ (cartConfig().emptyCartText || 'سلتك فارغة حالياً') | localize: cartConfig().emptyCartTextAr : cartConfig().emptyCartTextEn }}
         </h2>
 
         <p class="text-xs sm:text-sm text-gray-500 max-w-sm mb-6 leading-relaxed">
-          لم تقومي بإضافة أي منتجات إلى سلة التسوق بعد. استكشفي أحدث منتجاتنا وأضيفي ما تحبين!
+          {{ 'COMMON.CARTEMPTYDESC' | translate }}
         </p>
 
         <button
@@ -99,13 +98,14 @@
             hover:bg-[#b01057]
             active:scale-95
             transition-all
+            cursor-pointer
           "
         >
-          استكشفي المنتجات
+          {{ 'COMMON.START_SHOPPING_FEM' | translate }}
         </button>
       </div>
     } @else {
-      <!-- 2-Column Responsive Layout (lg:col-span-8 vs lg:col-span-4) -->
+      <!-- 2-Column Responsive Layout -->
       <div class="lg:grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         <!-- Items Column -->
         <div class="lg:col-span-8 flex flex-col gap-3 sm:gap-4">
@@ -118,6 +118,7 @@
         <div class="lg:col-span-4 mt-6 lg:mt-0">
           <div class="sticky top-24 flex flex-col gap-3 sm:gap-4">
             <app-coupon-box
+              *ngIf="cartConfig().showCouponSection !== false"
               [applied]="couponApplied()"
               (applyCoupon)="onApplyCoupon()"
             ></app-coupon-box>
@@ -148,10 +149,22 @@
                 transition
                 hover:bg-[#b01057]
                 active:scale-[0.99]
+                cursor-pointer
               "
             >
-              إتمام الطلب
+              {{ (cartConfig().checkoutButtonText || 'إتمام الطلب') | localize: cartConfig().checkoutButtonTextAr : cartConfig().checkoutButtonTextEn }}
             </button>
+
+            <!-- Trust Badges -->
+            <div *ngIf="cartConfig().showTrustBadges !== false && cartConfig().trustBadges?.length" class="mt-2 flex flex-col gap-2 p-3.5 bg-pink-50/30 rounded-xl border border-pink-100">
+              <div *ngFor="let badge of cartConfig().trustBadges" class="flex items-center gap-2.5 text-xs text-gray-700">
+                <span class="text-[#D4146A] font-bold text-sm">✓</span>
+                <div>
+                  <strong class="block font-bold text-gray-800">{{ badge.title | localize: badge.titleAr : badge.titleEn }}</strong>
+                  <small class="text-gray-500 block text-[11px]">{{ badge.subtitle | localize: badge.subtitleAr : badge.subtitleEn }}</small>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

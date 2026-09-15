@@ -70,6 +70,8 @@ export const NOTIFICATIONS_DATA: NotificationItem[] = [
   },
 ];
 
+import { TranslatePipe } from '../../core/i18n/translate.pipe';
+
 @Component({
   selector: 'app-notifications',
   standalone: true,
@@ -78,6 +80,7 @@ export const NOTIFICATIONS_DATA: NotificationItem[] = [
     MobileBottomNavComponent,
     NotificationTabsComponent,
     NotificationCardComponent,
+    TranslatePipe,
   ],
   templateUrl: './notifications.component.html',
   styleUrl: './notifications.component.css',

@@ -46,7 +46,7 @@
   </div>
 
   <!-- Info -->
-  <div class="min-w-0 text-right">
+  <div class="min-w-0 text-start">
     <h1
       class="
         text-[16px]
@@ -90,7 +90,7 @@
         md:text-[13px]
       "
     >
-      عميلة منذ {{ user.joinedAt }}
+      {{ 'ACCOUNT.MEMBER_SINCE' | translate }} {{ user.joinedAt }}
     </p>
   </div>
 </section>

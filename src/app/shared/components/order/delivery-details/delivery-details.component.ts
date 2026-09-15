@@ -5,6 +5,7 @@ import {
   LucidePhone,
   LucideTruck,
 } from '@lucide/angular';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
 export interface CustomerDetails {
   name?: string;
@@ -18,7 +19,7 @@ export interface CustomerDetails {
 @Component({
   selector: 'app-delivery-details',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [LucideDynamicIcon, TranslatePipe],
   templateUrl: './delivery-details.component.html',
   styleUrl: './delivery-details.component.css',
 changeDetection: ChangeDetectionStrategy.OnPush,

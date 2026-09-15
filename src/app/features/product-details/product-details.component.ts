@@ -1,4 +1,5 @@
 import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../../shared/components/layout/header/header.component';
 import { MobileBottomNavComponent } from '../../shared/components/navigation/mobile-bottom-nav/mobile-bottom-nav.component';
@@ -12,6 +13,7 @@ import {
   RelatedProduct,
 } from './components/related-product-card/related-product-card.component';
 import { ALL_PRODUCTS_DATA, ProductItem } from '../all-products/all-products.component';
+import { TranslatePipe } from '../../core/i18n/translate.pipe';
 
 export const RELATED_PRODUCTS_MOCK: RelatedProduct[] = [
   {
@@ -48,6 +50,7 @@ export const RELATED_PRODUCTS_MOCK: RelatedProduct[] = [
   selector: 'app-product-details',
   standalone: true,
   imports: [
+    CommonModule,
     HeaderComponent,
     MobileBottomNavComponent,
     ProductGalleryComponent,
@@ -56,10 +59,11 @@ export const RELATED_PRODUCTS_MOCK: RelatedProduct[] = [
     ProductActionsComponent,
     ProductAccordionComponent,
     RelatedProductCardComponent,
+    TranslatePipe,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailsComponent {
   private readonly route = inject(ActivatedRoute);

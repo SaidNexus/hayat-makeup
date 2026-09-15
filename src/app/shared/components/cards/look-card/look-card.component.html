@@ -27,8 +27,9 @@
     "
   >
     <img
-      [src]="look.image"
+      [src]="look.image || fallbackImage"
       [alt]="look.title"
+      (error)="onImgError($event)"
       class="
         h-full
         w-full

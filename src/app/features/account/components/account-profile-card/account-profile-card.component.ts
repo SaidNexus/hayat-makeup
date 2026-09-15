@@ -1,5 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { LucideDynamicIcon, LucideUserRound } from '@lucide/angular';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
 export interface UserProfile {
   name: string;
@@ -10,7 +11,7 @@ export interface UserProfile {
 @Component({
   selector: 'app-account-profile-card',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [LucideDynamicIcon, TranslatePipe],
   templateUrl: './account-profile-card.component.html',
   styleUrl: './account-profile-card.component.css',
 changeDetection: ChangeDetectionStrategy.OnPush,

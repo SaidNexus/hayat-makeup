@@ -17,7 +17,6 @@ export const pageRegistry = [
   { id: "new-arrivals", label: "وصل حديثاً", path: "/new-arrivals", previewRoute: "/new-arrivals", configKey: "newArrivalsPageConfig" },
   { id: "best-sellers", label: "الأكثر مبيعاً", path: "/best-sellers", previewRoute: "/best-sellers", configKey: "bestSellersPageConfig" },
   { id: "search", label: "البحث", path: "/search", previewRoute: "/search", configKey: "searchPageConfig" },
-  { id: "menu", label: "القائمة", path: "/menu", previewRoute: "/menu", configKey: "menuPageConfig" },
   { id: "about", label: "من نحن", path: "/about", previewRoute: "/about", configKey: "aboutPageConfig" },
   { id: "contact", label: "اتصل بنا", path: "/contact", previewRoute: "/contact", configKey: "contactPageConfig" },
   { id: "notifications", label: "الإشعارات", path: "/notifications", previewRoute: "/notifications", configKey: "notificationsPageConfig" },
@@ -45,7 +44,6 @@ export function findPageByRoute(rawRoute: string) {
   if (route.startsWith("/new-arrivals")) return pageRegistry.find(p => p.id === "new-arrivals");
   if (route.startsWith("/best-sellers")) return pageRegistry.find(p => p.id === "best-sellers");
   if (route.startsWith("/search")) return pageRegistry.find(p => p.id === "search");
-  if (route.startsWith("/menu")) return pageRegistry.find(p => p.id === "menu");
   if (route.startsWith("/about")) return pageRegistry.find(p => p.id === "about");
   if (route.startsWith("/contact")) return pageRegistry.find(p => p.id === "contact");
   if (route.startsWith("/notifications")) return pageRegistry.find(p => p.id === "notifications");

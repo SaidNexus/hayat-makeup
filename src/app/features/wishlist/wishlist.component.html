@@ -1,5 +1,4 @@
 <div
-  dir="rtl"
   class="min-h-screen bg-white pb-24 lg:pb-12 flex flex-col justify-between"
 >
   <!-- Unified Application Header -->
@@ -34,11 +33,11 @@
         </div>
 
         <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">
-          قائمة أمنياتك فارغة
+          {{ 'FAVORITES.EMPTY' | translate }}
         </h2>
 
         <p class="text-xs sm:text-sm text-gray-500 max-w-sm mb-6 leading-relaxed">
-          لم تقومي بإضافة أي منتجات إلى المفضلة بعد. استكشفي أحدث صيحات المكياج ومنتجات الجمال وأضيفي ما تحبين!
+          {{ 'FAVORITES.EMPTY_DESC' | translate }}
         </p>
 
         <button
@@ -57,9 +56,10 @@
             hover:bg-[#b01057]
             active:scale-95
             transition-all
+            cursor-pointer
           "
         >
-          استكشفي المنتجات
+          {{ 'COMMON.START_SHOPPING_FEM' | translate }}
         </button>
       </div>
     } @else {

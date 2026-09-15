@@ -1,4 +1,5 @@
 import { Component, computed, inject, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LucideDynamicIcon, LucideHeart } from '@lucide/angular';
 import { HeaderComponent } from '../../shared/components/layout/header/header.component';
@@ -9,17 +10,20 @@ import { MobileBottomNavComponent } from '../../shared/components/navigation/mob
 import { FavoritesService } from '../../core/services/favorites.service';
 import { CartService } from '../../core/services/cart.service';
 import { WishlistProduct } from '../../shared/components/cards/wishlist-product-card/wishlist-product-card.component';
+import { TranslatePipe } from '../../core/i18n/translate.pipe';
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
   imports: [
+    CommonModule,
     HeaderComponent,
     WishlistTitleComponent,
     WishlistProductGridComponent,
     WishlistPromoComponent,
     MobileBottomNavComponent,
     LucideDynamicIcon,
+    TranslatePipe,
   ],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css',

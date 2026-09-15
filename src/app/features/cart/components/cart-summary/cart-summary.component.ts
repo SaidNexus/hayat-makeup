@@ -1,11 +1,13 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
 @Component({
   selector: 'app-cart-summary',
   standalone: true,
+  imports: [TranslatePipe],
   templateUrl: './cart-summary.component.html',
   styleUrl: './cart-summary.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartSummaryComponent {
   @Input() subtotal = 0;

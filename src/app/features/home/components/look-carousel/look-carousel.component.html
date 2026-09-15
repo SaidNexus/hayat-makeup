@@ -1,19 +1,19 @@
-<section dir="rtl" class="w-full space-y-3 sm:space-y-4">
+<section class="w-full space-y-3 sm:space-y-4">
   <!-- Header -->
   <div class="flex items-center justify-between">
     <h2 class="text-base sm:text-xl md:text-2xl font-bold text-[#111111]">
-      اختاري إطلالتك
+      {{ (config?.title || 'اختاري إطلالتك') | localize: config?.titleAr : config?.titleEn }}
     </h2>
 
     <button
       type="button"
       (click)="navigateToLooks()"
-      class="flex items-center gap-1 text-xs sm:text-sm md:text-base font-semibold text-[#D4146A] hover:opacity-80 transition"
+      class="flex items-center gap-1 text-xs sm:text-sm md:text-base font-semibold text-[#D4146A] hover:opacity-80 transition cursor-pointer"
     >
-      <span>عرض الكل</span>
+      <span>{{ 'COMMON.SEEALL' | translate }}</span>
       <svg
         [lucideIcon]="arrowLeftIcon"
-        class="h-3.5 w-3.5 sm:h-4 sm:w-4"
+        class="h-3.5 w-3.5 sm:h-4 sm:w-4 rtl-flip"
         [strokeWidth]="1.8"
       ></svg>
     </button>
@@ -61,7 +61,7 @@
         [class.bg-[#8B5A4B]]="look.type !== 'night'"
       >
         <!-- Background Image -->
-        <div class="absolute inset-y-0 left-0 w-[55%] overflow-hidden">
+        <div class="absolute inset-y-0 start-0 w-[55%] overflow-hidden">
           <img
             [src]="look.image"
             [alt]="look.title"
@@ -77,22 +77,20 @@
             flex
             h-full
             w-[48%]
-            mr-auto
+            ms-auto
             flex-col
             items-start
             justify-center
             p-3
             sm:p-4
-            text-right
-            left-35
-            sm:left-42
+            text-start
             space-y-1
           "
         >
           <!-- Title & Icon -->
           <div class="flex items-center gap-1.5 text-white">
             <h3 class="text-xs sm:text-sm md:text-base font-bold leading-tight">
-              {{ look.title }}
+              {{ look.title | localize: look.titleAr : look.titleEn }}
             </h3>
 
             @if (look.type === 'night') {
@@ -112,7 +110,7 @@
 
           <!-- Description -->
           <p class="text-[10px] sm:text-xs text-white/80 line-clamp-2 leading-relaxed">
-            {{ look.description }}
+            {{ look.description | localize: look.descriptionAr : look.descriptionEn }}
           </p>
         </div>
       </article>

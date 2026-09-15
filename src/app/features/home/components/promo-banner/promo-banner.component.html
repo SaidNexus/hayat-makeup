@@ -1,4 +1,4 @@
-<section dir="rtl" class="w-full">
+<section class="w-full">
   <div
     class="
       relative
@@ -12,7 +12,7 @@
       lg:min-h-[200px]
       overflow-hidden
       rounded-2xl
-      bg-gradient-to-l
+      bg-gradient-to-r
       from-[#FFF0F4]
       via-[#FFE4ED]
       to-[#FFF0F4]
@@ -24,18 +24,18 @@
       shadow-sm
     "
   >
-    <!-- Right: Text & CTA -->
+    <!-- Text & CTA -->
     <div class="flex flex-col items-start space-y-1.5 sm:space-y-2.5 z-10 max-w-[60%] sm:max-w-[50%]">
       <span class="text-xs sm:text-sm md:text-base font-bold text-[#D4146A]">
-        العروض الحصرية
+        {{ (config?.eyebrow || 'وصل حديثاً') | localize: config?.eyebrowAr : config?.eyebrowEn }}
       </span>
 
       <h3 class="text-sm sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-900 leading-tight">
-        خصومات تصل إلى <span class="text-[#D4146A]">30%</span>
+        {{ (config?.title || 'جديد الجمال بانتظارك') | localize: config?.titleAr : config?.titleEn }}
       </h3>
 
-      <p class="text-[10px] sm:text-xs md:text-sm text-gray-600 hidden sm:block">
-        على تشكيلة مختارة من أرقى مستحضرات التجميل
+      <p *ngIf="config?.subtitle || !config" class="text-[10px] sm:text-xs md:text-sm text-gray-600 hidden sm:block">
+        {{ (config?.subtitle || 'اكتشفي أحدث المنتجات والعلامات الحصرية') | localize: config?.subtitleAr : config?.subtitleEn }}
       </p>
 
       <button
@@ -62,22 +62,24 @@
           transition
           hover:bg-[#b01057]
           active:scale-95
+          cursor-pointer
         "
       >
-        <span>تسوقي الآن</span>
+        <span>{{ 'COMMON.START_SHOPPING_FEM' | translate }}</span>
         <svg
           [lucideIcon]="tagIcon"
-          class="h-3 w-3 sm:h-4 sm:w-4"
+          class="h-3 w-3 sm:h-4 sm:w-4 rtl-flip"
           [strokeWidth]="1.8"
         ></svg>
       </button>
     </div>
 
-    <!-- Left: Promo Image -->
+    <!-- Promo Image -->
     <div class="relative h-full flex items-center justify-end w-[40%] sm:w-[45%]">
       <img
-        [src]="promoBannerImage"
-        alt="العروض"
+        [src]="bannerImage"
+        alt="Promo"
+        (error)="onImgError($event)"
         class="
           h-auto
           max-h-[95px]

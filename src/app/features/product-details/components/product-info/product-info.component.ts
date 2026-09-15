@@ -1,5 +1,7 @@
 import { Component, Input, computed, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { LucideDynamicIcon, LucideStar } from '@lucide/angular';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
 export const PRODUCT_INFO_FALLBACK = {
   breadcrumb: 'الرئيسية > أحمر شفاه',
@@ -16,10 +18,10 @@ export const PRODUCT_INFO_FALLBACK = {
 @Component({
   selector: 'app-product-info',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [CommonModule, LucideDynamicIcon, TranslatePipe],
   templateUrl: './product-info.component.html',
   styleUrl: './product-info.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductInfoComponent {
   @Input() product: any;

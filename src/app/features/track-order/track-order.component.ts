@@ -71,6 +71,8 @@ export const TRACKING_RECORDS: OrderTrackingInfo[] = [
   },
 ];
 
+import { TranslatePipe } from '../../core/i18n/translate.pipe';
+
 @Component({
   selector: 'app-track-order',
   standalone: true,
@@ -82,6 +84,7 @@ export const TRACKING_RECORDS: OrderTrackingInfo[] = [
     OrderTrackingTimelineComponent,
     OrderTrackingSummaryComponent,
     LucideDynamicIcon,
+    TranslatePipe,
   ],
   templateUrl: './track-order.component.html',
   styleUrl: './track-order.component.css',

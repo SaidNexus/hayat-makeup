@@ -1,26 +1,35 @@
 import { Component, EventEmitter, Input, Output, signal, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   LucideDynamicIcon,
   LucideChevronDown,
   LucideSlidersHorizontal,
 } from '@lucide/angular';
+import { LocalizeFieldPipe } from '../../../../shared/pipes/localize-field.pipe';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
-export const FILTER_OPTIONS = [
-  'السعر',
-  'النوع',
-  'الدرجة',
-  'اللمسة',
-  'التقييم',
-  'ترتيب',
+export interface FilterOption {
+  key: string;
+  labelAr: string;
+  labelEn: string;
+}
+
+export const FILTER_OPTIONS: FilterOption[] = [
+  { key: 'السعر', labelAr: 'السعر', labelEn: 'Price' },
+  { key: 'النوع', labelAr: 'النوع', labelEn: 'Type' },
+  { key: 'الدرجة', labelAr: 'الدرجة', labelEn: 'Shade' },
+  { key: 'اللمسة', labelAr: 'اللمسة', labelEn: 'Finish' },
+  { key: 'التقييم', labelAr: 'التقييم', labelEn: 'Rating' },
+  { key: 'ترتيب', labelAr: 'ترتيب', labelEn: 'Sort' },
 ];
 
 @Component({
   selector: 'app-products-filters',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [CommonModule, LucideDynamicIcon, LocalizeFieldPipe, TranslatePipe],
   templateUrl: './products-filters.component.html',
   styleUrl: './products-filters.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsFiltersComponent {
   @Input() active: string | null = null;
@@ -32,9 +41,9 @@ export class ProductsFiltersComponent {
   readonly chevronDownIcon = LucideChevronDown;
   readonly slidersHorizontalIcon = LucideSlidersHorizontal;
 
-  onFilterClick(filter: string): void {
-    const isSelected = this.active === filter;
-    this.filterChange.emit(isSelected ? null : filter);
+  onFilterClick(filterKey: string): void {
+    const isSelected = this.active === filterKey;
+    this.filterChange.emit(isSelected ? null : filterKey);
     this.filterActive.set(false);
   }
 

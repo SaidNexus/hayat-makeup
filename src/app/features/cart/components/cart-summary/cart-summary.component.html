@@ -1,5 +1,4 @@
 <section
-  dir="rtl"
   class="
     w-full
     rounded-[10px]
@@ -38,8 +37,8 @@
       lg:text-[18px]
     "
   >
-    <span class="text-[#707070]">المجموع الفرعي</span>
-    <span>{{ subtotal }} ر.س</span>
+    <span class="text-[#707070]">{{ 'COMMON.SUBTOTAL' | translate }}</span>
+    <span>{{ subtotal }} {{ 'COMMON.CURRENCY' | translate }}</span>
   </div>
 
   <!-- Shipping -->
@@ -60,8 +59,8 @@
       lg:text-[18px]
     "
   >
-    <span class="text-[#707070]">رسوم التوصيل</span>
-    <span>{{ shipping }} ر.س</span>
+    <span class="text-[#707070]">{{ 'COMMON.DELIVERY' | translate }}</span>
+    <span>{{ shipping }} {{ 'COMMON.CURRENCY' | translate }}</span>
   </div>
 
   <!-- Discount -->
@@ -84,8 +83,8 @@
         lg:text-[18px]
       "
     >
-      <span class="text-[#707070]">خصم</span>
-      <span>{{ discount }}- ر.س</span>
+      <span class="text-[#707070]">{{ 'COMMON.DISCOUNT' | translate }}</span>
+      <span>-{{ discount }} {{ 'COMMON.CURRENCY' | translate }}</span>
     </div>
   }
 
@@ -100,11 +99,11 @@
       justify-between
     "
   >
-    <div class="flex justify-center items-center gap-3 text-right">
+    <div class="flex flex-col items-start gap-0.5 text-start">
       <h2
         class="
           text-[16px]
-          font-normal
+          font-bold
           text-[#222222]
 
           sm:text-[18px]
@@ -114,23 +113,20 @@
           lg:text-[24px]
         "
       >
-        الإجمالي
+        {{ 'COMMON.TOTAL' | translate }}
       </h2>
 
       <p
         class="
-          mt-[3px]
-          text-[8px]
+          text-[9px]
           text-[#999999]
 
-          sm:text-[8px]
+          sm:text-[10px]
 
-          md:text-[10px]
-
-          lg:text-[11px]
+          md:text-[11px]
         "
       >
-        شامل ضريبة القيمة المضافة
+        {{ 'CART.VAT_INCLUDED' | translate }}
       </p>
     </div>
 
@@ -138,7 +134,7 @@
       <span
         class="
           text-[18px]
-          font-medium
+          font-extrabold
           text-[#D4146A]
 
           sm:text-[21px]
@@ -153,7 +149,7 @@
 
       <span
         class="
-          mr-[4px]
+          mx-[4px]
           text-[13px]
           text-[#D4146A]
           font-medium
@@ -165,7 +161,7 @@
           lg:text-[19px]
         "
       >
-        ر.س
+        {{ 'COMMON.CURRENCY' | translate }}
       </span>
     </div>
   </div>

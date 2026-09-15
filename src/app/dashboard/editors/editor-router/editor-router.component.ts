@@ -22,7 +22,6 @@ import { WishlistPageEditorComponent } from '../wishlist-page-editor/wishlist-pa
 // Group 4
 import { FaqPageEditorComponent } from '../faq-page-editor/faq-page-editor.component';
 import { AccountPageEditorComponent } from '../account-page-editor/account-page-editor.component';
-import { MenuPageEditorComponent } from '../menu-page-editor/menu-page-editor.component';
 import { OffersPageEditorComponent } from '../offers-page-editor/offers-page-editor.component';
 
 // Group 5
@@ -55,7 +54,7 @@ import { SizeGuidePageEditorComponent } from '../size-guide-page-editor/size-gui
     HomePageEditorComponent, BestSellersPageEditorComponent, NewArrivalsPageEditorComponent, CategoriesPageEditorComponent,
     SkinQuizPageEditorComponent, SkinTypesPageEditorComponent, FacesPageEditorComponent, BundlesPageEditorComponent,
     ProductPageEditorComponent, CartPageEditorComponent, CheckoutPageEditorComponent, WishlistPageEditorComponent,
-    FaqPageEditorComponent, AccountPageEditorComponent, MenuPageEditorComponent, OffersPageEditorComponent,
+    FaqPageEditorComponent, AccountPageEditorComponent, OffersPageEditorComponent,
     SearchPageEditorComponent, TrackOrderPageEditorComponent, CategoryPageEditorComponent, PoliciesPageEditorComponent,
     AboutPageEditorComponent, AllShapersPageEditorComponent, ContactPageEditorComponent, FavoritesPageEditorComponent,
     LoginPageEditorComponent, MyOrdersPageEditorComponent, NotificationsPageEditorComponent, OrderConfirmationPageEditorComponent,

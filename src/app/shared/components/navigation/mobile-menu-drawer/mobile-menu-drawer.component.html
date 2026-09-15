@@ -1,114 +1,180 @@
 @if (uiService.menuOpen()) {
-  <div dir="rtl" class="fixed inset-0 z-50 flex justify-end">
-    <!-- Overlay -->
-    <button
-      type="button"
-      aria-label="إغلاق القائمة"
-      (click)="close()"
-      class="fixed inset-0 bg-black/40 backdrop-blur-[2px] transition-opacity"
-    ></button>
-
-    <!-- Drawer -->
+  <div
+    class="hy-more-drawer-overlay"
+    role="presentation"
+    (mousedown)="onOverlayClick($event)"
+  >
     <aside
-      class="
-        relative
-        z-10
-        flex
-        h-full
-        w-[80%]
-        max-w-[340px]
-        md:max-w-[380px]
-        flex-col
-        overflow-y-auto
-        bg-white
-        px-4
-        py-6
-        shadow-2xl
-        transition-transform
-      "
+      class="hy-more-drawer"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="'المزيد' | localize: 'المزيد' : 'Menu'"
     >
-      <!-- Logo & Close -->
-      <div class="flex items-center justify-between pb-6 border-b border-gray-100">
-        <img
-          src="https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248206/hayat-makeup/hero.png"
-          alt="Hayat Makeup"
-          class="h-10 md:h-12 w-auto object-contain"
-        />
-
+      <!-- Drawer Header -->
+      <header class="hy-more-drawer__header">
         <button
           type="button"
-          aria-label="إغلاق"
           (click)="close()"
-          class="p-1.5 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100"
-        >
-          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-
-      <!-- Menu Items -->
-      <div class="mt-4 flex-1 space-y-1">
-        @for (item of menuItems; track item.id) {
-          <button
-            type="button"
-            (click)="handleNavigate(item.id)"
-            class="
-              flex
-              h-12
-              w-full
-              items-center
-              gap-4
-              rounded-xl
-              px-3
-              text-right
-              transition-colors
-            "
-            [class.bg-[#FBE3EF]]="item.active"
-            [class.text-[#D4146A]]="item.active"
-            [class.font-semibold]="item.active"
-            [class.text-[#222222]]="!item.active"
-            [class.hover:bg-gray-50]="!item.active"
-          >
-            <svg
-              [lucideIcon]="item.icon"
-              class="h-5 w-5 shrink-0"
-              [strokeWidth]="1.6"
-            ></svg>
-            <span class="text-sm md:text-base">
-              {{ item.label }}
-            </span>
-          </button>
-        }
-      </div>
-
-      <!-- Logout -->
-      <div class="pt-4 border-t border-gray-100">
-        <button
-          type="button"
-          (click)="handleNavigate('logout')"
-          class="
-            flex
-            h-12
-            w-full
-            items-center
-            gap-4
-            rounded-xl
-            px-3
-            text-[#D4146A]
-            hover:bg-pink-50
-            transition-colors
-          "
+          [attr.aria-label]="'إغلاق' | localize: 'إغلاق' : 'Close'"
         >
           <svg
-            [lucideIcon]="logoutIcon"
-            class="h-5 w-5 shrink-0"
-            [strokeWidth]="1.6"
+            [lucideIcon]="ArrowLeft"
+            class="w-5 h-5 rtl-flip"
+            [strokeWidth]="2"
+            aria-hidden="true"
           ></svg>
-          <span class="text-sm md:text-base font-medium">
-            تسجيل الخروج
-          </span>
         </button>
+
+        <h2>{{ 'المزيد' | localize: 'المزيد' : 'More' }}</h2>
+
+        <span aria-hidden="true" class="w-10"></span>
+      </header>
+
+      <!-- Drawer Body -->
+      <div class="hy-more-drawer__body">
+        <!-- Section: Shopping & Collections -->
+        <div class="hy-more-drawer__section-title">
+          {{ 'التسوق والأقسام' | localize: 'التسوق والأقسام' : 'Shopping & Categories' }}
+        </div>
+        <nav class="hy-more-drawer__list" [attr.aria-label]="'التسوق' | localize: 'التسوق' : 'Shopping'">
+          @for (item of shoppingItems; track item.to) {
+            <a
+              [routerLink]="item.to"
+              class="hy-more-menu-card"
+              (click)="close()"
+            >
+              <span class="hy-more-menu-card__icon" aria-hidden="true">
+                <svg [lucideIcon]="item.icon" class="w-5 h-5" [strokeWidth]="1.7"></svg>
+              </span>
+
+              <span class="hy-more-menu-card__copy">
+                <strong>{{ item.titleAr | localize: item.titleAr : item.titleEn }}</strong>
+                <small>{{ item.descAr | localize: item.descAr : item.descEn }}</small>
+              </span>
+
+              <svg
+                [lucideIcon]="ChevronRight"
+                class="hy-more-menu-card__chevron rtl-flip"
+                [strokeWidth]="1.8"
+                aria-hidden="true"
+              ></svg>
+            </a>
+          }
+        </nav>
+
+        <div class="hy-more-drawer__separator"></div>
+
+        <!-- Section: Beauty Guides & Looks -->
+        <div class="hy-more-drawer__section-title">
+          {{ 'عالم الجمال والأدلة' | localize: 'عالم الجمال والأدلة' : 'Beauty & Looks' }}
+        </div>
+        <nav class="hy-more-drawer__list" [attr.aria-label]="'عالم الجمال' | localize: 'عالم الجمال' : 'Beauty Experience'">
+          @for (item of beautyItems; track item.to) {
+            <a
+              [routerLink]="item.to"
+              class="hy-more-menu-card"
+              (click)="close()"
+            >
+              <span class="hy-more-menu-card__icon" aria-hidden="true">
+                <svg [lucideIcon]="item.icon" class="w-5 h-5" [strokeWidth]="1.7"></svg>
+              </span>
+
+              <span class="hy-more-menu-card__copy">
+                <strong>{{ item.titleAr | localize: item.titleAr : item.titleEn }}</strong>
+                <small>{{ item.descAr | localize: item.descAr : item.descEn }}</small>
+              </span>
+
+              <svg
+                [lucideIcon]="ChevronRight"
+                class="hy-more-menu-card__chevron rtl-flip"
+                [strokeWidth]="1.8"
+                aria-hidden="true"
+              ></svg>
+            </a>
+          }
+        </nav>
+
+        <div class="hy-more-drawer__separator"></div>
+
+        <!-- Section: Account, Orders & Support -->
+        <div class="hy-more-drawer__section-title">
+          {{ 'الحساب والمساعدة' | localize: 'الحساب والمساعدة' : 'Account & Help' }}
+        </div>
+        <nav class="hy-more-drawer__list" [attr.aria-label]="'المساعدة' | localize: 'المساعدة' : 'Support'">
+          @for (item of accountAndHelpItems; track item.to) {
+            <a
+              [routerLink]="item.to"
+              class="hy-more-menu-card"
+              (click)="close()"
+            >
+              <span class="hy-more-menu-card__icon" aria-hidden="true">
+                <svg [lucideIcon]="item.icon" class="w-5 h-5" [strokeWidth]="1.7"></svg>
+              </span>
+
+              <span class="hy-more-menu-card__copy">
+                <strong>{{ item.titleAr | localize: item.titleAr : item.titleEn }}</strong>
+                <small>{{ item.descAr | localize: item.descAr : item.descEn }}</small>
+              </span>
+
+              <svg
+                [lucideIcon]="ChevronRight"
+                class="hy-more-menu-card__chevron rtl-flip"
+                [strokeWidth]="1.8"
+                aria-hidden="true"
+              ></svg>
+            </a>
+          }
+        </nav>
+
+        <div class="hy-more-drawer__separator"></div>
+
+        <!-- Staff / Admin Dashboard Card -->
+        <a
+          routerLink="/admin"
+          class="hy-staff-dashboard-item"
+          (click)="close()"
+        >
+          <span class="hy-staff-dashboard-item__icon" aria-hidden="true">
+            <svg [lucideIcon]="LayoutDashboard" class="w-5 h-5" [strokeWidth]="1.8"></svg>
+          </span>
+
+          <span class="hy-more-menu-card__copy">
+            <strong>{{ 'لوحة التحكم للمشرفين' | localize: 'لوحة التحكم للمشرفين' : 'Staff Dashboard' }}</strong>
+            <small>{{ 'إدارة المتجر والطلبات والمنتجات' | localize: 'إدارة المتجر والطلبات والمنتجات' : 'Manage store, orders & products' }}</small>
+          </span>
+
+          <svg
+            [lucideIcon]="ChevronRight"
+            class="hy-more-menu-card__chevron rtl-flip"
+            [strokeWidth]="1.8"
+            aria-hidden="true"
+          ></svg>
+        </a>
+
+        <div class="hy-more-drawer__separator"></div>
+
+        <!-- Language Section -->
+        <div class="hy-more-drawer__lang-section">
+          <button
+            type="button"
+            class="hy-more-menu-card--lang"
+            (click)="toggleLanguage()"
+            [attr.aria-label]="langService.storefrontLang() === 'ar' ? 'Switch to English' : 'التحويل إلى العربية'"
+          >
+            <span class="hy-more-menu-card__icon" aria-hidden="true">
+              <svg [lucideIcon]="Languages" class="w-5 h-5" [strokeWidth]="1.7"></svg>
+            </span>
+
+            <span class="hy-more-menu-card__copy">
+              <strong>{{ 'اللغة / Language' | localize: 'اللغة / Language' : 'Language / اللغة' }}</strong>
+              <small>{{ langService.storefrontLang() === 'ar' ? 'العربية (الحالية)' : 'English (Current)' }}</small>
+            </span>
+
+            <span class="hy-lang-pill">
+              {{ langService.storefrontLang() === 'ar' ? 'English' : 'العربية' }}
+            </span>
+          </button>
+        </div>
       </div>
     </aside>
   </div>

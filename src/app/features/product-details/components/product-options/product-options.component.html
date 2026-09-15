@@ -1,4 +1,4 @@
-<div dir="rtl" class="mt-5 text-right">
+<div class="mt-5 text-start">
   <!-- Shade -->
   <h3
     class="
@@ -11,7 +11,7 @@
       md:text-[19px]
     "
   >
-    اللون: {{ shadeLabel }}
+    {{ 'اللون' | localize: 'اللون' : 'Color' }}: {{ shadeLabel }}
   </h3>
 
   <div class="mt-2 flex items-center justify-start gap-2">
@@ -57,7 +57,7 @@
         md:text-[19px]
       "
     >
-      الكمية
+      {{ 'COMMON.QUANTITY' | translate }}
     </h3>
 
     <div

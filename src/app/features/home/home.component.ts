@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../shared/components/layout/header/header.component';
 import { HeroBannerComponent } from './components/hero-banner/hero-banner.component';
 import { ServiceFeaturesComponent } from './components/service-features/service-features.component';
@@ -7,11 +8,13 @@ import { BestSellersComponent } from './components/best-sellers/best-sellers.com
 import { PromoBannerComponent } from './components/promo-banner/promo-banner.component';
 import { LookCarouselComponent } from './components/look-carousel/look-carousel.component';
 import { MobileBottomNavComponent } from '../../shared/components/navigation/mobile-bottom-nav/mobile-bottom-nav.component';
+import { DashboardConfigService } from '../../core/services/dashboard-config.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
+    CommonModule,
     HeaderComponent,
     HeroBannerComponent,
     ServiceFeaturesComponent,
@@ -23,6 +26,9 @@ import { MobileBottomNavComponent } from '../../shared/components/navigation/mob
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {}
+export class HomeComponent {
+  private configService = inject(DashboardConfigService);
+  readonly config = this.configService.homePageConfig;
+}

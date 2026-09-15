@@ -7,9 +7,12 @@ import {
   LucideIcon,
 } from '@lucide/angular';
 
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
+
 export interface AccountStat {
   id: string;
   label: string;
+  key?: string;
   value: number;
 }
 
@@ -22,7 +25,7 @@ const STAT_ICONS: Record<string, LucideIcon> = {
 @Component({
   selector: 'app-account-stats',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [LucideDynamicIcon, TranslatePipe],
   templateUrl: './account-stats.component.html',
   styleUrl: './account-stats.component.css',
 changeDetection: ChangeDetectionStrategy.OnPush,

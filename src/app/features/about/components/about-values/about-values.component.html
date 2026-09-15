@@ -25,8 +25,8 @@
     @for (value of values; track value.id) {
       <app-about-value-card
         [icon]="value.icon"
-        [title]="value.title"
-        [description]="value.description"
+        [title]="value.title | localize: value.titleAr : value.titleEn"
+        [description]="value.description | localize: value.descriptionAr : value.descriptionEn"
       ></app-about-value-card>
     }
   </div>

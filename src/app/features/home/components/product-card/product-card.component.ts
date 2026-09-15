@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { LucideDynamicIcon, LucideShoppingCart, LucideStar } from '@lucide/angular';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [LucideDynamicIcon, TranslatePipe],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {
   @Input() image = '';
@@ -21,6 +22,14 @@ export class ProductCardComponent {
 
   readonly cartIcon = LucideShoppingCart;
   readonly starIcon = LucideStar;
+  readonly fallbackImage = 'https://res.cloudinary.com/ddzk9wuye/image/upload/v1787248360/hayat-makeup/products/lipstick.png';
+
+  onImgError(event: Event): void {
+    const target = event.target as HTMLImageElement;
+    if (target && target.src !== this.fallbackImage) {
+      target.src = this.fallbackImage;
+    }
+  }
 
   onSelect(): void {
     this.selectProduct.emit();

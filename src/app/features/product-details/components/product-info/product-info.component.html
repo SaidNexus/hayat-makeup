@@ -1,4 +1,4 @@
-<div dir="rtl" class="text-right">
+<div class="text-start">
   <!-- Breadcrumb -->
   <div
     class="
@@ -50,15 +50,20 @@
 
   <!-- Rating -->
   <div
-    dir="ltr"
     class="
       mt-2
       flex
       items-center
-      justify-end
+      justify-start
       gap-1
     "
   >
+    <svg
+      [lucideIcon]="starIcon"
+      class="h-[10px] w-[10px] fill-[#C91F72] text-[#C91F72] sm:h-[16px] sm:w-[16px] md:h-[20px] md:w-[20px]"
+      [strokeWidth]="0"
+    ></svg>
+
     <span
       class="
         text-[10px]
@@ -84,12 +89,6 @@
     >
       {{ info().reviews }}
     </span>
-
-    <svg
-      [lucideIcon]="starIcon"
-      class="h-[10px] w-[10px] fill-[#C91F72] text-[#C91F72] sm:h-[16px] sm:w-[16px] md:h-[20px] md:w-[20px]"
-      [strokeWidth]="0"
-    ></svg>
   </div>
 
   <!-- Price -->
@@ -113,43 +112,47 @@
         md:text-[37px]
       "
     >
-      {{ info().price }} ر.س
+      {{ info().price }} {{ 'COMMON.CURRENCY' | translate }}
     </span>
 
-    <span
-      class="
-        text-[9px]
-        text-[#5f5f5f]
-        line-through
+    @if (info().oldPrice) {
+      <span
+        class="
+          text-[9px]
+          text-[#5f5f5f]
+          line-through
 
-        sm:text-[12px]
+          sm:text-[12px]
 
-        md:text-[16px]
-      "
-    >
-      {{ info().oldPrice }} ر.س
-    </span>
+          md:text-[16px]
+        "
+      >
+        {{ info().oldPrice }} {{ 'COMMON.CURRENCY' | translate }}
+      </span>
+    }
 
     <!-- Discount -->
-    <span
-      class="
-        inline-flex
-        rounded-[3px]
-        border
-        border-[#C91F72]
-        px-1
-        py-0.5
-        text-[7px]
-        text-[#C91F72]
+    @if (info().discount) {
+      <span
+        class="
+          inline-flex
+          rounded-[3px]
+          border
+          border-[#C91F72]
+          px-1
+          py-0.5
+          text-[7px]
+          text-[#C91F72]
 
-        sm:px-3
-        sm:py-1
-        sm:text-[10px]
+          sm:px-3
+          sm:py-1
+          sm:text-[10px]
 
-        md:text-[13px]
-      "
-    >
-      {{ info().discount }}
-    </span>
+          md:text-[13px]
+        "
+      >
+        {{ info().discount }}
+      </span>
+    }
   </div>
 </div>

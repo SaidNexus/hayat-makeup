@@ -1,14 +1,21 @@
 import { Component, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../shared/components/layout/header/header.component';
 import { MobileBottomNavComponent } from '../../shared/components/navigation/mobile-bottom-nav/mobile-bottom-nav.component';
 import { AllProductsCardComponent } from '../../shared/components/cards/all-products-card/all-products-card.component';
 import { ProductsFiltersComponent } from './components/products-filters/products-filters.component';
+import { TranslatePipe } from '../../core/i18n/translate.pipe';
+import { LocalizeFieldPipe } from '../../shared/pipes/localize-field.pipe';
 
 export interface ProductItem {
   id: number | string;
   name: string;
+  nameAr?: string;
+  nameEn?: string;
   description: string;
+  descriptionAr?: string;
+  descriptionEn?: string;
   price: number;
   oldPrice?: number | null;
   discount?: number;
@@ -42,7 +49,11 @@ export const ALL_PRODUCTS_DATA: ProductItem[] = [
   {
     id: 1,
     name: 'أحمر شفاه مطفي',
+    nameAr: 'أحمر شفاه مطفي',
+    nameEn: 'Matte Lipstick',
     description: 'درجة 07 - وردي فوشيا',
+    descriptionAr: 'درجة 07 - وردي فوشيا',
+    descriptionEn: 'Shade 07 - Fuchsia Pink',
     price: 89,
     oldPrice: 129,
     discount: 31,
@@ -54,7 +65,11 @@ export const ALL_PRODUCTS_DATA: ProductItem[] = [
   {
     id: 2,
     name: 'كريم أساس سائل',
-    description: 'باغط عالي - طبيعي',
+    nameAr: 'كريم أساس سائل',
+    nameEn: 'Liquid Foundation',
+    description: 'تغطية عالية - مظهر طبيعي',
+    descriptionAr: 'تغطية عالية - مظهر طبيعي',
+    descriptionEn: 'High Coverage - Natural Finish',
     price: 119,
     oldPrice: null,
     discount: 0,
@@ -66,7 +81,11 @@ export const ALL_PRODUCTS_DATA: ProductItem[] = [
   {
     id: 3,
     name: 'لوحة ظلال العيون',
-    description: '12 لون متنوع',
+    nameAr: 'لوحة ظلال العيون',
+    nameEn: 'Eyeshadow Palette',
+    description: '12 لون متنوع وناعم',
+    descriptionAr: '12 لون متنوع وناعم',
+    descriptionEn: '12 versatile shades',
     price: 139,
     oldPrice: 169,
     discount: 18,
@@ -78,7 +97,11 @@ export const ALL_PRODUCTS_DATA: ProductItem[] = [
   {
     id: 4,
     name: 'ماسكارا مقاومة للماء',
-    description: 'تطويل وتكثيف',
+    nameAr: 'ماسكارا مقاومة للماء',
+    nameEn: 'Waterproof Mascara',
+    description: 'تطويل وتكثيف فوري',
+    descriptionAr: 'تطويل وتكثيف فوري',
+    descriptionEn: 'Instant volume and length',
     price: 99,
     oldPrice: null,
     discount: 0,
@@ -89,8 +112,12 @@ export const ALL_PRODUCTS_DATA: ProductItem[] = [
   },
   {
     id: 5,
-    name: 'باليت ظلال العيون',
+    name: 'باليت ظلال العيون روز',
+    nameAr: 'باليت ظلال العيون روز',
+    nameEn: 'Rose Gold Eyeshadow Palette',
     description: 'روز غولد - 12 لون',
+    descriptionAr: 'روز غولد - 12 لون',
+    descriptionEn: 'Rose Gold - 12 shades',
     price: 129,
     oldPrice: null,
     discount: 0,
@@ -102,7 +129,11 @@ export const ALL_PRODUCTS_DATA: ProductItem[] = [
   {
     id: 6,
     name: 'مجموعة فرش المكياج',
-    description: '6 قطع - احترافية',
+    nameAr: 'مجموعة فرش المكياج',
+    nameEn: 'Makeup Brush Set',
+    description: '6 قطع - احترافية فائقة النعومة',
+    descriptionAr: '6 قطع - احترافية فائقة النعومة',
+    descriptionEn: '6 pcs professional ultra-soft',
     price: 109,
     oldPrice: null,
     discount: 0,
@@ -114,7 +145,11 @@ export const ALL_PRODUCTS_DATA: ProductItem[] = [
   {
     id: 7,
     name: 'أحمر شفاه مطفي مخملي',
+    nameAr: 'أحمر شفاه مطفي مخملي',
+    nameEn: 'Velvet Matte Lipstick',
     description: 'درجة 07 - وردي فوشيا',
+    descriptionAr: 'درجة 07 - وردي فوشيا',
+    descriptionEn: 'Shade 07 - Fuchsia Pink',
     price: 89,
     oldPrice: 129,
     discount: 31,
@@ -126,7 +161,11 @@ export const ALL_PRODUCTS_DATA: ProductItem[] = [
   {
     id: 8,
     name: 'كريم أساس سائل ناتشورال',
-    description: 'باغط عالي - طبيعي',
+    nameAr: 'كريم أساس سائل ناتشورال',
+    nameEn: 'Natural Liquid Foundation',
+    description: 'تغطية متوازنة تدوم طويلاً',
+    descriptionAr: 'تغطية متوازنة تدوم طويلاً',
+    descriptionEn: 'Balanced long-lasting coverage',
     price: 119,
     oldPrice: null,
     discount: 0,
@@ -141,14 +180,17 @@ export const ALL_PRODUCTS_DATA: ProductItem[] = [
   selector: 'app-all-products',
   standalone: true,
   imports: [
+    CommonModule,
     HeaderComponent,
     MobileBottomNavComponent,
     AllProductsCardComponent,
     ProductsFiltersComponent,
+    TranslatePipe,
+    LocalizeFieldPipe,
   ],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllProductsComponent {
   private readonly router = inject(Router);

@@ -1,14 +1,17 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   LucideDynamicIcon,
   LucideHeart,
   LucideShoppingCart,
 } from '@lucide/angular';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
+import { LocalizeFieldPipe } from '../../../pipes/localize-field.pipe';
 
 export interface WishlistProduct {
   id: number | string;
   name: string;
-  variant?: string;
+  variant: string;
   price: number | string;
   image: string;
 }
@@ -16,10 +19,10 @@ export interface WishlistProduct {
 @Component({
   selector: 'app-wishlist-product-card',
   standalone: true,
-  imports: [LucideDynamicIcon],
+  imports: [CommonModule, LucideDynamicIcon, TranslatePipe, LocalizeFieldPipe],
   templateUrl: './wishlist-product-card.component.html',
   styleUrl: './wishlist-product-card.component.css',
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WishlistProductCardComponent {
   @Input({ required: true }) product!: WishlistProduct;

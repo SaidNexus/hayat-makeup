@@ -1,21 +1,21 @@
-<section dir="rtl" class="w-full space-y-3 sm:space-y-4">
+<section class="w-full space-y-3 sm:space-y-4">
   <!-- Section Header -->
   <div class="flex items-center justify-between">
     <!-- Title -->
     <h2 class="text-base sm:text-xl md:text-2xl font-bold text-[#111111]">
-      الأكثر مبيعًا
+      {{ (config?.title || 'الأكثر مبيعاً') | localize: config?.titleAr : config?.titleEn }}
     </h2>
 
     <!-- View All -->
     <button
       type="button"
       (click)="navigateToProducts()"
-      class="flex items-center gap-1 text-xs sm:text-sm md:text-base font-semibold text-[#D4146A] hover:opacity-80 transition"
+      class="flex items-center gap-1 text-xs sm:text-sm md:text-base font-semibold text-[#D4146A] hover:opacity-80 transition cursor-pointer"
     >
-      <span>عرض الكل</span>
+      <span>{{ 'COMMON.SEEALL' | translate }}</span>
       <svg
         [lucideIcon]="arrowLeftIcon"
-        class="h-3.5 w-3.5 sm:h-4 sm:w-4"
+        class="h-3.5 w-3.5 sm:h-4 sm:w-4 rtl-flip"
         [strokeWidth]="1.8"
       ></svg>
     </button>
@@ -39,11 +39,11 @@
       lg:grid-cols-4
     "
   >
-    @for (product of products(); track product.id) {
+    @for (product of productsList; track product.id) {
       <div class="w-[calc((100%-16px)/3)] min-w-[102px] max-w-[140px] shrink-0 sm:w-auto sm:min-w-0 sm:max-w-none sm:shrink snap-start">
         <app-product-card
           [image]="product.image"
-          [name]="product.name"
+          [name]="(product.name | localize: product.nameAr : product.nameEn)"
           [price]="product.price"
           [rating]="product.rating"
           [reviews]="product.reviews"

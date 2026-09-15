@@ -4,79 +4,118 @@ export const homePageInitialConfig = {
       id: 'sec-hero',
       type: 'hero',
       enabled: true,
-      title: 'شد أقوى\nوقوام أفضل',
-      image: ''
+      title: 'جمالكِ يتألق مع حياة\nأرقى تشكيلة مكياج',
+      titleAr: 'جمالكِ يتألق مع حياة\nأرقى تشكيلة مكياج',
+      titleEn: 'Your Beauty Shines with Hayat\nFinest Makeup Collection',
+      image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_1200/v1787248204/hayat-makeup/hero-Banner.jpg',
+      slides: [
+        {
+          id: 'slide-1',
+          image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_1200/v1787248204/hayat-makeup/hero-Banner.jpg',
+          title: 'جمالكِ يتألق مع حياة\nأرقى تشكيلة مكياج',
+          titleAr: 'جمالكِ يتألق مع حياة\nأرقى تشكيلة مكياج',
+          titleEn: 'Your Beauty Shines with Hayat\nFinest Makeup Collection'
+        }
+      ]
     },
     {
       id: 'sec-benefits',
       type: 'benefits',
       enabled: true,
       benefits: [
-        { id: 'b1', text: 'دفع عند الاستلام\nادفع بعد الاستلام', icon: 'CreditCard', enabled: true },
-        { id: 'b2', text: 'توصيل سريع\nلكافة المناطق', icon: 'Truck', enabled: true },
-        { id: 'b3', text: 'استبدال سهل\nوسياسات مرنة', icon: 'RefreshCcw', enabled: true }
+        { id: 'b1', text: 'دفع آمن وسريع\nخيارات دفع متعددة', textAr: 'دفع آمن وسريع\nخيارات دفع متعددة', textEn: 'Secure Payment\nMultiple Options', icon: 'CreditCard', enabled: true },
+        { id: 'b2', text: 'توصيل سريع\nلكافة المناطق', textAr: 'توصيل سريع\nلكافة المناطق', textEn: 'Fast Delivery\nAll Regions', icon: 'Truck', enabled: true },
+        { id: 'b3', text: 'منتجات أصلية 100%\nمعتمدة ومضمونة', textAr: 'منتجات أصلية 100%\nمعتمدة ومضمونة', textEn: '100% Original\nGuaranteed', icon: 'BadgeCheck', enabled: true }
       ]
     },
     {
       id: 'sec-categories',
       type: 'categories',
       enabled: true,
-      title: 'تسوق حسب الفئة',
-      categories: []
+      title: 'تسوقي حسب الفئة',
+      titleAr: 'تسوقي حسب الفئة',
+      titleEn: 'Shop by Category',
+      categories: [
+        { id: 'makeup', name: 'المكياج', nameAr: 'المكياج', nameEn: 'Makeup', image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_300/v1787248101/hayat-makeup/category-eyes.png' },
+        { id: 'skincare', name: 'العناية بالبشرة', nameAr: 'العناية بالبشرة', nameEn: 'Skincare', image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_300/v1787248125/hayat-makeup/category-skin.png' },
+        { id: 'perfumes', name: 'العطور', nameAr: 'العطور', nameEn: 'Perfumes', image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_300/v1787248119/hayat-makeup/category-perfume.png' },
+        { id: 'tools', name: 'الأدوات', nameAr: 'الأدوات', nameEn: 'Tools & Brushes', image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_300/v1787248133/hayat-makeup/category-tools.png' }
+      ]
     },
     {
       id: 'sec-bestsellers',
       type: 'bestsellers',
       enabled: true,
       title: 'الأكثر مبيعاً',
-      products: []
+      titleAr: 'الأكثر مبيعاً',
+      titleEn: 'Best Sellers',
+      products: [
+        { id: '1', name: 'أحمر شفاه مطفي درجة 07 - وردي فوشيا', nameAr: 'أحمر شفاه مطفي درجة 07 - وردي فوشيا', nameEn: 'Matte Lipstick Shade 07 - Fuchsia Pink', price: 89, oldPrice: 115, image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_500/v1787248360/hayat-makeup/products/lipstick.png', rating: 4.9, reviews: 98 },
+        { id: '5', name: 'باليت ظلال العيون 12 لون - روز غولد', nameAr: 'باليت ظلال العيون 12 لون - روز غولد', nameEn: 'Eyeshadow Palette 12 Colors - Rose Gold', price: 129, oldPrice: 160, image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_500/v1787248356/hayat-makeup/products/eye-shadow.png', rating: 4.8, reviews: 124 },
+        { id: '2', name: 'كريم أساس سائل تغطية عالية - طبيعي', nameAr: 'كريم أساس سائل تغطية عالية - طبيعي', nameEn: 'Liquid Foundation High Coverage - Natural', price: 119, oldPrice: 145, image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_500/v1787248358/hayat-makeup/products/foundation.png', rating: 4.7, reviews: 156 },
+        { id: '4', name: 'ماسكارا مقاومة للماء تطويل وتكثيف', nameAr: 'ماسكارا مقاومة للماء تطويل وتكثيف', nameEn: 'Waterproof Mascara Lengthening & Volumizing', price: 99, oldPrice: 120, image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_500/v1787248362/hayat-makeup/products/maskara.png', rating: 4.9, reviews: 89 }
+      ]
     },
     {
       id: 'sec-promo',
       type: 'promo',
       enabled: true,
       eyebrow: 'وصل حديثاً',
+      eyebrowAr: 'وصل حديثاً',
+      eyebrowEn: 'New Arrival',
       title: 'جديد الجمال بانتظارك',
-      subtitle: 'اكتشفي أحدث المنتجات والعلامات',
-      image: ''
+      titleAr: 'جديد الجمال بانتظارك',
+      titleEn: 'New Beauty Awaits You',
+      subtitle: 'اكتشفي أحدث المنتجات والعلامات الحصرية',
+      subtitleAr: 'اكتشفي أحدث المنتجات والعلامات الحصرية',
+      subtitleEn: 'Discover the latest exclusive products & brands',
+      image: 'https://res.cloudinary.com/ddzk9wuye/image/upload/f_auto,q_auto,w_600/v1787248206/hayat-makeup/hero.png'
     },
     {
-      id: 'sec-shop-by-need',
-      type: 'shopByNeed',
+      id: 'sec-looks',
+      type: 'looks',
       enabled: true,
-      title: 'تسوقي حسب احتياجك',
-    },
-    {
-      id: 'sec-reviews',
-      type: 'reviews',
-      enabled: true,
-      title: 'آراء عملائنا',
+      title: 'إطلالات مكياج ساحرة',
+      titleAr: 'إطلالات مكياج ساحرة',
+      titleEn: 'Charming Makeup Looks'
     }
   ]
 };
 
 export const cartPageInitialConfig = {
   headerTitle: "سلة التسوق",
+  headerTitleAr: "سلة التسوق",
+  headerTitleEn: "Shopping Cart",
   showProductImage: true,
   showQuantityControls: true,
   showRemoveButton: true,
   showOldPrice: true,
   showCouponSection: true,
   couponTitle: "كود الخصم",
+  couponTitleAr: "كود الخصم",
+  couponTitleEn: "Discount Code",
   couponPlaceholder: "أدخل كود الخصم هنا",
+  couponPlaceholderAr: "أدخل كود الخصم هنا",
+  couponPlaceholderEn: "Enter discount code here",
   couponButtonText: "تطبيق",
+  couponButtonTextAr: "تطبيق",
+  couponButtonTextEn: "Apply",
   showSubtotal: true,
   showShipping: true,
   showDiscount: true,
   showTotal: true,
   checkoutButtonText: "إتمام الطلب",
+  checkoutButtonTextAr: "إتمام الطلب",
+  checkoutButtonTextEn: "Proceed to Checkout",
   emptyCartIllustration: true,
   emptyCartText: "سلة التسوق فارغة",
+  emptyCartTextAr: "سلة التسوق فارغة",
+  emptyCartTextEn: "Your shopping cart is empty",
   showTrustBadges: true,
   trustBadges: [
-    { id: "t-1", icon: "BadgeCheck", title: "جودة أصلية", subtitle: "منتجات أصلية 100%" },
-    { id: "t-2", icon: "Truck", title: "توصيل سريع", subtitle: "شحن لكافة المناطق" },
-    { id: "t-3", icon: "ShieldCheck", title: "دفع آمن", subtitle: "تشفير آمن لبياناتك" }
+    { id: "t-1", icon: "BadgeCheck", title: "جودة أصلية", titleAr: "جودة أصلية", titleEn: "100% Original", subtitle: "مستحضرات أصلية 100%", subtitleAr: "مستحضرات أصلية 100%", subtitleEn: "Authentic Cosmetics" },
+    { id: "t-2", icon: "Truck", title: "توصيل سريع", titleAr: "توصيل سريع", titleEn: "Fast Delivery", subtitle: "شحن لكافة المناطق", subtitleAr: "شحن لكافة المناطق", subtitleEn: "Shipping to all areas" },
+    { id: "t-3", icon: "ShieldCheck", title: "دفع آمن", titleAr: "دفع آمن", titleEn: "Secure Payment", subtitle: "تشفير آمن لبياناتك", subtitleAr: "تشفير آمن لبياناتك", subtitleEn: "Full data encryption" }
   ]
 };
 
@@ -89,244 +128,114 @@ export const productPageInitialConfig = {
   showRelatedProducts: true,
   showReviews: true,
   trustBadges: [
-    { id: 't1', icon: 'BadgeCheck', text: 'منتج أصلي ومضمون' },
-    { id: 't2', icon: 'ShieldCheck', text: 'دفع إلكتروني آمن' }
+    { id: 't1', icon: 'BadgeCheck', text: 'منتج أصلي ومضمون', textAr: 'منتج أصلي ومضمون', textEn: '100% Authentic Product' },
+    { id: 't2', icon: 'ShieldCheck', text: 'دفع إلكتروني آمن', textAr: 'دفع إلكتروني آمن', textEn: 'Secure Online Payment' }
   ],
   relatedProductsCount: 4,
-  relatedProductsTitle: "قد يعجبك أيضاً"
+  relatedProductsTitle: "قد يعجبك أيضاً",
+  relatedProductsTitleAr: "قد يعجبك أيضاً",
+  relatedProductsTitleEn: "You May Also Like"
 };
 
 export const categoryPageInitialConfig = {
   showFilterToggle: true,
-  showSortDropdown: true
-};
-
-export const checkoutPageInitialConfig = {
-  showOrderSummary: true,
-  showDiscountField: true,
-  showTrustBadges: true,
+  showSearch: true,
+  titleAr: "جميع المنتجات",
+  titleEn: "All Products"
 };
 
 export const facesPageInitialConfig = {
-  headerTitle: "تسوقي حسب شكل الوجه",
-  description: "اكتشفي المنتجات الأنسب لشكل وجهك",
-  faces: [
-    { id: '2', name: 'مكياج ناعم', image: '/assets/faces/soft.png', icon: 'Flower2', iconColor: '#0B2E74', visible: true },
-    { id: '1', name: 'مكياج يومي', image: '/assets/faces/daily.png', icon: 'Sun', iconColor: '#FF7F86', visible: true },
-    { id: '4', name: 'إطلالة للعمل', image: '/assets/faces/work.png', icon: 'BriefcaseBusiness', iconColor: '#0B2E74', visible: true },
-    { id: '3', name: 'مكياج سهرة', image: '/assets/faces/evening.png', icon: 'Moon', iconColor: '#0B2E74', visible: true },
-    { id: '6', name: 'بدون مكياج', image: '/assets/faces/no-makeup.png', icon: 'Leaf', iconColor: '#0B2E74', visible: true },
-    { id: '5', name: 'عيون قوية', image: '/assets/faces/strong-eyes.png', icon: 'Eye', iconColor: '#0B2E74', visible: true }
-  ]
+  titleAr: "الإطلالات العصرية",
+  titleEn: "Modern Looks",
+  subtitleAr: "استلهمي إطلالتك القادمة من أحدث صيحات المكياج",
+  subtitleEn: "Get inspired by the latest makeup trends"
 };
 
 export const skinTypesPageInitialConfig = {
-  headerTitle: "التسوق حسب نوع البشرة",
-  description: "اختر نوع بشرتك لتكتشفي المنتجات المناسبة لك",
-  types: [
-    { id: 'oily', title: 'بشرة دهنية', description: 'منتجات تتحكم باللمعان وتدوم طوال اليوم', icon: 'Droplets', iconColor: '#7CA6D8', iconBg: '#F1F7FD', visible: true },
-    { id: 'dry', title: 'بشرة جافة', description: 'مرطبات وتركيبات غنية لإشراقة ناعمة', icon: 'Droplets', iconColor: '#E6A6AA', iconBg: '#FFF5F5', visible: true },
-    { id: 'combination', title: 'بشرة مختلطة', description: 'توازن بين الترطيب والثبات', icon: 'Sparkles', iconColor: '#719B8A', iconBg: '#F3F8F5', visible: true },
-    { id: 'sensitive', title: 'بشرة حساسة', description: 'مكونات لطيفة وخالية من العطور', icon: 'Feather', iconColor: '#9B8DD0', iconBg: '#F8F5FD', visible: true },
-    { id: 'acne', title: 'بشرة معرضة للحبوب', description: 'تركيبات خفيفة لا تسد المسام', icon: 'CircleDot', iconColor: '#D69C73', iconBg: '#FFF8F1', visible: true }
-  ]
+  titleAr: "تسوقي حسب نوع البشرة",
+  titleEn: "Shop by Skin Type",
+  subtitleAr: "منتجات مصممة خصيصاً لتناسب احتياجات بشرتك",
+  subtitleEn: "Products tailored to your skin needs"
 };
 
 export const bundlesPageInitialConfig = {
-  headerTitle: "المجموعات المتكاملة",
-  showBundleSaving: true,
-  showBundleItems: true,
-  bundles: [
-    {
-      id: "bundle-1",
-      title: "باقة الوجه الكامل",
-      description: "كل ما تحتاجينه لبشرة مثالية مشرقة وطبيعية",
-      productsCount: 5,
-      price: "598",
-      oldPrice: "798",
-      discount: "وفري 25%",
-      badge: "الأكثر مبيعاً",
-      badgeIcon: "♛",
-      image: "/assets/bundles/full-face.png",
-    },
-    {
-      id: "bundle-2",
-      title: "باقة العروس",
-      description: "تألقي في يومك الخاص مع مجموعة فاخرة من الأساسيات",
-      productsCount: 7,
-      price: "1,240",
-      oldPrice: "1,390",
-      discount: "وفري 150 ر.س",
-      badge: "وفري 150 ر.س",
-      badgeIcon: "",
-      image: "/assets/bundles/brushes.png",
-    },
-    {
-      id: "bundle-3",
-      title: "باقة الشفاه",
-      description: "ألوان ساحرة وترطيب يدوم لشفاه جذابة كل يوم",
-      productsCount: 4,
-      price: "376",
-      oldPrice: "470",
-      discount: "وفري 20%",
-      badge: "وفري 20%",
-      badgeIcon: "",
-      image: "/assets/bundles/lips.png",
-    }
-  ]
+  titleAr: "باقات المكياج التوفيرية",
+  titleEn: "Value Makeup Bundles",
+  subtitleAr: "مجموعات متكاملة بأسعار مميزة",
+  subtitleEn: "Complete sets with special prices"
 };
 
 export const skinQuizPageInitialConfig = {
-  showQuizHeader: true,
-  quizTitle: "اكتشفي روتينك المثالي",
-  quizDescription: "أجيبي على بعض الأسئلة لنرشح لك أفضل المنتجات"
+  titleAr: "اختبار البشرة المخصص",
+  titleEn: "Personalized Skin Quiz",
+  subtitleAr: "أجيبي عن بضعة أسئلة لنرشح لكِ أفضل المستحضرات",
+  subtitleEn: "Answer a few questions to get tailored recommendations"
 };
 
 export const trackOrderPageInitialConfig = {
-  showTimeline: true,
-  showSupportInfo: true
+  titleAr: "تتبع حالة الطلب",
+  titleEn: "Track Order Status",
+  placeholderAr: "أدخل رقم الطلب أو رقم الهاتف",
+  placeholderEn: "Enter order number or phone number",
+  buttonTextAr: "تتبع الآن",
+  buttonTextEn: "Track Now"
 };
 
 export const wishlistPageInitialConfig = {
-  headerTitle: "المفضلة",
-  subtitle: "منتجاتك المفضلة",
-  emptyStateTitle: "قائمة المفضلة فارغة",
-  emptyStateDescription: "تصفحي المنتجات وأضيفي ما يعجبك إلى المفضلة",
-  emptyStateButtonText: "تسوقي الآن"
+  titleAr: "قائمة أمنياتي",
+  titleEn: "My Wishlist",
+  emptyTextAr: "قائمة أمنياتك فارغة حالياً",
+  emptyTextEn: "Your wishlist is currently empty"
 };
 
 export const faqPageInitialConfig = {
-  headerTitle: "الأسئلة الشائعة",
-  subtitle: "إجابات سريعة على أكثر الأسئلة شيوعاً",
-  searchPlaceholder: "إبحثي عن سؤالك",
-  contactTitle: "لا تجدين إجابتك؟",
-  contactSubtitle: "فريقنا جاهز لمساعدتك\nنحن هنا لخدمتك بكل حب",
-  contactButtonText: "تواصلي معنا",
-  faqs: [
-    {
-      id: "f1",
-      question: "كيف أختار درجة الفاونديشن المناسبة؟",
-      answer: "يمكنك اختيار الدرجة المناسبة من خلال تحديد لون بشرتك (فاتح، متوسط، داكن) ثم اختيار النغمة (دافئة، محايدة، باردة). كما نوفر أداة مطابقة الدرجات لمساعدتك في اختيار الدرجة الأنسب لك بسهولة.",
-      visible: true
-    },
-    {
-      id: "f2",
-      question: "ما الفرق بين التغطية المتوسطة والكاملة؟",
-      answer: "التغطية المتوسطة تمنحك مظهراً طبيعياً مع توحيد لون البشرة وإخفاء العيوب الخفيفة، بينما التغطية الكاملة تخفي العيوب بشكل أكبر وتمنحك مظهراً أكثر تغطية وثباتاً.",
-      visible: true
-    },
-    {
-      id: "f3",
-      question: "هل المنتجات أصلية؟",
-      answer: "نعم، جميع المنتجات المتوفرة لدينا أصلية ومختارة بعناية من مصادر موثوقة لضمان أفضل جودة.",
-      visible: true
-    },
-    {
-      id: "f4",
-      question: "هل يمكن تبديل درجة اللون؟",
-      answer: "نعم، يمكنك طلب تبديل درجة اللون وفقاً لسياسة الاستبدال الخاصة بالمنتج، بشرط أن يكون المنتج بحالته الأصلية.",
-      visible: true
-    },
-    {
-      id: "f5",
-      question: "كم مدة التوصيل؟",
-      answer: "عادةً يستغرق التوصيل من 2 إلى 5 أيام عمل حسب موقعك وطريقة الشحن المختارة.",
-      visible: true
-    },
-    {
-      id: "f6",
-      question: "هل الدفع عند الاستلام متوفر؟",
-      answer: "نعم، الدفع عند الاستلام متوفر في المناطق التي تدعم هذه الخدمة.",
-      visible: true
-    },
-    {
-      id: "f7",
-      question: "كيف أعرف المنتج المناسب لنوع بشرتي؟",
-      answer: "يمكنك معرفة المنتجات المناسبة لك من خلال قسم نوع البشرة واختيار نوع بشرتك للحصول على المنتجات المقترحة.",
-      visible: true
-    },
-    {
-      id: "f8",
-      question: "كيف أحافظ على المنتج بعد فتحه؟",
-      answer: "احفظي المنتجات في مكان جاف وبعيد عن أشعة الشمس المباشرة والحرارة، واحرصي على إغلاق العبوة جيداً بعد كل استخدام.",
-      visible: true
-    }
-  ]
+  titleAr: "الأسئلة الشائعة",
+  titleEn: "Frequently Asked Questions",
+  subtitleAr: "إجابات على أكثر الاستفسارات شيوعاً",
+  subtitleEn: "Answers to the most common inquiries"
 };
 
 export const accountPageInitialConfig = {
-  headerTitle: "الحساب",
-  greetingText: "مرحباً",
-  showProfileCard: true,
-  menuItems: [
-    { id: "orders", label: "طلباتي", icon: "Package", visible: true },
-    { id: "addresses", label: "عناويني", icon: "MapPin", visible: true },
-    { id: "wishlist", label: "المفضلة", icon: "Heart", visible: true },
-    { id: "settings", label: "الإعدادات", icon: "Settings", visible: true }
-  ],
-  logoutText: "تسجيل الخروج"
+  titleAr: "حسابي",
+  titleEn: "My Account"
 };
 
 export const offersPageInitialConfig = {
-  headerTitle: "العروض",
-  showHero: true,
-  heroImage: "/assets/offers.png",
-  discountsTitle: "التخفيضات الحالية",
-  showDiscounts: true,
-  bundlesTitle: "الباقات",
-  showBundles: true,
-  buyMoreTitle: "عروض شراء أكثر من قطعة",
-  showBuyMore: true,
-  buyMoreNote: "يُطبق الخصم تلقائيًا في سلة التسوق",
-  limitedOffersTitle: "العروض محدودة المدة",
-  showLimitedOffers: true,
-  limitedOfferDiscountLabel: "خصم حتى",
-  limitedOfferButtonText: "تسوقي الآن",
-  limitedOfferMarketingTitle: "!عرض خاص لفترة محدودة",
-  limitedOfferMarketingSubtitle: "خصومات حصرية لا تفوتيها",
+  titleAr: "العروض الحصرية والتخفيضات",
+  titleEn: "Exclusive Offers & Discounts",
+  subtitleAr: "اكتشفي أقوى العروض على أشهر مستحضرات التجميل",
+  subtitleEn: "Discover top discounts on popular cosmetics"
 };
 
 export const categoriesPageInitialConfig = {
-  headerTitle: "التصنيفات",
-  mainCategoriesTitle: "التصنيفات الرئيسية",
-  browseCategoriesTitle: "تصفح حسب التصنيف",
-  promoBannerVisible: true,
-  promoBannerTitle: "كل ما تحتاجينه لجمالك",
-  promoBannerSubtitle: "اكتشفي جميع التصنيفات ومنتجاتك المفضلة",
-  promoBannerButtonText: "تسوقي الآن",
-  promoBannerImage: "/assets/shop-now.png"
+  titleAr: "جميع الأقسام والتصنيفات",
+  titleEn: "All Categories & Collections"
 };
 
 export const newArrivalsPageInitialConfig = {
-  headerTitle: "وصل حديثًا",
-  subtitle: "اكتشفي أحدث المنتجات والإصدارات",
-  showMoreButtonText: "عرض المزيد"
+  titleAr: "وصل حديثاً",
+  titleEn: "New Arrivals",
+  subtitleAr: "أحدث إضافات المكياج والعناية بالجمال",
+  subtitleEn: "Latest additions in makeup & beauty care"
 };
 
 export const bestSellersPageInitialConfig = {
-  headerTitle: "الأكثر مبيعًا",
-  subtitle: "اكتشفي المنتجات الأكثر حبًا من عملائنا"
+  titleAr: "الأكثر مبيعاً ورواجاً",
+  titleEn: "Best Sellers & Trends",
+  subtitleAr: "المنتجات الأكثر طلباً وإعجاباً من عميلاتنا",
+  subtitleEn: "The most requested & loved products by our customers"
 };
 
 export const searchPageInitialConfig = {
-  trendingSearchesTitle: "عمليات بحث شائعة",
-  recentSearchesTitle: "آخر عمليات البحث",
-  emptyStateTitle: "لا توجد نتائج",
-  emptyStateSubtitle: "جرّب البحث بكلمة أخرى"
+  titleAr: "بحث في المتجر",
+  titleEn: "Search Store",
+  placeholderAr: "ابحثي عن منتج، ماركة، أو تصنيف...",
+  placeholderEn: "Search for product, brand, or category..."
 };
 
-export const menuPageInitialConfig = {
-  menuItems: [
-    { id: "home", label: "الرئيسية", path: "/", visible: true },
-    { id: "products", label: "المنتجات", path: "/products", visible: true },
-    { id: "categories", label: "التصنيفات", path: "/categories", visible: true },
-    { id: "offers", label: "العروض", path: "/offers", visible: true },
-    { id: "new-arrivals", label: "وصل حديثاً", path: "/new-arrivals", visible: true },
-    { id: "best-sellers", label: "الأكثر مبيعاً", path: "/best-sellers", visible: true },
-    { id: "faces", label: "تسوقي حسب شكل الوجه", path: "/faces", visible: true },
-    { id: "skin-types", label: "تسوقي حسب نوع البشرة", path: "/skin-types", visible: true },
-    { id: "bundles", label: "المجموعات المتكاملة", path: "/bundles", visible: true },
-    { id: "skin-quiz", label: "اختبار نوع البشرة", path: "/skin-quiz", visible: true },
-    { id: "faq", label: "الأسئلة الشائعة", path: "/faq", visible: true }
-  ]
+export const checkoutPageInitialConfig = {
+  titleAr: "إتمام الطلب والدفع",
+  titleEn: "Checkout & Payment",
+  buttonTextAr: "تأكيد الطلب الآن",
+  buttonTextEn: "Confirm Order Now"
 };

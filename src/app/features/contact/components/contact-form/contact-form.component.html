@@ -12,7 +12,7 @@
         md:text-[34px]
       "
     >
-      أرسل لنا رسالة
+      {{ 'CONTACT.FORM_TITLE' | translate }}
     </h2>
 
     <span
@@ -43,14 +43,14 @@
         [lucideIcon]="userRoundIcon"
         class="
           absolute
-          right-3
+          start-3
           top-1/2
           -translate-y-1/2
           text-[#111]
           h-[13px]
           w-[13px]
 
-          sm:right-4
+          sm:start-4
           sm:h-[21px]
           sm:w-[21px]
 
@@ -66,7 +66,7 @@
         [ngModel]="name()"
         (ngModelChange)="name.set($event); onFieldChange()"
         required
-        placeholder="الاسم الكامل"
+        [placeholder]="'COMMON.FULLNAME' | translate"
         class="
           h-[30px]
           w-full
@@ -74,9 +74,9 @@
           border
           border-[#E1E1E1]
           bg-white
-          pr-10
-          pl-4
-          text-right
+          ps-10
+          pe-4
+          text-start
           !text-[11px]
           text-[#222]
           outline-none
@@ -85,12 +85,12 @@
 
           sm:h-[58px]
           sm:rounded-[15px]
-          sm:pr-12
+          sm:ps-12
           sm:text-[14px]
 
           md:h-[68px]
           md:rounded-[18px]
-          md:pr-14
+          md:ps-14
           md:text-[17px]
         "
       />
@@ -102,14 +102,14 @@
         [lucideIcon]="mailIcon"
         class="
           absolute
-          right-3
+          start-3
           top-1/2
           -translate-y-1/2
           text-[#111]
           h-[13px]
           w-[13px]
 
-          sm:right-4
+          sm:start-4
           sm:h-[21px]
           sm:w-[21px]
 
@@ -124,7 +124,7 @@
         name="email"
         [ngModel]="email()"
         (ngModelChange)="email.set($event); onFieldChange()"
-        placeholder="البريد الإلكتروني"
+        [placeholder]="'AUTH.EMAIL' | translate"
         class="
           h-[30px]
           w-full
@@ -132,9 +132,9 @@
           border
           border-[#E1E1E1]
           bg-white
-          pr-10
-          pl-4
-          text-right
+          ps-10
+          pe-4
+          text-start
           !text-[11px]
           text-[#222]
           outline-none
@@ -143,12 +143,12 @@
 
           sm:h-[58px]
           sm:rounded-[15px]
-          sm:pr-12
+          sm:ps-12
           sm:text-[14px]
 
           md:h-[68px]
           md:rounded-[18px]
-          md:pr-14
+          md:ps-14
           md:text-[17px]
         "
       />
@@ -160,14 +160,14 @@
         [lucideIcon]="fileTextIcon"
         class="
           absolute
-          right-3
+          start-3
           top-1/2
           -translate-y-1/2
           text-[#111]
           h-[13px]
           w-[13px]
 
-          sm:right-4
+          sm:start-4
           sm:h-[21px]
           sm:w-[21px]
 
@@ -182,7 +182,7 @@
         name="subject"
         [ngModel]="subject()"
         (ngModelChange)="subject.set($event); onFieldChange()"
-        placeholder="الموضوع"
+        [placeholder]="'الموضوع' | localize: 'الموضوع' : 'Subject'"
         class="
           h-[30px]
           w-full
@@ -190,9 +190,9 @@
           border
           border-[#E1E1E1]
           bg-white
-          pr-10
-          pl-4
-          text-right
+          ps-10
+          pe-4
+          text-start
           !text-[11px]
           text-[#222]
           outline-none
@@ -201,12 +201,12 @@
 
           sm:h-[58px]
           sm:rounded-[15px]
-          sm:pr-12
+          sm:ps-12
           sm:text-[14px]
 
           md:h-[68px]
           md:rounded-[18px]
-          md:pr-14
+          md:ps-14
           md:text-[17px]
         "
       />
@@ -218,13 +218,13 @@
         [lucideIcon]="penLineIcon"
         class="
           absolute
-          right-3
+          start-3
           top-3
           text-[#111]
           h-[13px]
           w-[13px]
 
-          sm:right-4
+          sm:start-4
           sm:h-[21px]
           sm:w-[21px]
 
@@ -240,7 +240,7 @@
         [ngModel]="message()"
         (ngModelChange)="message.set($event); onFieldChange()"
         required
-        placeholder="رسالتك"
+        [placeholder]="'رسالتك' | localize: 'رسالتك' : 'Your Message'"
         class="
           min-h-[80px]
           w-full
@@ -249,10 +249,10 @@
           border
           border-[#E1E1E1]
           bg-white
-          pr-10
-          pl-4
+          ps-10
+          pe-4
           pt-2
-          text-right
+          text-start
           !text-[11px]
           text-[#222]
           outline-none
@@ -261,12 +261,12 @@
 
           sm:min-h-[150px]
           sm:rounded-[15px]
-          sm:pr-12
+          sm:ps-12
           sm:text-[14px]
 
           md:min-h-[180px]
           md:rounded-[18px]
-          md:pr-14
+          md:ps-14
           md:text-[17px]
         "
       ></textarea>
@@ -287,6 +287,9 @@
         !text-[13px]
         font-medium
         text-white
+        cursor-pointer
+        hover:bg-[#b01057]
+        transition-colors
 
         sm:h-[58px]
         sm:rounded-[15px]
@@ -297,21 +300,22 @@
         md:text-[22px]
       "
     >
-      <span>إرسال الرسالة</span>
+      <span>{{ 'إرسال الرسالة' | localize: 'إرسال الرسالة' : 'Send Message' }}</span>
 
       <svg
         [lucideIcon]="sendIcon"
         class="
           absolute
-          right-3
+          end-3
           h-[15px]
           w-[15px]
+          rtl-flip
 
-          sm:right-5
+          sm:end-5
           sm:h-[23px]
           sm:w-[23px]
 
-          md:right-7
+          md:end-7
           md:h-[27px]
           md:w-[27px]
         "
@@ -321,7 +325,7 @@
 
     @if (submitted()) {
       <p class="text-center !text-[11px] text-[#0a8f3c] sm:text-[14px]">
-        تم إرسال رسالتك بنجاح، سنرد عليك في أقرب وقت.
+        {{ 'تم إرسال رسالتك بنجاح، سنرد عليك في أقرب وقت.' | localize: 'تم إرسال رسالتك بنجاح، سنرد عليك في أقرب وقت.' : 'Your message has been sent successfully. We will reply shortly.' }}
       </p>
     }
   </form>
@@ -345,7 +349,7 @@
       md:text-[14px]
     "
   >
-    <span>نحترم خصوصيتك ونضمن سرية بياناتك</span>
+    <span>{{ 'نحترم خصوصيتك ونضمن سرية بياناتك' | localize: 'نحترم خصوصيتك ونضمن سرية بياناتك' : 'We value your privacy and guarantee data confidentiality' }}</span>
 
     <svg
       [lucideIcon]="shieldCheckIcon"

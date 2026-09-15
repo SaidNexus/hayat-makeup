@@ -19,7 +19,6 @@
   
   <app-faq-page-editor *ngIf="selectedPageId === 'faq'"></app-faq-page-editor>
   <app-account-page-editor *ngIf="selectedPageId === 'account'"></app-account-page-editor>
-  <app-menu-page-editor *ngIf="selectedPageId === 'menu'"></app-menu-page-editor>
   <app-offers-page-editor *ngIf="selectedPageId === 'offers'"></app-offers-page-editor>
   
   <app-search-page-editor *ngIf="selectedPageId === 'search'"></app-search-page-editor>
@@ -40,7 +39,7 @@
   <app-profile-page-editor *ngIf="selectedPageId === 'profile'"></app-profile-page-editor>
   <app-size-guide-page-editor *ngIf="selectedPageId === 'size-guide'"></app-size-guide-page-editor>
 
-  <div *ngIf="!['home', 'best-sellers', 'new-arrivals', 'categories', 'skin-quiz', 'skin-types', 'faces', 'bundles', 'product-details', 'cart', 'checkout', 'wishlist', 'faq', 'account', 'menu', 'offers', 'search', 'track-order', 'products', 'policies', 'about', 'shapers', 'contact', 'favorites', 'login', 'my-orders', 'notifications', 'order-confirmation', 'profile', 'size-guide'].includes(selectedPageId)" class="flex flex-col items-center justify-center h-full text-center p-6 text-gray-500">
+  <div *ngIf="!['home', 'best-sellers', 'new-arrivals', 'categories', 'skin-quiz', 'skin-types', 'faces', 'bundles', 'product-details', 'cart', 'checkout', 'wishlist', 'faq', 'account', 'offers', 'search', 'track-order', 'products', 'policies', 'about', 'shapers', 'contact', 'favorites', 'login', 'my-orders', 'notifications', 'order-confirmation', 'profile', 'size-guide'].includes(selectedPageId)" class="flex flex-col items-center justify-center h-full text-center p-6 text-gray-500">
     <h3 class="text-lg font-bold text-gray-900 mb-2">محرر: {{ selectedPageId }}</h3>
     <p class="text-sm">هذا المحرر قيد الإنشاء في الإصدار الجديد من لوحة التحكم.</p>
   </div>
