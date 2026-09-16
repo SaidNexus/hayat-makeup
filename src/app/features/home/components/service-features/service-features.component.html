@@ -11,8 +11,7 @@
     "
   >
     <div
-      class="grid items-center w-full divide-x divide-gray-100 rtl:divide-x-reverse"
-      [style.grid-template-columns]="'repeat(' + processedBenefits.length + ', minmax(0, 1fr))'"
+      class="grid grid-cols-2 sm:grid-cols-4 gap-y-3 sm:gap-y-0 items-center w-full sm:divide-x sm:divide-gray-100 sm:rtl:divide-x-reverse"
     >
       @for (benefit of processedBenefits; track benefit.id; let i = $index) {
         <div

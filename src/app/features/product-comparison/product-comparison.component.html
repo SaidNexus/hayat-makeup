@@ -98,21 +98,29 @@
       </button>
     </section>
 
-    <!-- Comparison Table -->
-    <section
-      class="
-        w-full
-        overflow-hidden
-        rounded-[14px]
-        border
-        border-[#e9e9e9]
-        bg-white
+    <!-- Swipe Guide for Mobile -->
+    <div class="sm:hidden flex items-center justify-center gap-1.5 py-1.5 px-3 bg-pink-50 border border-pink-200/60 rounded-xl text-xs text-[#C91F72] font-bold shadow-xs">
+      <span>⟵ اسحبي أفقياً لمقارنة باقي المنتجات ⟶</span>
+    </div>
 
-        sm:rounded-[18px]
+    <!-- Comparison Table Scroll Wrapper -->
+    <div class="w-full overflow-x-auto overscroll-x-contain pb-2 -mx-2 px-2 sm:mx-0 sm:px-0">
+      <section
+        class="
+          w-full
+          min-w-[620px]
+          sm:min-w-0
+          overflow-hidden
+          rounded-[14px]
+          border
+          border-[#e9e9e9]
+          bg-white
 
-        md:rounded-[22px]
-      "
-    >
+          sm:rounded-[18px]
+
+          md:rounded-[22px]
+        "
+      >
       <!-- Header Row -->
       <div
         class="
@@ -704,8 +712,8 @@
                     justify-center
                     gap-1
                     text-center
-                    leading-3
-                    text-[7px]
+                    leading-tight
+                    text-xs
                     sm:justify-end
                     sm:text-right
                     sm:leading-6
@@ -719,30 +727,36 @@
           </div>
         }
       </div>
-    </section>
+      </section>
+    </div>
 
     <!-- Add All To Wishlist -->
     <button
       type="button"
       (click)="handleAddAllToWishlist()"
       class="
-        mt-2
+        mt-3
         flex
-        h-[35px]
+        h-11
         w-full
         items-center
         justify-center
         gap-2
-        rounded-[8px]
+        rounded-xl
         border
-        border-[#e5e5e5]
+        border-[#D4146A]
         bg-white
-        !text-[12px]
-        text-[#333]
+        text-xs
+        sm:text-[18px]
+        font-bold
+        text-[#D4146A]
+        shadow-sm
+        hover:bg-pink-50
+        transition-all
+        cursor-pointer
 
         sm:mt-5
         sm:h-[58px]
-        sm:text-[18px]
 
         md:h-[68px]
         md:text-[22px]

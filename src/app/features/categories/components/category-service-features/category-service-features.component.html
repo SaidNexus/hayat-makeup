@@ -1,39 +1,28 @@
 <section
   class="
     mx-auto
-    flex
-    h-[40px]
     w-full
-    items-center
-    justify-center
-    overflow-hidden
-    rounded-[5px]
+    rounded-2xl
     border
     border-[#EEEEEE]
     bg-white
-    px-[1px]
-    shadow-[0_1px_5px_rgba(0,0,0,0.04)]
-
-    sm:h-[62px]
-    sm:px-[10px]
-    sm:rounded-[7px]
-
-    md:h-[76px]
-    md:px-[16px]
-    md:rounded-[9px]
-
-    lg:h-[88px]
+    p-3
+    sm:py-3.5
+    sm:px-6
+    shadow-[0_1px_5px_rgba(0,0,0,0.03)]
     lg:max-w-[1100px]
-    lg:px-[22px]
-    lg:rounded-[11px]
   "
 >
   <div
     class="
-      flex
+      grid
+      grid-cols-2
+      gap-3
+      sm:flex
+      sm:items-center
+      sm:justify-between
+      sm:gap-4
       w-full
-      items-center
-      justify-between
     "
   >
     @for (feature of features; track feature.id; let i = $index) {
@@ -41,54 +30,31 @@
       <div
         class="
           flex
-          flex-1
           items-center
-          justify-center
-          gap-[4px]
-
-          sm:gap-[6px]
-
-          md:gap-[8px]
-
-          lg:gap-[10px]
+          gap-2
+          sm:gap-2.5
+          min-w-0
         "
       >
         <!-- Icon -->
-        <svg
-          [lucideIcon]="feature.icon"
-          class="
-            h-[22px]
-            w-[22px]
-            shrink-0
-            text-[#D4146A]
-
-            sm:h-[20px]
-            sm:w-[20px]
-
-            md:h-[24px]
-            md:w-[24px]
-
-            lg:h-[28px]
-            lg:w-[28px]
-          "
-          [strokeWidth]="1.5"
-        ></svg>
+        <div class="flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-pink-50 text-[#D4146A] shrink-0">
+          <svg
+            [lucideIcon]="feature.icon"
+            class="h-4 w-4 sm:h-5 sm:w-5"
+            [strokeWidth]="1.7"
+          ></svg>
+        </div>
 
         <!-- Text -->
-        <div class="text-start">
+        <div class="text-start min-w-0 overflow-hidden">
           <h3
             class="
-              whitespace-nowrap
-              text-[10px]
-              font-semibold
-              leading-[1.3]
+              truncate
+              text-xs
+              font-bold
               text-[#111111]
-
-              sm:text-[8px]
-
-              md:text-[10px]
-
-              lg:text-[12px]
+              sm:text-xs
+              md:text-sm
             "
           >
             {{ feature.title | localize: feature.titleAr : feature.titleEn }}
@@ -96,18 +62,13 @@
 
           <p
             class="
-              mt-[1px]
-              whitespace-nowrap
-              text-[8px]
+              truncate
+              text-[10px]
               font-normal
-              leading-[1.3]
-              text-[#484848]
-
-              sm:text-[7px]
-
-              md:text-[8px]
-
-              lg:text-[10px]
+              text-gray-500
+              sm:text-[10px]
+              md:text-xs
+              mt-0.5
             "
           >
             {{ feature.description | localize: feature.descriptionAr : feature.descriptionEn }}
@@ -115,20 +76,16 @@
         </div>
       </div>
 
-      <!-- Divider -->
+      <!-- Divider for desktop -->
       @if (i !== features.length - 1) {
         <div
           class="
-            h-[23px]
+            hidden
+            sm:block
+            h-8
             w-px
             shrink-0
-            bg-[#E5E5E5]
-
-            sm:h-[34px]
-
-            md:h-[42px]
-
-            lg:h-[50px]
+            bg-gray-100
           "
         ></div>
       }

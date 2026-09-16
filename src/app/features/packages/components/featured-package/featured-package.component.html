@@ -92,9 +92,9 @@
       class="
         mt-1
         line-clamp-2
-        text-[8px]
-        leading-[1.5]
-        text-[#8b8b8b]
+        text-[11px]
+        leading-relaxed
+        text-[#666]
 
         sm:text-[14px]
 
@@ -218,22 +218,24 @@
         type="button"
         (click)="onAddToCart()"
         class="
-          mt-1
+          mt-2
           flex
-          h-[25px]
+          h-9
           w-full
           items-center
           justify-center
-          gap-1
-          rounded-lg
+          gap-1.5
+          rounded-xl
           bg-[#C91F72]
           px-3
-          !text-[10px]
-          font-medium
+          text-xs
+          font-bold
           text-white
-          transition-colors
+          shadow-sm
+          transition-all
           hover:bg-[#B01A63]
           active:scale-[0.98]
+          cursor-pointer
 
           sm:mt-3
           sm:h-[46px]
@@ -247,7 +249,7 @@
         <span class="flex-1 text-center">أضيفي الباقة</span>
         <svg
           [lucideIcon]="chevronLeftIcon"
-          class="h-3 w-3 sm:h-[18px] sm:w-[18px] md:h-[21px] md:w-[21px]"
+          class="h-4 w-4 sm:h-[18px] sm:w-[18px] md:h-[21px] md:w-[21px]"
           [strokeWidth]="1.8"
         ></svg>
       </button>

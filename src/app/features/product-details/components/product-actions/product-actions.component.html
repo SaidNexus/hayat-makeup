@@ -16,15 +16,20 @@
     (click)="handleAddToCart()"
     class="
       flex
-      h-[39px]
+      h-11
       items-center
       justify-center
-      gap-1
-      rounded-[7px]
+      gap-1.5
+      rounded-xl
       bg-[#C91F72]
-      !text-[10px]
-      font-medium
+      text-xs
+      font-bold
       text-white
+      shadow-sm
+      hover:bg-[#B01A63]
+      active:scale-[0.98]
+      transition-all
+      cursor-pointer
 
       sm:h-[48px]
       sm:text-[13px]
@@ -36,8 +41,8 @@
     {{ 'أضف إلى السلة' | localize: 'أضف إلى السلة' : 'Add to Cart' }}
     <svg
       [lucideIcon]="shoppingBagIcon"
-      class="h-[15px] w-[15px] sm:h-[18px] sm:w-[18px] md:h-[21px] md:w-[21px]"
-      [strokeWidth]="1.5"
+      class="h-4 w-4 sm:h-[18px] sm:w-[18px] md:h-[21px] md:w-[21px]"
+      [strokeWidth]="1.8"
     ></svg>
   </button>
 
@@ -46,16 +51,20 @@
     (click)="handleBuyNow()"
     class="
       flex
-      h-[39px]
+      h-11
       items-center
       justify-center
-      rounded-[7px]
+      rounded-xl
       border
       border-[#C91F72]
       bg-white
-      !text-[10px]
-      font-medium
+      text-xs
+      font-bold
       text-[#C91F72]
+      hover:bg-pink-50
+      active:scale-[0.98]
+      transition-all
+      cursor-pointer
 
       sm:h-[48px]
       sm:text-[13px]

@@ -1,9 +1,11 @@
 import { Component, signal, ChangeDetectionStrategy, inject, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { filter, Subscription } from 'rxjs';
+import { FloatingChatComponent } from './shared/components/chat/floating-chat.component';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterOutlet, FloatingChatComponent],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
@@ -11,17 +13,26 @@ import { filter, Subscription } from 'rxjs';
 })
 export class App implements OnInit, OnDestroy {
   protected readonly title = signal('Hayat-makeup-main-angular');
+  readonly isAdminRoute = signal(false);
   private router = inject(Router);
   private routerSub?: Subscription;
   private messageHandler?: (event: MessageEvent) => void;
 
   ngOnInit() {
-    if (typeof window !== 'undefined' && window.parent && window.parent !== window) {
-      // 1. Send route change notifications to dashboard parent window
-      this.routerSub = this.router.events
-        .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
-        .subscribe((event) => {
-          const currentPath = event.urlAfterRedirects || event.url;
+    const updateAdminStatus = (url: string) => {
+      const path = url.split('?')[0];
+      this.isAdminRoute.set(path.startsWith('/admin') || path.startsWith('/dashboard'));
+    };
+
+    updateAdminStatus(this.router.url);
+
+    this.routerSub = this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        const currentPath = event.urlAfterRedirects || event.url;
+        updateAdminStatus(currentPath);
+
+        if (typeof window !== 'undefined' && window.parent && window.parent !== window) {
           window.parent.postMessage(
             {
               type: 'STOREFRONT_ROUTE_CHANGE',
@@ -29,7 +40,10 @@ export class App implements OnInit, OnDestroy {
             },
             '*'
           );
-        });
+        }
+      });
+
+    if (typeof window !== 'undefined' && window.parent && window.parent !== window) {
 
       // 2. Receive navigate commands from dashboard parent window
       this.messageHandler = (event: MessageEvent) => {

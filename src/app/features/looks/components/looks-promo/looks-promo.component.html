@@ -2,9 +2,9 @@
   <div
     class="
       relative
-      min-h-[130px]
+      min-h-[170px]
       overflow-hidden
-      rounded-[13px]
+      rounded-2xl
       bg-[#FFF0F5]
 
       sm:min-h-[195px]
@@ -21,11 +21,12 @@
       class="
         absolute
         bottom-0
-        right-0
+        left-0
         h-full
-        w-[52%]
+        w-[46%]
         object-contain
         object-left-bottom
+        pointer-events-none
 
         sm:w-[50%]
 
@@ -37,25 +38,26 @@
       class="
         absolute
         inset-y-0
-        left-[7%]
+        right-0
         flex
-        w-[45%]
+        w-[54%]
         flex-col
         justify-center
-        items-end
-        text-left
+        items-start
+        px-4
+        text-start
 
-        sm:left-[6%]
-        sm:w-[44%]
+        sm:w-[48%]
+        sm:px-6
 
-        md:left-[7%]
-        md:w-[43%]
+        md:w-[45%]
+        md:px-8
       "
     >
       <span
         class="
-          text-[8px]
-          font-medium
+          text-xs
+          font-bold
           text-[#C91F72]
 
           sm:text-[11px]
@@ -69,8 +71,8 @@
       <h2
         class="
           mt-1
-          text-[18px]
-          font-semibold
+          text-base
+          font-bold
           leading-tight
           text-[#111]
 
@@ -87,9 +89,9 @@
       <p
         class="
           mt-1
-          text-[7px]
-          leading-4
-          text-[#444]
+          text-xs
+          leading-relaxed
+          text-gray-600
 
           sm:text-[11px]
           sm:leading-5
@@ -107,17 +109,23 @@
         type="button"
         (click)="navigateToOffers()"
         class="
-          mt-2
+          mt-2.5
           flex
-          h-[25px]
+          h-9
           w-fit
           items-center
-          gap-4
-          rounded-[6px]
+          gap-2
+          rounded-xl
           bg-[#C91F72]
-          px-3
-          !text-[8px]
+          px-4
+          text-xs
+          font-bold
           text-white
+          shadow-sm
+          hover:bg-[#B01A63]
+          active:scale-[0.98]
+          transition-all
+          cursor-pointer
 
           sm:mt-4
           sm:h-[38px]
@@ -133,8 +141,8 @@
 
         <svg
           [lucideIcon]="arrowLeftIcon"
-          class="h-[11px] w-[11px] sm:h-4 sm:w-4 md:h-[19px] md:w-[19px]"
-          [strokeWidth]="1.5"
+          class="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-[19px] md:w-[19px] rtl-flip"
+          [strokeWidth]="1.8"
         ></svg>
       </button>
     </div>

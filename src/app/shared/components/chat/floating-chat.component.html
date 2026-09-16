@@ -1,0 +1,409 @@
+<div class="customer-floating-chat" dir="rtl">
+  @if (isOpen) {
+    <section
+      class="customer-floating-chat__panel"
+      role="dialog"
+      aria-modal="false"
+      aria-label="محادثة خدمة العملاء"
+    >
+      <!-- Header -->
+      <header class="customer-floating-chat__header">
+        <div class="customer-floating-chat__support">
+          <div class="customer-floating-chat__avatar" aria-hidden="true">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <div class="customer-floating-chat__info">
+            <strong class="customer-floating-chat__title">حياة ميك أب — خدمة العملاء</strong>
+            <span class="customer-floating-chat__status">
+              <i class="customer-floating-chat__status-dot" aria-hidden="true"></i>
+              متصل الآن للمساعدة
+            </span>
+          </div>
+        </div>
+
+        <div class="customer-floating-chat__header-actions">
+          <button
+            type="button"
+            class="customer-floating-chat__header-btn"
+            (click)="toggleSearch()"
+            title="بحث داخل المحادثة"
+            aria-label="بحث داخل المحادثة"
+          >
+            <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="customer-floating-chat__header-btn"
+            (click)="setIsOpen(false)"
+            title="إغلاق المحادثة"
+            aria-label="إغلاق المحادثة"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Search Bar -->
+      @if (isSearchOpen) {
+        <label class="customer-floating-chat__search-bar">
+          <svg class="w-4 h-4 text-[#D4146A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            [(ngModel)]="messageSearch"
+            placeholder="ابحثي في الرسائل..."
+            autofocus
+          />
+          @if (normalizedMessageSearch) {
+            <span class="customer-floating-chat__search-count">{{ searchResultCount }} نتيجة</span>
+          }
+          @if (messageSearch) {
+            <button
+              type="button"
+              class="customer-floating-chat__search-clear"
+              (click)="messageSearch = ''"
+              aria-label="مسح البحث"
+            >
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          }
+        </label>
+      }
+
+      <!-- Messages Scroll Area -->
+      <div #messagesRef class="customer-floating-chat__messages">
+        <span class="customer-floating-chat__day">اليوم</span>
+
+        @if (messages.length === 0) {
+          <div class="customer-floating-chat__welcome">
+            <div class="customer-floating-chat__welcome-icon">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <strong>مرحبًا بك في خدمة عملاء حياة ميك أب 💄</strong>
+            <p>اكتبي استفسارك وسيقوم فريق الدعم بالرد عليك ومساعدتك على الفور.</p>
+          </div>
+        } @else {
+          @for (message of messages; track message.id) {
+            <div
+              class="customer-floating-chat__row"
+              [ngClass]="{
+                'customer-floating-chat__row--customer': message.sender === 'customer',
+                'customer-floating-chat__row--staff': message.sender === 'staff'
+              }"
+            >
+              <div class="customer-floating-chat__msg-group">
+                <!-- Sender Tag -->
+                <div class="customer-floating-chat__sender-tag" [ngClass]="'is-' + message.sender">
+                  @if (message.sender === 'staff') {
+                    <span>🎧</span>
+                    <span>{{ message.senderName || 'فريق دعم حياة ميك أب' }}</span>
+                  } @else {
+                    <span>👤</span>
+                    <span>{{ message.senderName || userTag }}</span>
+                  }
+                </div>
+
+                @if (message.replyTo) {
+                  <button
+                    type="button"
+                    class="customer-floating-chat__reply-preview"
+                    (click)="scrollToMessage(message.replyTo.messageId)"
+                  >
+                    <strong>{{ message.replyTo.sender === 'staff' ? 'خدمة العملاء' : 'أنت' }}</strong>
+                    <span>{{ message.replyTo.preview }}</span>
+                  </button>
+                }
+
+                <!-- Bubble Container -->
+                <div class="customer-floating-chat__bubble-container">
+                  <!-- Customer Actions -->
+                  @if (message.sender === 'customer' && !message.deletedForEveryone) {
+                    <div class="customer-floating-chat__actions">
+                      <button
+                        type="button"
+                        class="customer-floating-chat__more-btn"
+                        (click)="$event.stopPropagation(); toggleMenu(message.id)"
+                        title="خيارات الرسالة"
+                        aria-label="خيارات الرسالة"
+                      >
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                          <circle cx="12" cy="12" r="1.5"></circle>
+                          <circle cx="19" cy="12" r="1.5"></circle>
+                          <circle cx="5" cy="12" r="1.5"></circle>
+                        </svg>
+                      </button>
+
+                      @if (menuMessageId === message.id) {
+                        <div class="customer-floating-chat__menu">
+                          <button type="button" (click)="chooseReply(message)">رد</button>
+                          <button type="button" (click)="toggleReaction(message.id)">تفاعل</button>
+                          <button type="button" (click)="copyMessage(message)">نسخ</button>
+                          @if (messageKind(message) === 'text') {
+                            <button type="button" (click)="chooseEdit(message)">تعديل</button>
+                          }
+                          <button type="button" style="color: #ef4444;" (click)="prepareDelete(message)">حذف</button>
+                        </div>
+                      }
+
+                      @if (reactionMessageId === message.id) {
+                        <div class="customer-floating-chat__reactions-popup">
+                          @for (emoji of REACTION_OPTIONS; track emoji) {
+                            <button type="button" (click)="reactToMessage(message, emoji)">{{ emoji }}</button>
+                          }
+                        </div>
+                      }
+                    </div>
+                  }
+
+                  <!-- Message Bubble -->
+                  <div class="customer-floating-chat__bubble" [ngClass]="'is-' + message.sender" [attr.data-message-id]="message.id">
+                    @if (message.deletedForEveryone) {
+                      <p style="font-style: italic; color: #9ca3af; margin: 0;">تم حذف هذه الرسالة</p>
+                    } @else {
+                      @if (messageKind(message) === 'image' && message.mediaUrl) {
+                        <div
+                          class="customer-floating-chat__media-image"
+                          (click)="openImage(message.mediaUrl)"
+                          title="عرض الصورة"
+                        >
+                          <img [src]="message.mediaUrl" alt="صورة مرفقة" />
+                        </div>
+                      }
+
+                      @if (messageKind(message) === 'audio' && message.mediaUrl) {
+                        <audio class="customer-floating-chat__media-audio" controls preload="metadata" [src]="message.mediaUrl"></audio>
+                      }
+
+                      @if (message.text) {
+                        <p class="customer-floating-chat__text">{{ message.text }}</p>
+                      }
+                    }
+                  </div>
+
+                  <!-- Staff Actions -->
+                  @if (message.sender === 'staff' && !message.deletedForEveryone) {
+                    <div class="customer-floating-chat__actions">
+                      <button
+                        type="button"
+                        class="customer-floating-chat__more-btn"
+                        (click)="$event.stopPropagation(); toggleMenu(message.id)"
+                        title="خيارات الرسالة"
+                        aria-label="خيارات الرسالة"
+                      >
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                          <circle cx="12" cy="12" r="1.5"></circle>
+                          <circle cx="19" cy="12" r="1.5"></circle>
+                          <circle cx="5" cy="12" r="1.5"></circle>
+                        </svg>
+                      </button>
+
+                      @if (menuMessageId === message.id) {
+                        <div class="customer-floating-chat__menu">
+                          <button type="button" (click)="chooseReply(message)">رد</button>
+                          <button type="button" (click)="toggleReaction(message.id)">تفاعل</button>
+                          <button type="button" (click)="copyMessage(message)">نسخ</button>
+                        </div>
+                      }
+
+                      @if (reactionMessageId === message.id) {
+                        <div class="customer-floating-chat__reactions-popup">
+                          @for (emoji of REACTION_OPTIONS; track emoji) {
+                            <button type="button" (click)="reactToMessage(message, emoji)">{{ emoji }}</button>
+                          }
+                        </div>
+                      }
+                    </div>
+                  }
+                </div>
+
+                <!-- Meta Row -->
+                <div class="customer-floating-chat__meta" [ngClass]="'is-' + message.sender">
+                  @if (message.editedAt) {
+                    <i style="font-size: 9.5px;">معدلة</i>
+                  }
+                  <span>{{ message.sentAt }}</span>
+                  @if (message.sender === 'customer') {
+                    <svg class="w-3.5 h-3.5 text-[#D4146A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 6 7 17l-5-5"></path>
+                      <path d="m22 10-7.5 7.5L13 16"></path>
+                    </svg>
+                  }
+                </div>
+
+                <!-- Reactions -->
+                @if (message.reactions && message.reactions.length > 0) {
+                  <div style="display: flex; gap: 4px; padding-top: 2px;">
+                    @for (reaction of message.reactions; track reaction.emoji) {
+                      <span style="font-size: 11px; background: #fff0f6; border: 1px solid #fce4ee; border-radius: 999px; padding: 1px 6px;">
+                        {{ reaction.emoji }} {{ reaction.count }}
+                      </span>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        }
+      </div>
+
+      <!-- Composer Context (Reply / Edit) -->
+      @if (replyMessage || editMessage) {
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 14px; background: #fff0f6; border-top: 1px solid #fce4ee; font-size: 11px;">
+          <div>
+            <strong>{{ editMessage ? 'تعديل الرسالة: ' : 'الرد على: ' }}</strong>
+            <span style="color: #6b7280;">{{ getPreview(editMessage || replyMessage) | slice:0:60 }}</span>
+          </div>
+          <button type="button" (click)="clearComposerMode()" style="border: 0; background: transparent; cursor: pointer; color: #9ca3af;">✕</button>
+        </div>
+      }
+
+      <!-- Recording Bar -->
+      @if (isRecording) {
+        <div class="customer-floating-chat__recording-bar">
+          <span class="customer-floating-chat__rec-indicator">
+            <i class="customer-floating-chat__rec-dot"></i>
+            جاري التسجيل {{ formatRecordingTime(recordingSeconds) }}
+          </span>
+          <button type="button" class="customer-floating-chat__rec-stop-btn" (click)="stopRecording()">إيقاف وإرسال</button>
+        </div>
+      }
+
+      <!-- Composer Form -->
+      <form class="customer-floating-chat__composer" (submit)="sendTextMessage($event)">
+        <input
+          #imageInput
+          type="file"
+          accept="image/*"
+          hidden
+          (change)="handleImageSelected($event)"
+        />
+        <button
+          type="button"
+          class="customer-floating-chat__tool-btn"
+          (click)="imageInput.click()"
+          title="إرفاق صورة"
+          aria-label="إرفاق صورة"
+          [disabled]="isRecording"
+        >
+          <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+            <circle cx="9" cy="9" r="2"></circle>
+            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="customer-floating-chat__tool-btn"
+          [class.is-recording]="isRecording"
+          (click)="isRecording ? stopRecording() : startRecording()"
+          [title]="isRecording ? 'إيقاف التسجيل' : 'تسجيل رسالة صوتية'"
+          [attr.aria-label]="isRecording ? 'إيقاف التسجيل' : 'تسجيل رسالة صوتية'"
+        >
+          @if (isRecording) {
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            </svg>
+          } @else {
+            <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" x2="12" y1="19" y2="22"></line>
+            </svg>
+          }
+        </button>
+
+        <div class="customer-floating-chat__input-wrapper">
+          <textarea
+            #inputRef
+            [(ngModel)]="messageValue"
+            name="messageValue"
+            [placeholder]="editMessage ? 'عدلي الرسالة...' : 'اكتبي رسالتك هنا...'"
+            rows="1"
+            [disabled]="isRecording"
+            (keydown)="onTextareaKeyDown($event)"
+            aria-label="اكتبي رسالتك هنا"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="customer-floating-chat__send-btn"
+          [disabled]="!messageValue.trim() || isRecording"
+          [title]="editMessage ? 'حفظ التعديل' : 'إرسال الرسالة'"
+          [attr.aria-label]="editMessage ? 'حفظ التعديل' : 'إرسال الرسالة'"
+        >
+          <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Delete Modal -->
+      @if (deleteMessage) {
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px;">
+          <div style="background: #ffffff; border-radius: 16px; padding: 18px; max-width: 280px; width: 100%; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+            <strong style="font-size: 14px; color: #111827; display: block; margin-bottom: 6px;">حذف الرسالة؟</strong>
+            <p style="font-size: 12px; color: #6b7280; margin-bottom: 14px;">هل ترغبين في حذف الرسالة لديك فقط أم لدى الجميع؟</p>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <button type="button" style="background: #fee2e2; color: #dc2626; border: 0; padding: 7px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 12px;" (click)="confirmDelete('me')">الحذف لدي</button>
+              <button type="button" style="background: #dc2626; color: #ffffff; border: 0; padding: 7px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 12px;" (click)="confirmDelete('everyone')">الحذف لدى الجميع</button>
+              <button type="button" style="background: #f3f4f6; color: #374151; border: 0; padding: 7px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 12px;" (click)="deleteMessage = null">إلغاء</button>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Image Preview Modal -->
+      @if (selectedImageModal) {
+        <div (click)="closeImageModal()" style="position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 100002; padding: 20px;">
+          <img [src]="selectedImageModal" alt="معاينة الصورة" style="max-width: 90vw; max-height: 85vh; border-radius: 12px; object-fit: contain;" />
+        </div>
+      }
+    </section>
+  }
+
+  <!-- Floating Trigger Button -->
+  <button
+    type="button"
+    class="customer-floating-chat__trigger"
+    [class.is-open]="isOpen"
+    (click)="toggleChat()"
+    [attr.aria-label]="isOpen ? 'إغلاق خدمة العملاء' : 'فتح خدمة العملاء'"
+    [attr.aria-expanded]="isOpen"
+  >
+    @if (isOpen) {
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    } @else {
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    }
+    @if (!isOpen && unreadCount > 0) {
+      <span class="customer-floating-chat__badge">{{ unreadCount > 99 ? '99+' : unreadCount }}</span>
+    }
+  </button>
+
+  @if (errorMessage) {
+    <div class="customer-floating-chat__toast">{{ errorMessage }}</div>
+  }
+</div>
