@@ -3,23 +3,26 @@
     class="
       w-full
       rounded-xl sm:rounded-2xl
-      border border-gray-100
+      border border-gray-100/90
       bg-white
       py-2.5 sm:py-3.5 md:py-4
-      px-2 sm:px-4 md:px-6
+      px-1.5 sm:px-4 md:px-6
       shadow-[0_2px_10px_rgba(0,0,0,0.03)]
     "
   >
     <div
-      class="grid grid-cols-2 sm:grid-cols-4 gap-y-3 sm:gap-y-0 items-center w-full sm:divide-x sm:divide-gray-100 sm:rtl:divide-x-reverse"
+      class="w-full items-center"
+      [ngClass]="gridClass"
     >
       @for (benefit of processedBenefits; track benefit.id; let i = $index) {
         <div
           class="
             flex
+            flex-col sm:flex-row
             items-center
             justify-center
-            gap-1.5 sm:gap-2.5 md:gap-3.5
+            text-center sm:text-start
+            gap-1 sm:gap-2.5 md:gap-3.5
             px-1 sm:px-2 md:px-3
             min-w-0
           "
@@ -30,30 +33,31 @@
               flex
               items-center
               justify-center
-              h-7 w-7 sm:h-9 sm:w-9 md:h-10 md:w-10
+              h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10
               rounded-full
               bg-[#FFF0F6]
               text-[#D4146A]
               shrink-0
+              shadow-sm
               transition-transform duration-200
             "
           >
             <svg
               [lucideIcon]="getIcon(benefit.icon)"
-              class="h-3.5 w-3.5 sm:h-4.5 sm:w-4.5 md:h-5 md:w-5"
+              class="h-4 w-4 sm:h-4.5 sm:w-4.5 md:h-5 md:w-5"
               [strokeWidth]="1.8"
             ></svg>
           </div>
 
           <!-- Text Block -->
-          <div class="flex flex-col min-w-0 text-start overflow-hidden">
+          <div class="flex flex-col min-w-0 text-center sm:text-start overflow-hidden">
             <span
               class="
                 font-bold
                 text-[#111111]
-                text-[10px] sm:text-xs md:text-sm
+                text-[10.5px] sm:text-xs md:text-sm
                 leading-tight sm:leading-snug
-                truncate
+                break-words
               "
               [title]="benefit.titleAr | localize: benefit.titleAr : benefit.titleEn"
             >
@@ -63,11 +67,11 @@
             @if (benefit.subtitleEn || benefit.subtitleAr) {
               <span
                 class="
-                  text-[8px] sm:text-[10px] md:text-[11px]
-                  text-gray-400 sm:text-gray-500
+                  text-[8.5px] sm:text-[10px] md:text-[11px]
+                  text-gray-500
                   font-medium
                   leading-tight
-                  truncate
+                  break-words
                   mt-0.5
                 "
                 [title]="benefit.subtitleAr | localize: benefit.subtitleAr : benefit.subtitleEn"

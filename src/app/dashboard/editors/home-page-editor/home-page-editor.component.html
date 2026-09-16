@@ -97,9 +97,10 @@
                 </div>
               </div>
               <app-bilingual-input 
-                title="نص الميزة"
+                title="نص الميزة (السطر 1: العنوان، السطر 2: الوصف)"
                 labelAr="عربي / AR"
                 labelEn="English / EN"
+                [isTextArea]="true"
                 [valueAr]="benefit.textAr || benefit.text || ''"
                 [valueEn]="benefit.textEn || ''"
                 (valueChange)="updateBenefit(section, bIdx, { textAr: $event.lang === 'Ar' ? $event.value : benefit.textAr, textEn: $event.lang === 'En' ? $event.value : benefit.textEn, text: $event.lang === 'Ar' ? $event.value : benefit.text })"

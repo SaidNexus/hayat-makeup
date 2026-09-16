@@ -23,9 +23,48 @@ export const homePageInitialConfig = {
       type: 'benefits',
       enabled: true,
       benefits: [
-        { id: 'b1', text: 'دفع آمن وسريع\nخيارات دفع متعددة', textAr: 'دفع آمن وسريع\nخيارات دفع متعددة', textEn: 'Secure Payment\nMultiple Options', icon: 'CreditCard', enabled: true },
-        { id: 'b2', text: 'توصيل سريع\nلكافة المناطق', textAr: 'توصيل سريع\nلكافة المناطق', textEn: 'Fast Delivery\nAll Regions', icon: 'Truck', enabled: true },
-        { id: 'b3', text: 'منتجات أصلية 100%\nمعتمدة ومضمونة', textAr: 'منتجات أصلية 100%\nمعتمدة ومضمونة', textEn: '100% Original\nGuaranteed', icon: 'BadgeCheck', enabled: true }
+        {
+          id: 'b1',
+          text: 'دفع آمن وسريع\nخيارات دفع متعددة',
+          textAr: 'دفع آمن وسريع\nخيارات دفع متعددة',
+          textEn: 'Secure Payment\nMultiple Options',
+          title: 'دفع آمن وسريع',
+          titleAr: 'دفع آمن وسريع',
+          titleEn: 'Secure Payment',
+          subtitle: 'خيارات دفع متعددة',
+          subtitleAr: 'خيارات دفع متعددة',
+          subtitleEn: 'Multiple Options',
+          icon: 'CreditCard',
+          enabled: true
+        },
+        {
+          id: 'b2',
+          text: 'توصيل سريع\nلكافة المناطق',
+          textAr: 'توصيل سريع\nلكافة المناطق',
+          textEn: 'Fast Delivery\nAll Regions',
+          title: 'توصيل سريع',
+          titleAr: 'توصيل سريع',
+          titleEn: 'Fast Delivery',
+          subtitle: 'لكافة المناطق',
+          subtitleAr: 'لكافة المناطق',
+          subtitleEn: 'All Regions',
+          icon: 'Truck',
+          enabled: true
+        },
+        {
+          id: 'b3',
+          text: 'منتجات أصلية 100%\nمعتمدة ومضمونة',
+          textAr: 'منتجات أصلية 100%\nمعتمدة ومضمونة',
+          textEn: '100% Original\nGuaranteed',
+          title: 'منتجات أصلية 100%',
+          titleAr: 'منتجات أصلية 100%',
+          titleEn: '100% Original',
+          subtitle: 'معتمدة ومضمونة',
+          subtitleAr: 'معتمدة ومضمونة',
+          subtitleEn: 'Guaranteed',
+          icon: 'BadgeCheck',
+          enabled: true
+        }
       ]
     },
     {

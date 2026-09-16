@@ -127,13 +127,30 @@ export class DashboardConfigService {
           if (key === 'hayat-homepage-config' && (startValue as any)?.sections) {
             (startValue as any).sections = (startValue as any).sections.map((sec: any) => {
               if (sec.type === 'benefits' && Array.isArray(sec.benefits)) {
-                sec.benefits = sec.benefits.map((b: any) => ({
-                  ...b,
-                  textEn: (b.textEn || '')
+                sec.benefits = sec.benefits.map((b: any) => {
+                  let textEn = (b.textEn || '')
                     .replace(/Fast & Secure Payment[\s\S]*?Multiple payment options/i, 'Secure Payment\nMultiple Options')
                     .replace(/Fast Express Delivery[\s\S]*?To all cities and regions/i, 'Fast Delivery\nAll Regions')
                     .replace(/100% Original Products[\s\S]*?Certified and guaranteed/i, '100% Original\nGuaranteed')
-                }));
+                    .replace(/Fast DeliveryAll Regions/i, 'Fast Delivery\nAll Regions')
+                    .replace(/Fast Delivery All Regions/i, 'Fast Delivery\nAll Regions')
+                    .replace(/Secure PaymentMultiple Options/i, 'Secure Payment\nMultiple Options')
+                    .replace(/100% OriginalGuaranteed/i, '100% Original\nGuaranteed');
+
+                  let titleEn = b.titleEn;
+                  let subtitleEn = b.subtitleEn;
+                  if (titleEn && /Fast DeliveryAll Regions/i.test(titleEn)) {
+                    titleEn = 'Fast Delivery';
+                    subtitleEn = subtitleEn || 'All Regions';
+                  }
+
+                  return {
+                    ...b,
+                    textEn,
+                    titleEn,
+                    subtitleEn
+                  };
+                });
               }
               return sec;
             });
